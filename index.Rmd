@@ -2,9 +2,10 @@
 title: "WildPigABM"
 output: html_document
 ---
-The documents needed for the `WildPigABM` Package including the Vignette, Source Files, and additional information is available here. 
+The documents needed for the `WildPigABM` Package including the Vignette, Source Files, and additional information is available here. `WildPigABM` is an `R` Package that can be used to simulate agricultural producer - wildlife interactions. 
 
-
-
-
-[Download Source Files](https://github.com/jholderieath/website/raw/master/WildPigABM_0.2.9.tar.gz)
+Steps for use:
+1. [Download `NetLogo` Version 5.3.1](https://ccl.northwestern.edu/netlogo/download.shtml)
+`WildPigABM` has not been tested with Version 6.0.1
+2. [Download Source Files](https://github.com/jholderieath/website/raw/master/WildPigABM_0.2.9.tar.gz)
+3. Install the R package if no modifications are desired.  If modifications are desired unzip the `tar.gz` file and modify. If you would like to collaborate please contact me through the site.
