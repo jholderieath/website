@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
-    "contents" : "---\ntitle: \"WildPigABM\"\noutput: html_document\n---\nThe documents needed for the `WildPigABM` Package including the Vignette, Source Files, and additional information is available here. \n\n<<<<<<< HEAD\n[Download Source Files](website/WildPigABM_0.2.9.tar.gz)\n=======\n>>>>>>> origin/master\n\n\n[Download Source Files](/WildPigABM_0.2.9.tar.gz)\n",
+    "contents" : "---\ntitle: \"WildPigABM\"\noutput: html_document\n---\nThe documents needed for the `WildPigABM` Package including the Vignette, Source Files, and additional information is available here. \n\n\n\n\n[Download Source Files](https://github.com/jholderieath/website/raw/master/WildPigABM_0.2.9.tar.gz)\n",
     "created" : 1495594516306.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3070555279",
+    "hash" : "2404315655",
     "id" : "606F2B12",
-    "lastKnownWriteTime" : 1495598300,
-    "last_content_update" : 1495598300,
+    "lastKnownWriteTime" : 1495598526,
+    "last_content_update" : 1495598526211,
     "path" : "~/Documents/12-website/index.Rmd",
     "project_path" : "index.Rmd",
     "properties" : {
