@@ -4,5 +4,10 @@ output: html_document
 ---
 The documents needed for the `WildPigABM` Package including the Vignette, Source Files, and additional information is available here. 
 
+<<<<<<< HEAD
 [Download Source Files](website/WildPigABM_0.2.9.tar.gz)
+=======
+>>>>>>> origin/master
 
+
+[Download Source Files](/WildPigABM_0.2.9.tar.gz)
