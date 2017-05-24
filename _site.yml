@@ -6,4 +6,4 @@ navbar:
       href: index.html
     - text: "WildPigABM Vignette"
       href: CopyOfmy-vignette.html
-
+output_dir: "."
