@@ -1,0 +1,9 @@
+name: "Jason Holderieath"
+navbar:
+  title: "Jason Holderieath"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "WildPigABM Vignette"
+      href: CopyOfmy-vignette.html
+

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "name: \"Jason Holderieath\"\nnavbar:\n  title: \"Jason Holderieath\"\n  left:\n    - text: \"Home\"\n      href: index.html\n    - text: \"WildPigABM Vignette\"\n      href: CopyOfmy-vignette.html\n\n",
+    "created" : 1495594558842.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3329548220",
+    "id" : "D576EB79",
+    "lastKnownWriteTime" : 1495595846,
+    "last_content_update" : 1495595846086,
+    "path" : "~/Documents/12-website/_site.yml",
+    "project_path" : "_site.yml",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "yaml"
+}

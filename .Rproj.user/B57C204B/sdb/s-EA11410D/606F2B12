@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"WildPigABM\"\noutput: html_document\n---\nThe documents needed for the `WildPigABM` Package including the Vignette, Source Files, and additional information is available here. \n\n[Download Source Files](/WildPigABM_0.2.9.tar.gz)\n\n",
+    "created" : 1495594516306.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "909990595",
+    "id" : "606F2B12",
+    "lastKnownWriteTime" : 1495595838,
+    "last_content_update" : 1495595838076,
+    "path" : "~/Documents/12-website/index.Rmd",
+    "project_path" : "index.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
