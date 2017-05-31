@@ -11,7 +11,7 @@
 
 <meta name="author" content="Jason Holderieath" />
 
-<meta name="date" content="2017-05-23" />
+<meta name="date" content="2017-05-31" />
 
 <title>WildPigABM Documentation and Motivation</title>
 
@@ -251,14 +251,14 @@ div.tocify {
 
 <h1 class="title toc-ignore">WildPigABM Documentation and Motivation</h1>
 <h4 class="author"><em>Jason Holderieath</em></h4>
-<h4 class="date"><em>2017-05-23</em></h4>
+<h4 class="date"><em>2017-05-31</em></h4>
 
 </div>
 
 
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">1</span> Introduction</h1>
-<p>This vignette is a companion document to my dissertation essay <em>Spatiotemporal management under heterogeneous damage and uncertain parameters. An agent-based approach.</em> This document contains much of the justification not needed for the story and code to show exactly how the functions work. The vignette is organized by major topic. The Overview, Design, Concepts, and Details section details the relevant features for other agent-based modelers. The subsequent sections document functions and ideas. There is substantially more capability in the model than is on display in the essay and this is apparent upon examination of the functions. The document is designed to fully explain everything about a section within each section. As such, there is substantial overlap between sections. Please cite the model as:</p>
+<p>This vignette is a companion document to my dissertation essay <em>Pigs on the wrong side of the fence. An agent-based approach to evaluating the communication of marginal values.</em> This document contains much of the justification not needed for the story and code to show exactly how the functions work. The vignette is organized by major topic. The Overview, Design, Concepts, and Details section details the relevant features for other agent-based modelers. The subsequent sections document functions and ideas. There is substantially more capability in the model than is on display in the essay and this is apparent upon examination of the functions. The document is designed to fully explain everything about a section within each section. As such, there is substantial overlap between sections. Please cite the model as:</p>
 <p>Holderieath, Jason J. 2016. “Public Agent-Based Model - Accounting for interactions and heterogeneity in feral swine policy analysis.” <a href="doi:10.5281/zenodo.203239" class="uri">doi:10.5281/zenodo.203239</a>.</p>
 <pre><code>@misc{Holderieath,
 author = {Holderieath, Jason J.},
@@ -266,6 +266,224 @@ doi = {10.5281/zenodo.203239},
 title = {{Public Agent-Based Model - Accounting for interactions and heterogeneity in feral swine policy analysis.}},
 url = {https://zenodo.org/record/203239}
 }</code></pre>
+<div id="license" class="section level2">
+<h2><span class="header-section-number">1.1</span> License</h2>
+<p>Use of the software implies acceptance of the license.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cat</span>(<span class="kw">readLines</span>(<span class="st">'~/GitHub/Version 2/LICENSE'</span>), <span class="dt">sep =</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</code></pre></div>
+<pre><code>                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      &quot;License&quot; shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      &quot;Licensor&quot; shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      &quot;Legal Entity&quot; shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      &quot;control&quot; means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      &quot;You&quot; (or &quot;Your&quot;) shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      &quot;Source&quot; form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      &quot;Object&quot; form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      &quot;Work&quot; shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      &quot;Derivative Works&quot; shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      &quot;Contribution&quot; shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, &quot;submitted&quot;
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as &quot;Not a Contribution.&quot;
+
+      &quot;Contributor&quot; shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a &quot;NOTICE&quot; text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an &quot;AS IS&quot; BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets &quot;{}&quot;
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same &quot;printed page&quot; as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright 2016 Jason Holderieath
+
+   Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.</code></pre>
+</div>
+<div id="instructions-for-use" class="section level2">
+<h2><span class="header-section-number">1.2</span> Instructions for use:</h2>
+<p>1.0 <a href="https://ccl.northwestern.edu/netlogo/download.shtml">Download <code>NetLogo</code> Version 5.3.1</a> <code>WildPigABM</code> has not been tested with Version 6.0.1</p>
+<p>2.0 <a href="https://github.com/jholderieath/website/raw/master/WildPigABM_0.2.9.tar.gz">Download Source Files</a></p>
+<p>3.0 If your installation is exactly like mine, you can simply install the r package. The <code>NetLogo</code> model will be automatically placed in your <code>R</code> package library (i.e. <code>~\R\win-library\3.3\WildPigABM\data</code>). The <code>doOne</code> will know where to find the <code>NetLogo</code> model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">install.packages</span>(<span class="st">&quot;~/WildPigABM_0.2.9.tar.gz&quot;</span>, <span class="dt">repos =</span> <span class="ot">NULL</span>, <span class="dt">type =</span> <span class="st">&quot;source&quot;</span>)</code></pre></div>
+<p>3.1 It is quite likely you will need to modify the <code>doOne</code> function to update your generic output directory (<code>dirc</code>) and <code>NetLogo</code> application path (<code>nl.path</code>) must be updated. You may also wish to change other parts of the model. If that is the case, unzip the <code>tar.gz</code> file and modify. If you would like to collaborate please contact me through the site.</p>
+<div id="use-of-the-source-files" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Use of The source files</h3>
+<p>If you chose option 3.1, extract <code>/WildPigABM_0.2.9.tar.gz</code>. The <code>/data</code> folder contains the <code>NetLogo</code> model. This model contains most of the functions that relate to the physical world. The <code>/doc</code> folder contains the documentation for the version of <code>RNetLogo</code> I was working with and documentation for a subset and replace operation that is not used in this version, but could be useful. The <code>/R</code> folder contains definitions of all <code>/R</code> functions. <code>/Test</code> contains scripts for testing this and previous versions. <code>/vignettes</code> contains the documentation. Please evaluate these files. If you decide that you would like to collaborate, contact me to <em>request</em> (I reserve the right to not grant access to <em>anyone</em>.) invitation as a collaborator on a private GitHub repository. Depending on the nature of your project, a version or a fork may be used to give you a private version to develop.</p>
+</div>
+</div>
 </div>
 <div id="documentation" class="section level1">
 <h1><span class="header-section-number">2</span> Documentation</h1>
@@ -571,7 +789,7 @@ url = {https://zenodo.org/record/203239}
 </div>
 <div id="entities-state-variables-and-scales" class="section level3">
 <h3><span class="header-section-number">2.2.2</span> Entities, state variables, and scales</h3>
-<p>This model has a large number of moving parts. The agents are landowners, government, and two types of feral swine. Landownership is defined prior to the simulation. Land is of varying quality. Landowners are characterized by their wealth and activities. Feral swine are characterized by their location, age, sex, and their status as living. Temporal scales are a ten year simulation with explicit annual time steps. Spatial scales are They exist in a space a little over 6 miles long by 6 miles wide, made up of 2401 ten acre patches.</p>
+<p>This model has a large number of moving parts. The agents are landowners and three types of feral swine. Landownership is defined prior to the simulation. Land is of varying quality. Landowners are characterized by their wealth and activities. Feral swine are characterized by their location, age, sex, and their status as living. Temporal scales are a multi-year simulation with explicit annual time steps. Spatial scales are They exist in a space a little over 6 miles long by 6 miles wide, made up of 2401 ten acre patches.</p>
 </div>
 <div id="process-overview-and-scheduling" class="section level3">
 <h3><span class="header-section-number">2.2.3</span> Process overview and scheduling</h3>
@@ -761,7 +979,7 @@ url = {https://zenodo.org/record/203239}
 </tr>
 <tr class="even">
 <td>Objectives</td>
-<td>Survival</td>
+<td>Survival, reproduction.</td>
 </tr>
 <tr class="odd">
 <td>Learning</td>
@@ -797,23 +1015,12 @@ url = {https://zenodo.org/record/203239}
 <div id="initialization" class="section level3">
 <h3><span class="header-section-number">2.2.5</span> Initialization</h3>
 <p>Initialization is a fairly complex operation. In order:</p>
-<ol style="list-style-type: decimal">
-<li>Load <code>simsalapar</code> and <code>parallel</code> into the <code>R</code> session.</li>
-<li>Define the cluster being used for the analysis.</li>
-<li>Define the variable list for which a grid to to be created using <code>simsalapar::varlist()</code> and <code>simsalapar::mkGrid()</code>.</li>
-<li>Pass the <code>doOne</code> function through the <code>parallel::clusterMap()</code> function with the grid defined in step 3.</li>
-<li>The <code>parallel::clusterMap()</code> function assigns each core of the cluster a <code>doOne</code> with one set of variables from the grid defined in step 3.</li>
-<li>Inside the <code>doOne</code> function:</li>
-</ol>
 <ul>
+<li>Inside the <code>doOne</code> function:</li>
 <li>The seed is specified. (If we had been looking to simulate across a number of different worlds we would have specified a stream of random number seeds in step 2).</li>
 <li>Static variables are defined.</li>
 <li>The <code>masterSchedule</code> function is called with the static variables, variables from the grid, and the RNG seed.</li>
-</ul>
-<ol start="7" style="list-style-type: decimal">
 <li>Inside the <code>masterSchedule</code> function:</li>
-</ol>
-<ul>
 <li>Matrices and values are calculated for later use (e.g. a null and unit matrix).</li>
 <li>The clock is started for timing simulations.</li>
 <li>NetLogo is loaded into the <code>R</code> session using <code>RNetLogo::NLStart()</code> and the <code>NetLogo</code> portion of the model is loaded using <code>RNetLogo::NLLoadModel()</code>.</li>
@@ -863,7 +1070,6 @@ url = {https://zenodo.org/record/203239}
 </ul></li>
 </ul></li>
 <li>Result space matrices and lists are created.</li>
-<li>Expected gross margin is generated for each household from a truncated normal distribution centered around the <code>EGM_offFarm</code> variable defined in the <code>doOne</code> function with a standard deviation of 50, minimum value of zero, and maximum value of infinity.</li>
 </ul>
 </div>
 <div id="input-data" class="section level3">
@@ -877,10 +1083,56 @@ url = {https://zenodo.org/record/203239}
 </div>
 <div id="core-paper-optimization-framework" class="section level2">
 <h2><span class="header-section-number">2.3</span> Core Paper Optimization Framework</h2>
-<p>Each type of decision maker uses the same pieces of information to make his decision. Landowners are aware of the presence of feral swine (<span class="math inline">\(pigTerritoryStrength\)</span>) and are able to assess associated likely damage, as well as their expected impact for no removal effort (<span class="math inline">\(pop\_if\_none\)</span>), light removal effort of attempting to remove 25% of the population (<span class="math inline">\(pop\_if\_light\)</span>), and heavy removal effort of attempting to remove 90% of the population (<span class="math inline">\(pop\_if\_heavy\)</span>). Damage associated with each level of control is found:</p>
+<div id="release-notes" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Release Notes</h3>
+<p>The optimization process included in versions 0.2.9 and later is the most expansible yet. More emphaisis has been placed on modularity. This modularity is seen in the <code>masterSchedule</code> designation of type of price and landowner allowing mixed assignments, removal cost, damage functions, and OCPM functions can all be easily changed. As improvements are made in newer versions this vision of modularity will continue. Future versions will move more and more to a software package that a novice can use. Much of the effort that has gone into this package has been spent on landowner optimization.</p>
+<p>Please contact me if you would like to collaborate. The following issues are currently outstanding in a private repository.</p>
+<ul>
+<li><a href="https://github.com/jholderieath/Version-2/issues/7">Add support for commercial solver packages</a> In particular, IBM’s CPLEX, Gurobi, GAMS, and Mosek solvers all have strengths that could be useful.</li>
+<li><a href="https://github.com/jholderieath/Version-2/issues/6">Add GPU Solver Option</a> A GPU solver option would speed up computation greatly - even if it does not speed up an individual optimization, it would allow developers to move many of the calculations off of the CPU and to the GPU speeding up those operations.</li>
+<li><a href="https://github.com/jholderieath/Version-2/issues/5">Add support for Non-linear Optimization and Dynamic Programming</a> Improving granularity in the decision-maker’s choice space could improve the model. It could slow it down though.</li>
+</ul>
+</div>
+<div id="the-land-managers-decision" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> The land-manager’s decision</h3>
+<p>Each type of decision maker uses the same pieces of information to make his decision. Landowners are aware of the presence of feral swine (<span class="math inline">\(pigTerritoryStrength\)</span>) and are able to assess associated likely damage, as well as their expected impact for no removal effort (<span class="math inline">\(pop\_if\_none\)</span>), light removal effort of attempting to remove 25% of the population (<span class="math inline">\(pop\_if\_light\)</span>), and heavy removal effort of attempting to remove 90% of the population (<span class="math inline">\(pop\_if\_heavy\)</span>).</p>
+</div>
 <div id="implementation" class="section level3">
-<h3><span class="header-section-number">2.3.1</span> Implementation</h3>
+<h3><span class="header-section-number">2.3.3</span> Implementation</h3>
 <p>Implementation between each type of decision is fairly similar. From the <code>masterSchedule</code>, <code>if</code> statements choose the appropriate optimization function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(RemovalPriceMethod<span class="op">==</span><span class="st">&quot;random&quot;</span>){
+  a&lt;-<span class="kw">c</span>(<span class="st">&quot;marginal&quot;</span>,<span class="st">&quot;minus&quot;</span>,<span class="st">&quot;linear&quot;</span>)
+  removalPrFnVec &lt;-<span class="st"> </span><span class="kw">sample</span>(a, init_hh, <span class="dt">replace=</span><span class="ot">TRUE</span>)
+}
+<span class="cf">if</span>(RemovalPriceMethod<span class="op">==</span><span class="st">&quot;linear&quot;</span>){
+  removalPrFnVec &lt;-<span class="st"> </span><span class="kw">rep_len</span>(<span class="st">&quot;linear&quot;</span>,<span class="dt">length.out =</span> init_hh)
+}
+<span class="cf">if</span>(RemovalPriceMethod<span class="op">==</span><span class="st">&quot;marginal&quot;</span>){
+  removalPrFnVec &lt;-<span class="st"> </span><span class="kw">rep_len</span>(<span class="st">&quot;marginal&quot;</span>,<span class="dt">length.out =</span> init_hh)
+}
+<span class="cf">if</span>(RemovalPriceMethod<span class="op">==</span><span class="st">&quot;minus&quot;</span>){
+  removalPrFnVec &lt;-<span class="st"> </span><span class="kw">rep_len</span>(<span class="st">&quot;minus&quot;</span>,<span class="dt">length.out =</span> init_hh)
+}
+<span class="cf">if</span>(UserCostMethod<span class="op">==</span><span class="st">&quot;random&quot;</span>){
+  a&lt;-<span class="kw">c</span>(<span class="st">&quot;myopic&quot;</span>,<span class="st">&quot;minus&quot;</span>,<span class="st">&quot;linear&quot;</span>)
+  userCostFnVec &lt;-<span class="st"> </span><span class="kw">sample</span>(a, init_hh, <span class="dt">replace=</span><span class="ot">TRUE</span>)
+}
+<span class="cf">if</span>(UserCostMethod<span class="op">==</span><span class="st">&quot;myopic&quot;</span>){
+  userCostFnVec &lt;-<span class="st"> </span><span class="kw">rep_len</span>(<span class="st">&quot;myopic&quot;</span>,<span class="dt">length.out =</span> init_hh)
+}
+<span class="cf">if</span>(UserCostMethod<span class="op">==</span><span class="st">&quot;minus&quot;</span>){
+  userCostFnVec &lt;-<span class="st"> </span><span class="kw">rep_len</span>(<span class="st">&quot;minus&quot;</span>,<span class="dt">length.out =</span> init_hh)
+}
+<span class="cf">if</span>(UserCostMethod<span class="op">==</span><span class="st">&quot;linear&quot;</span>){
+  userCostFnVec &lt;-<span class="st"> </span><span class="kw">rep_len</span>(<span class="st">&quot;linear&quot;</span>,<span class="dt">length.out =</span> init_hh)
+}</code></pre></div>
+<p>Then inside the time loop.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    plan[t] &lt;-<span class="st"> </span><span class="kw">RevisedDynamicISH</span>(verboseR, t, now,today,init_hh,
+                                             P_corn,P_soy,P_CRP,
+                                             varCost_corn, varCost_soy,verCost_CRP,
+                                             removalPrFnVec,userCostFnVec,typeDecision,
+                                              bounty,
+                                             ...)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#' @rdname WildPigABM</span>
 <span class="co">#' @export</span>
 removalPrice &lt;-<span class="st"> </span><span class="cf">function</span>(x){
@@ -914,7 +1166,7 @@ estGM &lt;-<span class="st"> </span><span class="cf">function</span>(pop_if_none
                   adjYieldCorn, adjYieldSoy,
                   P_corn, p_soy, p_crp,
                   varCost_corn,varCost_soy,varCost_crp,
-                  dFnForm,Removal_Price,User_Cost,...){
+                  dFnForm,Removal_Price,User_Cost,bounty,...){
   P_crp=P_CRP
   varCost_crp=verCost_CRP
   adjYieldCRP=<span class="dv">10</span>
@@ -943,7 +1195,8 @@ KK =<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot
 <span class="st">      </span>minus<span class="op">*</span>((<span class="kw">removalPrice</span>(d)<span class="op">-</span><span class="kw">removalPrice</span>(pop_if_none))<span class="op">*</span>(pop_if_none<span class="op">-</span>d))<span class="op">+</span><span class="st"> </span><span class="co">#removal price is difference of evaluated price times removed animals</span>
 <span class="st">      </span>ucminus<span class="op">*</span>(<span class="kw">minusUserCost</span>(pop_if_none,d))<span class="op">-</span>
 <span class="st">      </span>ucmyopic<span class="op">*</span>(d)<span class="op">-</span>
-<span class="st">      </span>uclinear<span class="op">*</span>(<span class="kw">userCostf</span>(d)<span class="op">*</span>(pop_if_none<span class="op">-</span>d))
+<span class="st">      </span>uclinear<span class="op">*</span>(<span class="kw">userCostf</span>(d)<span class="op">*</span>(pop_if_none<span class="op">-</span>d))<span class="op">+</span>
+<span class="st">      </span>bounty<span class="op">*</span>(pop_if_none<span class="op">-</span>d)
     
     nam &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;gm_&quot;</span>,<span class="kw">tolower</span>(K[[k]]),<span class="st">&quot;_&quot;</span>,KK[[kk]])
     
@@ -975,7 +1228,7 @@ RevisedDynamicISH &lt;-<span class="st"> </span><span class="cf">function</span>
                        init_hh,
                        P_corn,P_soy,P_CRP,
                        varCost_corn, varCost_soy,verCost_CRP,
-                       removalPrFnVec,userCostFnVec,typeDecision,
+                       removalPrFnVec,userCostFnVec,typeDecision,bounty,
                        ...) {
     ## NL has all it needs
     RNetLogo<span class="op">::</span><span class="kw">NLCommand</span>(<span class="st">'dynamic-prep-step1'</span>)
@@ -1025,7 +1278,8 @@ RevisedDynamicISH &lt;-<span class="st"> </span><span class="cf">function</span>
                    <span class="dt">varCost_crp=</span>verCost_CRP,
                    <span class="dt">dFnForm=</span><span class="ot">NULL</span>,
                    <span class="dt">Removal_Price=</span>removalPrFnVec[j],
-                   <span class="dt">User_Cost=</span>userCostFnVec[j])
+                   <span class="dt">User_Cost=</span>userCostFnVec[j],
+                   <span class="dt">bounty=</span>bounty)
       pc &lt;-<span class="st"> </span><span class="kw">nrow</span>(dat)
       
       <span class="co">#Build patch use restriction matrix</span>
@@ -1443,52 +1697,58 @@ RevisedDynamicISH &lt;-<span class="st"> </span><span class="cf">function</span>
 Income_j = \sum_i\sum_k GM_{i,k}\times use_{i,k}.
 \]</span></p>
 <p>Note that the landowner only recieves income on what actually happened. Many calculations preceed this to reflect the state of feral swine. From the <code>masterSchedule</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">RNetLogo<span class="op">::</span><span class="kw">NLCommand</span>(<span class="st">'go-wrap-up-myopic'</span>)</code></pre></div>
+<pre><code>RNetLogo::NLCommand('go-wrap-up-myopic')</code></pre>
 <p>In spite of the command’s name, it is used for all four decision types. This function calls a number of <code>NetLogo</code> functions.</p>
 <pre class="netlogo"><code>to go-wrap-up-myopic
-  myopic-income
+  ;myopic-income
+  real-income
   calculateHHIncome
 end</code></pre>
-<p>The first operation (<code>countFSTerritoryStrength</code>) reassesses the presence of feral swine. The second operation calculates income on a per patch basis and the third totals the patch and other income by individual. In the second operation, damage and removal prices are reassessed and then a series of <code>if</code> statements determine what the land was used for and how much that was worth under the final conditions.</p>
-<pre class="netlogo"><code>to myopic-income
-  count_and_claim
+<p>The first operation (<code>count_and_claim</code>) reassesses the presence of feral swine. The second operation calculates income on a per patch basis and the third totals the patch and other income by individual. In the second operation, damage and removal prices are reassessed and then a series of <code>if</code> statements determine what the land was used for and how much that was worth under the final conditions.</p>
+<pre><code>to real-income
+    count_and_claim
   ask patches [
     let none  0
-    let light (pigTerritoryStrength * 0.25)  ;((8000 / 11 * (ln (-100 / 177 * -0.25 * 100))))
-    let heavy (pigTerritoryStrength * 0.90)  ;((8000 / 11 * (ln (-100 / 177 * -0.90 * 100))))
-    set tempCornDam  dam_Corn * pigTerritoryStrength
+    let light (pigTerritoryStrength * 0.25)
+    let heavy (pigTerritoryStrength * 0.90)
+    set tempCornDam    0.9 + (-0.899) / (1 + (pigTerritoryStrength / 14.21) ^ 5)
     if tempCornDam &gt; 0.999 [set tempCornDam 0.999]
-    set tempSoyDam   dam_Soy  * pigTerritoryStrength
+    set tempSoyDam     0.9 + (-0.899) / (1 + (pigTerritoryStrength / 14.21) ^ 5)
     if tempSoyDam &gt; 0.999 [set tempSoyDam 0.999]
-    set removal_none   generic_removal_price * none
-    set removal_light  generic_removal_price * light
-    set removal_heavy  generic_removal_price * heavy
+    set removal_none   0
+    set removal_light  (35.404 + (1464) / (1 + (pigTerritoryStrength / 3.299004) ^ 1.843566))  * light
+    set removal_heavy  (35.404 + (1464) / (1 + (pigTerritoryStrength / 3.299004) ^ 1.843566))  * heavy
+
+    set tkcount count tk
+
     if a_corn_none &gt; 0  [
-      set parcel_NI P_corn * adjYieldCorn * (1 - tempCornDam) - varCost_corn + removal_none
+      set parcel_NI P_corn * adjYieldCorn * (1 - tempCornDam) - varCost_corn + removal_none + tkcount * bounty
       ]
     if a_corn_light &gt; 0 [
-      set parcel_NI P_corn * adjYieldCorn * (1 - tempCornDam) - varCost_corn + removal_light
+      set parcel_NI P_corn * adjYieldCorn * (1 - tempCornDam) - varCost_corn + removal_light + tkcount * bounty
       ]
     if a_corn_heavy &gt; 0 [
-      set parcel_NI P_corn * adjYieldCorn * (1 - tempCornDam) - varCost_corn + removal_heavy
+      set parcel_NI P_corn * adjYieldCorn * (1 - tempCornDam) - varCost_corn + removal_heavy + tkcount * bounty
       ]
+
     if a_soy_none &gt; 0  [
-      set parcel_NI P_soy  * adjYieldSoy * (1 - tempSoyDam) - varCost_soy + removal_none
+      set parcel_NI P_soy  * adjYieldSoy * (1 - tempSoyDam) - varCost_soy + removal_none + tkcount * bounty
       ]
     if a_soy_light &gt; 0 [
-      set parcel_NI P_soy  * adjYieldSoy * (1 - tempSoyDam) - varCost_soy + removal_light
+      set parcel_NI P_soy  * adjYieldSoy * (1 - tempSoyDam) - varCost_soy + removal_light + tkcount * bounty
       ]
     if a_soy_heavy &gt; 0 [
-      set parcel_NI P_soy  * adjYieldSoy * (1 - tempSoyDam) - varCost_soy + removal_heavy
+      set parcel_NI P_soy  * adjYieldSoy * (1 - tempSoyDam) - varCost_soy + removal_heavy + tkcount * bounty
       ]
+
     if a_crp_none &gt; 0  [
-      set parcel_NI P_CRP  * 10 - verCost_CRP + removal_none
+      set parcel_NI P_CRP  * 10 - verCost_CRP + removal_none + tkcount * bounty
       ]
     if a_crp_light &gt; 0 [
-      set parcel_NI P_CRP  * 10 - verCost_CRP + removal_light
+      set parcel_NI P_CRP  * 10 - verCost_CRP + removal_light + tkcount * bounty
       ]
     if a_crp_heavy &gt; 0 [
-      set parcel_NI P_CRP  * 10 - verCost_CRP + removal_heavy
+      set parcel_NI P_CRP  * 10 - verCost_CRP + removal_heavy + tkcount * bounty
       ]
     output-show (sentence &quot;parcel_NI:&quot; parcel_NI
                          &quot;pigTerritoryStrength&quot; pigTerritoryStrength
@@ -1506,25 +1766,27 @@ end</code></pre>
                          &quot;a_crp_none&quot; a_crp_none
                          &quot;a_crp_light&quot; a_crp_light
                          &quot;a_crp_heavy&quot; a_crp_heavy)
+
   ]
 end
 </code></pre>
 <p>The third operation collects income on patches owned by each individual.</p>
-<pre class="netlogo"><code>to calculateHHIncome
+<pre><code>to calculateHHIncome
   ask households [
     let aa sum [parcel_NI] of patches with [owner = [hh_num] of myself]
     set HH_income aa
-    print HH_income
+    set wealthi wealthi + HH_income
+    show (sentence &quot;HH_income&quot; HH_income &quot;Weath&quot; wealthi)
     ]
+
 end</code></pre>
-<p>This income information is sent to <code>R</code> for reporting. <code>wealthit</code> is a matrix with 11 rows.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    ownerNI &lt;-<span class="st"> </span>RNetLogo<span class="op">::</span><span class="kw">NLGetAgentSet</span>(<span class="st">'HH_income'</span>, <span class="st">'households'</span>, <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>) 
-    <span class="cf">if</span> (t <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>) {
-      wealthit &lt;-<span class="st"> </span>ownerNI<span class="op">$</span>HH_income <span class="op">+</span><span class="st"> </span>wealthi[, , t <span class="op">-</span><span class="st"> </span><span class="dv">1</span>]
-    } <span class="cf">else</span> {
-      wealthit &lt;-<span class="st"> </span>ownerNI<span class="op">$</span>HH_income <span class="op">+</span><span class="st"> </span>wealthi[, , t]
-    }
-    wealthi[, , t<span class="op">+</span><span class="dv">1</span>] &lt;-<span class="st"> </span>wealthit</code></pre></div>
+<p>This income information is sent to <code>R</code> for reporting.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wealthi &lt;-<span class="st"> </span><span class="kw">cbind</span>(wealthi,RNetLogo<span class="op">::</span><span class="kw">NLGetAgentSet</span>(<span class="st">'wealthi'</span>, <span class="st">'households'</span>, <span class="dt">as.data.frame =</span> <span class="ot">TRUE</span>)) 
+...
+<span class="kw">names</span>(wealthi) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;t&quot;</span>,<span class="dv">0</span><span class="op">:</span>max_cycles)
+  wealthi<span class="op">$</span>id &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">45</span>
+  wealthi &lt;-<span class="st"> </span>reshape<span class="op">::</span><span class="kw">melt</span>(wealthi,<span class="dt">id.vars=</span><span class="st">&quot;id&quot;</span>)
+  wealthi<span class="op">$</span>sim &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;sim&quot;</span>,typeDecision,generic_removal_price,realistic,<span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>)</code></pre></div>
 </div>
 <div id="feral-swine-damage" class="section level2">
 <h2><span class="header-section-number">2.6</span> Feral Swine Damage</h2>
@@ -1850,33 +2112,33 @@ p=35.404 + (1464)/(1 + (x)/3.299004)^{1.843566})
   moveBoars
   splitTheSounder
 end</code></pre>
-<p>The <code>scarePigs</code> function operationalizes the idea that exposure to removal pressure will make animals more responsive to future control efforts and thus less likely to be removed. This cageyness has a decay function, here each year only 25% of last year’s cageyness will carry into this year and 50% of last year’s experiences will be incorporated into this year’s cageyness.</p>
+<p>The <code>scarePigs</code> function operationalizes the idea that exposure to removal pressure will make animals more responsive to future control efforts and thus less likely to be removed. This cageyness has a decay function, here each year only if cdecay equals 4, 25% of last year’s cageyness will carry into this year and 50% of last year’s experiences will be incorporated into this year’s cageyness.</p>
 <p><span class="math display">\[
- \_cagey = 1 / 4 * \_cagey + 1 / 2 * psi\_lastPeriod_i
+ \_cagey = \frac{1}{cdecay} \times \_cagey + \frac{1}{2} \times psi\_lastPeriod_i
 \]</span></p>
 <pre class="netlogo"><code>to scarePigs
    if any? sows [
      ask sows [
-       set scagey 1 / 4 * scagey + [1 / 2 * psi_lastPeriod] of patch-here
+       set scagey 1 / cdecay * scagey + [1 / 2 * psi_lastPeriod] of patch-here
      ]
    ]
     if any? boars [
      ask boars [
-       set bcagey 1 / 4 * bcagey + [1 / 2 * psi_lastPeriod] of patch-here
+       set bcagey 1 / cdecay * bcagey + [1 / 2 * psi_lastPeriod] of patch-here
      ]
     ]
 end</code></pre>
 <p>Breeding (<code>breedR</code>) is covered in the Feral Swine Reproduction chapter and the remaining functions are covered in the Movement chapter. The rest of the removal functions are carried out in the <code>go-myopic-removal</code> function. The ‘myopic’ in the name of the function has no bearing on its actual function. The function was created for a specific operation, and has proven useful in many later cases.</p>
-<pre class="netlogo"><code>to go-myopic-removal
+<pre><code>to go-myopic-removal
   myopic-calcPsi
   goRemoveBoars
   goRemoveSounders
   countDead
 end</code></pre>
 <p>The count is taken in the <code>goPigOps</code> function and that count is used for the removal functions as well. <code>Psi</code> is then calculated for each patch based on landowner decisions. Effort is measured by <code>Psi</code> and is simply chosen by the decision-maker for each patch in each time period. The implication is that effort is constrained to fall roughly between zero and one. The goal of each of these operations is to build a probability of removal for each animal. <span class="math display">\[
-  \Psi=[2.22e-16,...,0.999]
+  \Psi=[0,...,0.999]
 \]</span> The second to last line is a defensive programming technique to prevent an inadvertant setting of <code>Psi</code> above its defined range.</p>
-<pre class="netlogo"><code>to myopic-calcPsi
+<pre><code>to myopic-calcPsi
   ask patches [
     if a_corn_none &gt; 0  [
       set psi a_corn_none * 0
@@ -1915,7 +2177,7 @@ end</code></pre>
 Pr(Removal)_{pig}=f(\text{current effort}, \text{previous effort experienced by individual}, \text{chance}).
 \]</span></p>
 <p>The element of previous effort experienced by individual a pig, captured by <code>bcagey</code> and <code>scagey</code>, is added to an individual probability for each animal <code>PrRemoved</code> in the function below.</p>
-<pre class="netlogo"><code>to setPrRemoved
+<pre><code>to setPrRemoved
   if any? boars [
     ask boars [
       set mypsi [psi] of patch-here
@@ -1930,12 +2192,16 @@ Pr(Removal)_{pig}=f(\text{current effort}, \text{previous effort experienced by 
   ]
 end</code></pre>
 <p>Once each animal has its own probability of removal, each boar and sow is presented with an opportunity to be removed. Once removed, a hidden agent is created for tracking purposes. Probability of removal is not sufficient for removal. If the threshold is met, the animal is removed. In this function, each animal is presented individually with a probability of removal. The <span class="math inline">\(chance\)</span> component of the probability of removal is implemented at this point. A random draw from a uniform distribution <span class="math inline">\(U(0,1)\)</span> is compared to <code>prRemoved</code> and if it is less than the <code>prRemoved</code> the animal is removed. For example if <span class="math inline">\(prRemoved = 0.75\)</span> there would be a nearly 75% chance that a random draw, <span class="math inline">\(x \in [0,1] &lt; 0.75\)</span>.</p>
-<pre class="netlogo"><code>to goRemoveBoars
+<pre><code>to goRemoveBoars
   if any? boars[
     ask boars [
-      if random-float 1.0 &lt; prRemoved [
-        hatch-killed 1 [ht] die
-        ]
+      let rn random-float 1.0
+      show (sentence &quot;prRemoved&quot; prRemoved &quot;bcagey&quot; bcagey &quot;rn&quot; rn)
+      if rn &lt; prRemoved [
+      hatch-killed 1 [ht] 
+      hatch-tk 1 [ht] 
+      die
+      ]
       ]
     ]
 end
@@ -1943,8 +2209,12 @@ end
 to goRemoveSounders
   if any? sows[
     ask sows[
-      if random-float 1.0 &lt; prRemoved [
-        hatch-killed 1 [ht] die
+      let rn random-float 1.0
+      show (sentence &quot;prRemoved&quot; prRemoved &quot;scagey&quot; scagey &quot;rn&quot; rn)
+      if rn &lt; prRemoved [
+        hatch-killed 1 [ht] 
+        hatch-tk 1 [ht] 
+        die
         ]
       ]
     ]
@@ -2487,6 +2757,2102 @@ execute 'gdxxrw.exe Result2.gdx var=z.L rng=z.L!A1';
 *&quot; varCost_{Paid} =     &quot;
 *&quot;  Bal(n1,t)$(ord(t) ne 1)      .. =e= mov(n1,t) ;           &quot;
 *&quot; [rP(n1,t-1)+[rP(n1,t-1)*gamma*{1-[rP(n1,t-1)*maxD**(-1)]}]] -rP(n4,t)*q(n4,t)) -rP(n1,t)*q(n1,t)  &quot;</code></pre>
+</div>
+<div id="netlogo-complete-script" class="section level2">
+<h2><span class="header-section-number">2.15</span> NetLogo Complete Script</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cat</span>(<span class="kw">readLines</span>(<span class="st">'~/GitHub/Version 2/WildPigABM/data/FromR_1.0.nlogo'</span>),<span class="dt">n =</span> <span class="op">-</span><span class="dv">1</span>, <span class="dt">sep =</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</code></pre></div>
+<pre><code>
+
+breed [intersections intersection]
+breed [killed one-killed]
+breed [tk otk]
+breed [households household]
+breed [sounders sounder]
+breed [boars boar]
+breed [sows sow]
+breed [pigs pig]
+breed [otherCritters otherCritter]
+breed [govt one-govt]
+
+sounders-own [sounder_id
+              age
+              scount
+]
+
+
+households-own [
+                HH_income  ;;
+                hh_num  ;;
+                wealthi  ;;
+                ]
+
+govt-own [policy]
+
+boars-own [
+               age  ;;
+               bcagey  ;;
+               mypsi ;;
+               pig_num  ;;
+               prRemoved
+               ]
+sows-own [
+               age  ;;
+               litter  ;;
+               mypsi
+
+               pig_num  ;;
+               scagey  ;;
+               sounder_id
+               prRemoved
+               ]
+
+killed-own [
+               pig_num  ;;
+               age  ;;
+               ]
+
+
+patches-own [
+  a_corn_heavy
+  a_corn_light
+  a_corn_none
+  a_CRP_heavy
+  a_CRP_light
+  a_CRP_none
+  a_heavy
+  a_light
+  a_none
+  a_soy_heavy
+  a_soy_light
+  a_soy_none
+  adjYieldCorn
+  adjYieldCRP
+  adjYieldSoy
+  boarCount  ;;
+  dam_corn_heavy
+  dam_corn_light
+  dam_corn_none
+  dam_soy_heavy
+  dam_soy_light
+  dam_soy_none
+  damage  ;;
+  gm_corn_heavy
+  gm_corn_light
+  gm_corn_none
+  gm_CRP_heavy
+  gm_CRP_light
+  gm_CRP_none
+  gm_soy_heavy
+  gm_soy_light
+  gm_soy_none
+  localAttractiveness  ;;
+  localsounderTerritoryStrength  ;;
+  maxPigsPerPatch
+  my-column  ;;  the column of the intersection counting from the upper left corner of the world. -1 for non-intersection patches.
+  my-row  ;;  the row of the intersection counting from the upper left corner of the world. -1 for non-intersection patches.
+  neighborCountBoar
+  neighborCountSow
+  no_damage_corn_GM
+  no_damage_soy_GM
+  notmine  ;;
+  othercrittercount  ;;
+  owner  ;;
+  P_feePaying  ;;
+  P_PaidRem  ;;
+  parcel_NI  ;;
+  patch_id  ;;
+  PatchAttractivenessPriortoLandClaim
+  pFree
+  pigcount  ;;
+  pigTerritoryStrength
+  pop_if_heavy
+  pop_if_light
+  pop_if_none
+  pPayPaid
+  pSellPaid
+  psi  ;;
+  psi_lastPeriod  ;;
+  quality  ;;
+  removal_heavy
+  removal_light
+  removal_none
+  rev_corn_heavy
+  rev_corn_light
+  rev_corn_none
+  rev_soy_heavy
+  rev_soy_light
+  rev_soy_none
+  road?  ;;  A patch that is roaded (but can still mostly be cropped)
+  sounderCount  ;;
+  sounderNcount  ;;
+  sounderTerritory  ;;
+  sounderTerritoryStrength  ;;
+  tempCornDam
+  tempSoyDam
+  varCost_Fee  ;;
+  varCost_free
+  varCost_Paid
+  verCost_CRP  ;;
+  yield_corn_heavy
+  yield_corn_light
+  yield_corn_none
+  yield_soy_heavy
+  yield_soy_light
+  yield_soy_none
+  sts
+  bts
+  tkcount
+
+               ]
+globals [
+  areThereAnySows;;
+  boarCountSum  ;;
+  boarTerritoryStrength ;;
+  discount
+  grid-x-inc  ;;  the amount of patches in between two roads in the x direction
+  grid-y-inc  ;;  the amount of patches in between two roads in the y direction
+  initBoarN  ;;
+  initSounderN  ;;
+  initSounderSize  ;;
+  initSowN  ;;
+  killed-count  ;;
+  killed-mean  ;;
+  max_cycles  ;;
+  num_bases_per_year
+  pigCountSum ;;
+  sowCount ;;
+  sowCountSum ;;
+  t  ;;
+  xval  ;;
+  Yield_CRP  ;;
+  yval  ;;
+
+               ]
+;;=========================================== setup functions ==================================================================
+to setup
+  random-seed 28128868
+  reset-ticks
+
+
+
+
+  set-default-shape households &quot;house&quot;
+  set-default-shape othercritters &quot;dot&quot;
+  set-default-shape sows &quot;dart&quot;
+  set-default-shape boars &quot;circle 2&quot;
+
+  setup-patches
+  setup-seededHH
+  setup-hh
+  setup-landgrab
+  setup-roads
+
+  setup-sounders
+
+  setup-boars
+  setup-sows
+  ;setup-others
+  ;setup-govt
+end
+
+to setup-sounders
+  create-sounders init_sounder
+  [
+  set age 0
+  set sounder_id who
+  set scount 0
+  setxy random-xcor random-ycor
+  set color 60
+  pd
+  ]
+end
+
+to setup-others
+  if competingWildlife = TRUE
+  [
+    create-othercritters 1000 [setxy random-xcor random-ycor]
+  ]
+end
+
+to setup-patches
+  ask patches [
+    set maxPigsPerPatch ((max_pigs  / (2401 + 2.220e-15)) + allowableOverCap)
+    set owner -1     ;;set land as unclaimed
+    set pigcount 0   ;;sets the pig count on a parcel at 0
+    set psi 0        ;;sets the initial total effective hunting effort at 0
+    set psi_lastPeriod 0    ;;sets initial previous period hunting effort at 0
+    set parcel_NI 0
+    set pcolor 65
+    ; # elementwise multiplication to find no damage yield
+    set adjYieldCorn (Yield_corn  * quality); # set baseline corn yield per patch
+    set adjYieldSoy (Yield_soy * quality);# set baseline soybean yield per patch
+    ]
+end
+
+to setup-roads ;; PURELY VISUAL - NO OTHER CURRENT USE
+; Put in north-south roads
+    let xer min-pxcor + X-road-density
+    while [ xer &lt; max-pxcor ]
+    [
+    ask patches with [ pxcor = xer ] [
+    set road? TRUE
+    set pcolor  pcolor - 2
+    ]
+    set xer  xer + X-road-density
+    ]
+    ; Put in east-west roads
+    let yer min-pycor + Y-road-density
+    while [ yer &lt; max-pycor ]
+    [
+    ask patches with [ pycor = yer ] [
+    set road? TRUE
+    set pcolor  pcolor - 2
+    ]
+    set yer  yer + Y-road-density
+    ]
+  print(&quot;roads created!&quot;)
+end
+
+to setup-seededHH
+ask n-of init_hh patches [
+    sprout-households 1
+    ]
+end
+
+to setup-hh
+  ask households [
+    set hh_num who
+    set wealthi 0
+    set label  hh_num
+    let inDreams hh_num
+    ask patch-here [set owner inDreams set pcolor red] ; build a farmstead but you can farm here
+    ]
+end
+
+to setup-landgrab
+  while [any? patches with [owner = -1]][
+    ask n-of init_hh patches with [owner != -1] [
+    let tempowner owner
+    if any? neighbors with [owner = -1][
+    ask one-of neighbors with [owner = -1] [
+    set owner tempowner
+    set pcolor pcolor - 1
+    ]
+    ]
+    ]
+    ]
+end
+
+to setup-govt
+  ask n-of 1 patches [
+    sprout-govt 1]
+end
+
+to setup-boars
+  set initBoarN ceiling (sexRatio * init_pigs)
+  create-boars initBoarN
+    [
+    set size 1
+    set color 97
+    set age 0
+    setxy random-xcor random-ycor
+    pd
+    ]
+end
+
+
+to setup-sows
+  let n ceiling ((1 - sexRatio) * init_pigs) / init_sounder
+  ask sounders [
+  hatch-sows n
+    [
+      set pig_num self
+      set size 1
+      set color 136
+      set age 0
+      setxy random-xcor random-ycor
+      pd
+      ]
+    ]
+
+end
+;;================================================ GO FUNCTIONS =================================================================================
+to demo-run
+  if ticks &gt;= 10 [stop]
+at-random
+go-pigops
+go-myopic-removal
+go-wrap-up-myopic
+killTheDead
+tick
+end
+
+to go-pigops
+    count_and_claim
+  scarePigs
+  breedR
+  count_and_claim
+  move-sounders
+  count_and_claim
+  moveBoars
+  splitTheSounder
+  smallSounderOps
+end
+
+to go-myopic-removal
+  myopic-calcPsi
+  setPrRemoved
+  goRemoveBoars
+  goRemoveSounders
+  countDead
+end
+
+to go-wrap-up-myopic
+  ;myopic-income
+  real-income
+  calculateHHIncome
+end
+
+to count_and_claim
+  ;count sows
+      ask patches [
+      ifelse any? sows-here
+      [set sowCount count sows-here]
+      [set sowCount 0]
+      ]
+    set sowCountSum count sows
+  ;count boars
+    ask patches [
+      ifelse any? boars-here
+      [set boarCount count boars-here]
+      [set boarCount 0]
+      ]
+    set boarCountSum count boars
+  ;add them together
+    set pigCountSum (boarCountSum + sowCountSum)
+  ;establish sow territory
+  if any? sounders[
+     ask sounders [
+       if any? sows with [sounder_id = [sounder_id] of myself]
+       [
+         let sid sounder_id
+         ask patches in-radius 4 [; range of 5
+           set sounderTerritory sid
+         ]
+       ]
+     ]
+  ]
+
+  ;establish the strength of sow territory
+  ask patches [
+    if any? sows [
+      let sh count sows-here
+      let s1 count sows in-radius 1
+      let s2 count sows in-radius 2
+      let s3 count sows in-radius 3
+      let s4 count sows in-radius 4
+      let s5 count sows in-radius 5
+      set sts (sh +
+        s1 - sh * (1 / 4) +
+        s2 - s1 * (1 / 8) +
+        s3 - s2 * (1 / 16) +
+        s4 - s3 * (1 / 32) +
+        s5 - s4 * (1 / 64))
+      ]
+    if any? boars [
+      let bh count boars-here
+      let b1 count boars in-radius 1
+      let b2 count boars in-radius 2
+      let b3 count boars in-radius 3
+      let b4 count boars in-radius 4
+      let b5 count boars in-radius 5
+      set bts (bh +
+        (b1 - bh) * (1 / 4) +
+        (b2 - b1) * (1 / 8) +
+        (b3 - b2) * (1 / 16) +
+        (b4 - b3) * (1 / 32) +
+        (b5 - b4) * (1 / 64))
+    ]
+      set pigTerritoryStrength (bts + sts + 2.22e-16)
+      if pigTerritoryStrength &gt;= 10 [set pcolor 15]
+      if floor pigTerritoryStrength = 9 [set pcolor 16]
+      if floor pigTerritoryStrength = 8 [set pcolor 17]
+      if floor pigTerritoryStrength = 7 [set pcolor 18]
+      if floor pigTerritoryStrength = 6 [set pcolor 28]
+      if floor pigTerritoryStrength = 5 [set pcolor 27]
+      if floor pigTerritoryStrength = 4 [set pcolor 26]
+      if floor pigTerritoryStrength = 3 [set pcolor 25]
+      if floor pigTerritoryStrength = 2 [set pcolor 45]
+      if floor pigTerritoryStrength = 1 [set pcolor 47]
+      if floor pigTerritoryStrength = 0 [set pcolor 65]
+
+      set boarTerritoryStrength bts
+      set sounderTerritoryStrength sts
+      set bts 0
+      set sts 0
+    ]
+end
+
+to breedR
+      ask sows
+      [
+        let qu [quality] of patch-here
+        let psil [psi_lastPeriod] of patch-here
+        let al (1 - pigCountSum / (max_pigs)) * defaultLitter
+        let al2 (al * (qu - psil))
+        let boarLitter round (al2 * sexRatio  + random-float 0.5)
+        show boarLitter
+        let sowLitter round (al2 * (1 - sexRatio))
+        show sowLitter
+        hatch-boars boarLitter [set age 0]
+        hatch-sows sowLitter   [set age 0]
+]
+end
+
+to scarePigs
+   if any? sows [
+     ask sows [
+       set scagey 1 / cdecay * scagey + [psi_lastPeriod] of patch-here
+       show scagey
+     ]
+   ]
+    if any? boars [
+     ask boars [
+       set bcagey 1 / cdecay * bcagey + [1 / 2 * psi_lastPeriod] of patch-here
+       show bcagey
+     ]
+    ]
+end
+
+to prepareToMove
+  ; land desirability is
+        ;inversely related to population
+        ;inversely related to pressure
+        ;inversely related to other sounder's territory strength
+        ;positively related to quality
+     count_and_claim
+     let maxperpatch (max_pigs / total_patches)
+  ask patches[
+    ; find patch populations, set as proportion to full capacity
+
+    let mapPopulation boarCount + sowCount
+    let x (mapPopulation / maxPigsPerPatch)
+    ; recall quality
+    let z quality
+    ; establish attractiveness pre-land claim (additive)
+    let tempattr ((1 / (x + 2.22e-16)) + (z))
+    ; recall psi t-1
+    let y psi_lastPeriod
+    ifelse y &lt; 0.01 ; inverse epsilon small numbers are very big and that is
+    ;nonsense anyway
+    [set PatchAttractivenessPriortoLandClaim tempattr]
+    [set PatchAttractivenessPriortoLandClaim (tempattr + (1 / (y + 2.22e-16)))]
+  ]
+end
+
+to move-sounders
+  ask patches [set sounderTerritory -99]
+  if any? sounders [
+   prepareToMove
+  ;set current territory
+
+  ;evaluate attractiveness for each sounder ;sounders move
+    ask sounders [
+      let try 0
+      while [sounderTerritory &gt; 0 AND try &lt; 40]
+      [
+        ask patches with [sounderTerritory &lt; 0] [
+          set localAttractiveness PatchAttractivenessPriortoLandClaim
+          if localAttractiveness &lt; 0.001 [set localAttractiveness 0]
+          ]
+        let ideal-site max-one-of patches in-radius srange [localAttractiveness]
+        move-to ideal-site
+        ;setxy random-xcor random-ycor
+        set try try + 1
+      ]
+      let tempPig sounder_id
+      ask patches in-radius srange
+      [
+        set sounderTerritory tempPig
+      ]
+    ]
+    if any? sows with [sounder_id = sounder_id]
+      [
+        ask sows with [sounder_id = sounder_id][
+          move-to sounder sounder_id
+          ]
+      ]
+  ]
+
+;
+;        let nm (int sounderTerritory - int tempPig) ^ 2
+;        ifelse nm &gt; 0 [set notmine 1][set notmine 0]
+;        set localsounderTerritoryStrength sounderTerritoryStrength * notmine
+;        set localAttractiveness (PatchAttractivenessPriortoLandClaim - localsounderTerritoryStrength)
+;        if localAttractiveness &lt; 0.001 [set localAttractiveness 0]
+;        ]
+;
+;
+;
+;
+;
+;        ]
+;
+;      ]
+;    ;rinse and repeat
+;    ;]
+;  ]
+end
+
+to moveBoars
+  if any? boars [
+    ask boars [
+      let b brange
+      ask patches in-radius brange [
+        set localsounderTerritoryStrength sounderTerritoryStrength * notmine
+        set localAttractiveness (PatchAttractivenessPriortoLandClaim - localsounderTerritoryStrength)
+        if localAttractiveness &lt; 0.001 [set localAttractiveness 0]
+      ]
+      let ideal-site max-one-of patches in-radius b [localAttractiveness]
+      move-to ideal-site
+    ]
+  ]
+end
+
+to splitTheSounder
+  if any? sounders [
+  let zz (maxSounderN + ALLOWABLEOVERCAP)
+  ask sounders [
+    set scount count sows with [sounder_id = [sounder_id] of myself]
+    if scount &gt; zz [
+      let oldme who
+      hatch-sounders 1 [
+        set age 0
+        set sounder_id who
+        let sid sounder_id
+        let op scount - zz
+        ask n-of op sows with [sounder_id = oldme]
+        [
+          set sounder_id sid
+          ]
+      ]
+    ]
+  ]
+  ]
+end
+
+to smallSounderOps
+  if any? sounders [
+    ask sounders
+    [
+      set scount count sows with [sounder_id = [sounder_id] of myself]
+      ]
+    if any? sounders with [scount &lt; minSounderN]
+    [
+      ask sows with [sounder_id = [sounder_id] of myself]
+      [
+        set sounder_id [sounder_id] of min-one-of (other turtles) [ distance myself]
+        ]
+      ]
+    ask sounders
+    [
+      set scount count sows with [sounder_id = [sounder_id] of myself]
+      if scount &lt; 1 [die]
+      ]
+    ]
+end
+
+;; goRemoveBoarsandSows ---------------------------------------------
+
+
+to myopic-calcPsi
+  ask patches [
+    if a_corn_none &gt; 0  [
+      set psi a_corn_none * 0
+      ]
+    if a_corn_light &gt; 0 [
+      set psi a_corn_light * 0.25
+      ]
+    if a_corn_heavy &gt; 0 [
+      set psi a_corn_heavy * 0.90
+      ]
+
+    if a_soy_none &gt; 0  [
+      set psi a_soy_none * 0
+      ]
+    if a_soy_light &gt; 0 [
+      set psi a_soy_light * 0.25
+      ]
+    if a_soy_heavy &gt; 0 [
+      set psi a_soy_heavy * 0.90
+      ]
+
+    if a_crp_none &gt; 0  [
+      set psi a_crp_none * 0
+      ]
+    if a_crp_light &gt; 0 [
+      set psi a_crp_light * 0.25
+      ]
+    if a_crp_heavy &gt; 0 [
+      set psi a_crp_heavy * 0.90
+      ]
+   if psi &gt; .999 [set psi .999]
+   print psi
+  ]
+end
+
+to setPrRemoved
+  if any? boars [
+    ask boars [
+      set mypsi [psi] of patch-here
+      set prRemoved (mypsi - mypsi * bcagey)
+    ]
+  ]
+  if any? sows [
+    ask sows [
+      set mypsi [psi] of patch-here
+      set prRemoved (mypsi - mypsi * scagey)
+    ]
+  ]
+end
+
+to goRemoveBoars
+  if any? boars[
+    ask boars [
+      let rn random-float 1.0
+      show (sentence &quot;prRemoved&quot; prRemoved &quot;bcagey&quot; bcagey &quot;rn&quot; rn)
+      if rn &lt; prRemoved [
+      hatch-killed 1 [ht]
+      hatch-tk 1 [ht]
+      die
+      ]
+      ]
+    ]
+end
+
+to goRemoveSounders
+  if any? sows[
+    ask sows[
+      let rn random-float 1.0
+      show (sentence &quot;prRemoved&quot; prRemoved &quot;scagey&quot; scagey &quot;rn&quot; rn)
+      if rn &lt; prRemoved [
+        hatch-killed 1 [ht]
+        hatch-tk 1 [ht]
+        die
+        ]
+      ]
+    ]
+end
+
+to countDead
+  if any? killed[
+  set killed-count count killed
+  ]
+end
+
+;;--------------------------------------------------------------------------
+
+to at-random
+    ask patches[
+      let choices int random 9
+      if choices = 0 [
+        set a_corn_none  1
+        set a_corn_light 0
+        set a_corn_heavy 0
+        set a_soy_none  0
+        set a_soy_light 0
+        set a_soy_heavy 0
+        set a_crp_none  0
+        set a_crp_light 0
+        set a_crp_heavy 0
+        ]
+      if choices = 1 [
+        set a_corn_none  0
+        set a_corn_light 1
+        set a_corn_heavy 0
+        set a_soy_none  0
+        set a_soy_light 0
+        set a_soy_heavy 0
+        set a_crp_none  0
+        set a_crp_light 0
+        set a_crp_heavy 0
+        ]
+      if choices = 2 [
+        set a_corn_none  0
+        set a_corn_light 0
+        set a_corn_heavy 1
+        set a_soy_none  0
+        set a_soy_light 0
+        set a_soy_heavy 0
+        set a_crp_none  0
+        set a_crp_light 0
+        set a_crp_heavy 0
+        ]
+      if choices = 3 [
+        set a_corn_none  0
+        set a_corn_light 0
+        set a_corn_heavy 0
+        set a_soy_none  1
+        set a_soy_light 0
+        set a_soy_heavy 0
+        set a_crp_none  0
+        set a_crp_light 0
+        set a_crp_heavy 0
+        ]
+      if choices = 4 [
+        set a_corn_none  0
+        set a_corn_light 0
+        set a_corn_heavy 0
+        set a_soy_none  0
+        set a_soy_light 1
+        set a_soy_heavy 0
+        set a_crp_none  0
+        set a_crp_light 0
+        set a_crp_heavy 0
+        ]
+      if choices = 5 [
+        set a_corn_none  0
+        set a_corn_light 0
+        set a_corn_heavy 0
+        set a_soy_none  0
+        set a_soy_light 0
+        set a_soy_heavy 1
+        set a_crp_none  0
+        set a_crp_light 0
+        set a_crp_heavy 0
+        ]
+      if choices = 6 [
+        set a_corn_none  0
+        set a_corn_light 0
+        set a_corn_heavy 0
+        set a_soy_none  0
+        set a_soy_light 0
+        set a_soy_heavy 0
+        set a_crp_none  1
+        set a_crp_light 0
+        set a_crp_heavy 0
+        ]
+      if choices = 7 [
+        set a_corn_none  0
+        set a_corn_light 0
+        set a_corn_heavy 0
+        set a_soy_none  0
+        set a_soy_light 0
+        set a_soy_heavy 0
+        set a_crp_none  0
+        set a_crp_light 1
+        set a_crp_heavy 0
+        ]
+      if choices = 8 [
+        set a_corn_none  0
+        set a_corn_light 0
+        set a_corn_heavy 0
+        set a_soy_none  0
+        set a_soy_light 0
+        set a_soy_heavy 0
+        set a_crp_none  0
+        set a_crp_light 0
+        set a_crp_heavy 1
+        ]
+      ]
+end
+
+
+
+
+to dynamic-prep-step1
+  count_and_claim
+  ask patches [
+    let none  0
+    let light  (pigTerritoryStrength * 0.25)   ;((8000 / 11 * (ln (-100 / 177 * -0.25 * 100))))
+    let heavy  (pigTerritoryStrength * 0.90)  ;((8000 / 11 * (ln (-100 / 177 * -0.90 * 100))))
+    set neighborCountBoar count (boars-on neighbors)
+    set neighborCountSow count (sows-on neighbors)
+    set no_damage_corn_GM P_corn * adjYieldCorn - varCost_corn
+    set no_damage_soy_GM  P_soy  * adjYieldSoy - varCost_soy
+    set pop_if_none     pigTerritoryStrength * (1 - none)
+    set pop_if_light    pigTerritoryStrength * (1 - 0.25)
+    set pop_if_heavy    pigTerritoryStrength * (1 - 0.90)
+    set dam_corn_none   dam_Corn * pop_if_none
+    if dam_corn_none  &gt; 0.999 [set dam_corn_none 0.999]
+    set dam_corn_light  dam_Corn * pop_if_light
+    if dam_corn_light &gt; 0.999 [set dam_corn_light 0.999]
+    set dam_corn_heavy  dam_Corn * pop_if_heavy
+    if dam_corn_heavy &gt; 0.999 [set dam_corn_heavy 0.999]
+    set dam_soy_none    dam_Soy  * pop_if_none
+    if dam_soy_none   &gt; 0.999 [set dam_soy_none 0.999]
+    set dam_soy_light   dam_Soy  * pop_if_light
+    if dam_soy_light  &gt; 0.999 [set dam_soy_light 0.999]
+    set dam_soy_heavy   dam_Soy  * pop_if_heavy
+    if dam_soy_heavy  &gt; 0.999 [set dam_soy_heavy 0.999]
+
+    set yield_corn_none    adjYieldCorn * (1 - dam_corn_none)
+    if yield_corn_none &lt; 0  [set yield_corn_none  0]
+    set yield_corn_light   adjYieldCorn * (1 - dam_corn_light)
+    if yield_corn_light &lt; 0 [set yield_corn_light 0]
+    set yield_corn_heavy   adjYieldCorn * (1 - dam_corn_heavy)
+    if yield_corn_heavy &lt; 0 [set yield_corn_heavy 0]
+    set yield_soy_none     adjYieldSoy  * (1 - dam_soy_none)
+    if yield_soy_none &lt; 0   [set yield_soy_none 0]
+    set yield_soy_light    adjYieldSoy  * (1 - dam_soy_light)
+    if yield_soy_light &lt; 0  [set yield_soy_light 0]
+    set yield_soy_heavy    adjYieldSoy  * (1 - dam_soy_heavy)
+    if yield_soy_heavy &lt; 0  [set yield_soy_heavy 0]
+
+    set rev_corn_none   P_corn * yield_corn_none
+    set rev_corn_light  P_corn * yield_corn_light
+    set rev_corn_heavy  P_corn * yield_corn_heavy
+    set rev_soy_none    P_soy  * yield_soy_none
+    set rev_soy_light   P_soy  * yield_soy_light
+    set rev_soy_heavy   P_soy  * yield_soy_heavy
+    set removal_none   generic_removal_price * none
+    set removal_light  generic_removal_price * light
+    set removal_heavy  generic_removal_price * heavy
+    set gm_corn_none   rev_corn_none  - varCost_corn
+    set gm_corn_light  rev_corn_light - varCost_corn
+    set gm_corn_heavy  rev_corn_heavy - varCost_corn
+    set gm_soy_none    rev_soy_none   - varCost_soy
+    set gm_soy_light   rev_soy_light  - varCost_soy
+    set gm_soy_heavy   rev_soy_heavy  - varCost_soy
+    set gm_CRP_none    P_CRP * 10 - verCost_CRP
+    set gm_CRP_light   P_CRP * 10 - verCost_CRP
+    set gm_CRP_heavy   P_CRP * 10 - verCost_CRP
+     ]
+end
+
+
+to myopic-income
+  count_and_claim
+  ask patches [
+    let none  0
+    let light (pigTerritoryStrength * 0.25)  ;((8000 / 11 * (ln (-100 / 177 * -0.25 * 100))))
+    let heavy (pigTerritoryStrength * 0.90)  ;((8000 / 11 * (ln (-100 / 177 * -0.90 * 100))))
+    set tempCornDam  dam_Corn * pigTerritoryStrength
+    if tempCornDam &gt; 0.999 [set tempCornDam 0.999]
+    set tempSoyDam   dam_Soy  * pigTerritoryStrength
+    if tempSoyDam &gt; 0.999 [set tempSoyDam 0.999]
+    set removal_none   generic_removal_price * none
+    set removal_light  generic_removal_price * light
+    set removal_heavy  generic_removal_price * heavy
+
+    if a_corn_none &gt; 0  [
+      set parcel_NI P_corn * adjYieldCorn * (1 - tempCornDam) - varCost_corn + removal_none
+      ]
+    if a_corn_light &gt; 0 [
+      set parcel_NI P_corn * adjYieldCorn * (1 - tempCornDam) - varCost_corn + removal_light
+      ]
+    if a_corn_heavy &gt; 0 [
+      set parcel_NI P_corn * adjYieldCorn * (1 - tempCornDam) - varCost_corn + removal_heavy
+      ]
+
+    if a_soy_none &gt; 0  [
+      set parcel_NI P_soy  * adjYieldSoy * (1 - tempSoyDam) - varCost_soy + removal_none
+      ]
+    if a_soy_light &gt; 0 [
+      set parcel_NI P_soy  * adjYieldSoy * (1 - tempSoyDam) - varCost_soy + removal_light
+      ]
+    if a_soy_heavy &gt; 0 [
+      set parcel_NI P_soy  * adjYieldSoy * (1 - tempSoyDam) - varCost_soy + removal_heavy
+      ]
+
+    if a_crp_none &gt; 0  [
+      set parcel_NI P_CRP  * 10 - verCost_CRP + removal_none
+      ]
+    if a_crp_light &gt; 0 [
+      set parcel_NI P_CRP  * 10 - verCost_CRP + removal_light
+      ]
+    if a_crp_heavy &gt; 0 [
+      set parcel_NI P_CRP  * 10 - verCost_CRP + removal_heavy
+      ]
+    output-show (sentence &quot;parcel_NI:&quot; parcel_NI
+                         &quot;pigTerritoryStrength&quot; pigTerritoryStrength
+                         &quot;removal_none&quot; removal_none
+                         &quot;removal_light&quot; removal_light
+                         &quot;removal_heavy&quot; removal_heavy
+                         &quot;tempCornDam&quot; tempCornDam
+                         &quot;tempSoyDam&quot; tempSoyDam
+                         &quot;a_corn_none&quot; a_corn_none
+                         &quot;a_corn_light&quot; a_corn_light
+                         &quot;a_corn_heavy&quot; a_corn_heavy
+                         &quot;a_soy_none&quot; a_soy_none
+                         &quot;a_soy_light&quot; a_soy_light
+                         &quot;a_soy_heavy&quot; a_soy_heavy
+                         &quot;a_crp_none&quot; a_crp_none
+                         &quot;a_crp_light&quot; a_crp_light
+                         &quot;a_crp_heavy&quot; a_crp_heavy)
+
+  ]
+end
+
+to real-income
+    count_and_claim
+  ask patches [
+    let none  0
+    let light (pigTerritoryStrength * 0.25)
+    let heavy (pigTerritoryStrength * 0.90)
+    set tempCornDam    0.9 + (-0.899) / (1 + (pigTerritoryStrength / 14.21) ^ 5)
+    if tempCornDam &gt; 0.999 [set tempCornDam 0.999]
+    set tempSoyDam     0.9 + (-0.899) / (1 + (pigTerritoryStrength / 14.21) ^ 5)
+    if tempSoyDam &gt; 0.999 [set tempSoyDam 0.999]
+    set removal_none   0
+    set removal_light  (35.404 + (1464) / (1 + (pigTerritoryStrength / 3.299004) ^ 1.843566))  * light
+    set removal_heavy  (35.404 + (1464) / (1 + (pigTerritoryStrength / 3.299004) ^ 1.843566))  * heavy
+
+    set tkcount count tk
+
+    if a_corn_none &gt; 0  [
+      set parcel_NI P_corn * adjYieldCorn * (1 - tempCornDam) - varCost_corn + removal_none + tkcount * bounty
+      ]
+    if a_corn_light &gt; 0 [
+      set parcel_NI P_corn * adjYieldCorn * (1 - tempCornDam) - varCost_corn + removal_light + tkcount * bounty
+      ]
+    if a_corn_heavy &gt; 0 [
+      set parcel_NI P_corn * adjYieldCorn * (1 - tempCornDam) - varCost_corn + removal_heavy + tkcount * bounty
+      ]
+
+    if a_soy_none &gt; 0  [
+      set parcel_NI P_soy  * adjYieldSoy * (1 - tempSoyDam) - varCost_soy + removal_none + tkcount * bounty
+      ]
+    if a_soy_light &gt; 0 [
+      set parcel_NI P_soy  * adjYieldSoy * (1 - tempSoyDam) - varCost_soy + removal_light + tkcount * bounty
+      ]
+    if a_soy_heavy &gt; 0 [
+      set parcel_NI P_soy  * adjYieldSoy * (1 - tempSoyDam) - varCost_soy + removal_heavy + tkcount * bounty
+      ]
+
+    if a_crp_none &gt; 0  [
+      set parcel_NI P_CRP  * 10 - verCost_CRP + removal_none + tkcount * bounty
+      ]
+    if a_crp_light &gt; 0 [
+      set parcel_NI P_CRP  * 10 - verCost_CRP + removal_light + tkcount * bounty
+      ]
+    if a_crp_heavy &gt; 0 [
+      set parcel_NI P_CRP  * 10 - verCost_CRP + removal_heavy + tkcount * bounty
+      ]
+    output-show (sentence &quot;parcel_NI:&quot; parcel_NI
+                         &quot;pigTerritoryStrength&quot; pigTerritoryStrength
+                         &quot;removal_none&quot; removal_none
+                         &quot;removal_light&quot; removal_light
+                         &quot;removal_heavy&quot; removal_heavy
+                         &quot;tempCornDam&quot; tempCornDam
+                         &quot;tempSoyDam&quot; tempSoyDam
+                         &quot;a_corn_none&quot; a_corn_none
+                         &quot;a_corn_light&quot; a_corn_light
+                         &quot;a_corn_heavy&quot; a_corn_heavy
+                         &quot;a_soy_none&quot; a_soy_none
+                         &quot;a_soy_light&quot; a_soy_light
+                         &quot;a_soy_heavy&quot; a_soy_heavy
+                         &quot;a_crp_none&quot; a_crp_none
+                         &quot;a_crp_light&quot; a_crp_light
+                         &quot;a_crp_heavy&quot; a_crp_heavy)
+
+  ]
+end
+
+
+;;----------------------------------------------------------------------
+to calculateHHIncome
+  ask households [
+    let aa sum [parcel_NI] of patches with [owner = [hh_num] of myself]
+    set HH_income aa
+    set wealthi wealthi + HH_income
+    show (sentence &quot;HH_income&quot; HH_income &quot;Weath&quot; wealthi)
+    ]
+
+end
+
+
+;;----------------------------------------------------------------------
+
+to killTheDead
+  if any? boars  [ask boars [set age age + 1]]
+  if any? sows [ ask sows [set age age + 1]]
+  if any? sounders [ask sounders [set age age + 1]]
+  if any? tk [ask tk [die]]
+
+  ask patches [
+    set psi_lastPeriod psi
+    set psi 0
+    ]
+end
+@#$#@#$#@
+GRAPHICS-WINDOW
+95
+10
+546
+482
+-1
+-1
+9.0
+1
+10
+1
+1
+1
+0
+1
+1
+1
+0
+48
+-48
+0
+0
+0
+1
+ticks
+30.0
+
+PLOT
+95
+485
+545
+645
+Count of Boars and Sounders
+Time
+Count
+0.0
+10.0
+0.0
+10.0
+true
+true
+&quot;&quot; &quot;&quot;
+PENS
+&quot;Sows&quot; 1.0 0 -16777216 true &quot;&quot; &quot;plot count sows&quot;
+&quot;Boars&quot; 1.0 0 -1604481 true &quot;&quot; &quot;plot count boars&quot;
+&quot;Killed &quot; 1.0 0 -2674135 true &quot;&quot; &quot;plot count killed&quot;
+&quot;Turtles&quot; 1.0 0 -955883 true &quot;&quot; &quot;plot count turtles&quot;
+&quot;Sounders&quot; 1.0 0 -7500403 true &quot;&quot; &quot;plot count sounders&quot;
+
+SLIDER
+720
+135
+897
+168
+X-road-density
+X-road-density
+1
+24
+8
+1
+1
+patches
+HORIZONTAL
+
+SLIDER
+720
+165
+897
+198
+Y-road-density
+Y-road-density
+1
+24
+8
+1
+1
+patches
+HORIZONTAL
+
+MONITOR
+0
+555
+95
+600
+NIL
+count killed
+1
+1
+11
+
+MONITOR
+0
+465
+95
+510
+count sows
+count sows
+0
+1
+11
+
+MONITOR
+0
+510
+95
+555
+count boars
+count boars
+0
+1
+11
+
+OUTPUT
+5
+645
+545
+805
+11
+
+SLIDER
+550
+475
+725
+508
+minSounderN
+minSounderN
+0
+10
+15
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+15
+725
+48
+allowableOverCap
+allowableOverCap
+0
+100
+10
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+45
+725
+78
+boarTerritorydecay
+boarTerritorydecay
+0
+10
+1
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+75
+725
+108
+brange
+brange
+0
+100
+5
+1
+1
+NIL
+HORIZONTAL
+
+CHOOSER
+550
+105
+725
+150
+competingWildlife
+competingWildlife
+&quot;TRUE&quot; &quot;FALSE&quot;
+1
+
+SLIDER
+550
+150
+725
+183
+dam_Corn
+dam_Corn
+0
+1
+0.0237
+.0001
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+180
+725
+213
+dam_soy
+dam_soy
+0
+1
+0.0171
+.0001
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+210
+725
+243
+defaultLitter
+defaultLitter
+0
+2
+0.8
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+240
+725
+273
+generic_removal_price
+generic_removal_price
+-100
+100
+35
+1
+1
+NIL
+HORIZONTAL
+
+CHOOSER
+550
+270
+725
+315
+Govt_ON
+Govt_ON
+&quot;TRUE&quot; &quot;FALSE&quot;
+1
+
+SLIDER
+550
+315
+727
+348
+init_hh
+init_hh
+45
+45
+45
+1
+1
+DO NOT CHANGE
+HORIZONTAL
+
+SLIDER
+550
+345
+725
+378
+init_pigs
+init_pigs
+0
+1000
+100
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+375
+725
+408
+max_pigs
+max_pigs
+0
+2000
+1440
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+405
+725
+438
+maxSounderN
+maxSounderN
+0
+100
+50
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+440
+725
+473
+mergeAccelerator
+mergeAccelerator
+0
+1
+0.25
+.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+510
+725
+543
+P_corn
+P_corn
+0
+5
+3.71
+.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+540
+725
+573
+P_CRP
+P_CRP
+0
+200
+0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+575
+725
+608
+P_soy
+P_soy
+0
+10
+9.15
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+610
+725
+643
+pig_range
+pig_range
+0
+100
+10
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+640
+725
+673
+sexRatio
+sexRatio
+0
+1
+0.25
+.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+670
+725
+703
+SounderterritoryDecay
+SounderterritoryDecay
+0
+10
+1
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+700
+725
+733
+splitAccelerator
+splitAccelerator
+0
+1
+0.25
+.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+730
+725
+763
+srange
+srange
+0
+100
+5
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+550
+765
+725
+798
+varCost_corn
+varCost_corn
+0
+5000
+0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+725
+15
+897
+48
+varCost_soy
+varCost_soy
+0
+5000
+0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+725
+45
+897
+78
+wealth
+wealth
+0
+1000000
+0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+725
+75
+897
+108
+Yield_corn
+Yield_corn
+0
+2000
+1350
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+725
+105
+897
+138
+Yield_soy
+Yield_soy
+0
+1000
+450
+1
+1
+NIL
+HORIZONTAL
+
+BUTTON
+3
+10
+93
+43
+setup
+ca\nsetup
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+SLIDER
+725
+200
+897
+233
+init_sounder
+init_sounder
+0
+10
+5
+1
+1
+NIL
+HORIZONTAL
+
+BUTTON
+5
+45
+92
+78
+Demo-Run
+demo-run
+T
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+SLIDER
+725
+235
+900
+268
+total_patches
+total_patches
+2401
+2401
+2401
+1
+1
+DO NOT CHANGE
+HORIZONTAL
+
+SLIDER
+725
+270
+897
+303
+cdecay
+cdecay
+0
+100
+4
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+725
+300
+897
+333
+bounty
+bounty
+0
+100
+50
+10
+1
+NIL
+HORIZONTAL
+
+@#$#@#$#@
+## WHAT IS IT?
+This paper will demonstrate the importance of the interaction between individuals across time and space over management decisions in a way that has not previously been published.  Management paths are established for heterogeneous groups of agriculturalists, recreational land users, private conservationists, and a governmental entity with varying motivations.  The setting for the simulations is a hypothetical rural environment with the potential for feral swine and crops, livestock, and habitat damage.  Results from these simulations are compared to situations with individuals of heterogeneous preferences.  The resulting model provides value as a decision tool for policy makers looking to address the presence and spread of feral swine.
+
+
+## CREDITS AND REFERENCES
+http://modelingcommons.org/browse/one_model/2328#model_tabs_browse_applet
+Uri Wilensky (Author)
+Patch Clusters Example
+
+
+
+@#$#@#$#@
+default
+true
+0
+Polygon -7500403 true true 150 5 40 250 150 205 260 250
+
+airplane
+true
+0
+Polygon -7500403 true true 150 0 135 15 120 60 120 105 15 165 15 195 120 180 135 240 105 270 120 285 150 270 180 285 210 270 165 240 180 180 285 195 285 165 180 105 180 60 165 15
+
+arrow
+true
+0
+Polygon -7500403 true true 150 0 0 150 105 150 105 293 195 293 195 150 300 150
+
+box
+false
+0
+Polygon -7500403 true true 150 285 285 225 285 75 150 135
+Polygon -7500403 true true 150 135 15 75 150 15 285 75
+Polygon -7500403 true true 15 75 15 225 150 285 150 135
+Line -16777216 false 150 285 150 135
+Line -16777216 false 150 135 15 75
+Line -16777216 false 150 135 285 75
+
+bug
+true
+0
+Circle -7500403 true true 96 182 108
+Circle -7500403 true true 110 127 80
+Circle -7500403 true true 110 75 80
+Line -7500403 true 150 100 80 30
+Line -7500403 true 150 100 220 30
+
+butterfly
+true
+0
+Polygon -7500403 true true 150 165 209 199 225 225 225 255 195 270 165 255 150 240
+Polygon -7500403 true true 150 165 89 198 75 225 75 255 105 270 135 255 150 240
+Polygon -7500403 true true 139 148 100 105 55 90 25 90 10 105 10 135 25 180 40 195 85 194 139 163
+Polygon -7500403 true true 162 150 200 105 245 90 275 90 290 105 290 135 275 180 260 195 215 195 162 165
+Polygon -16777216 true false 150 255 135 225 120 150 135 120 150 105 165 120 180 150 165 225
+Circle -16777216 true false 135 90 30
+Line -16777216 false 150 105 195 60
+Line -16777216 false 150 105 105 60
+
+car
+false
+0
+Polygon -7500403 true true 300 180 279 164 261 144 240 135 226 132 213 106 203 84 185 63 159 50 135 50 75 60 0 150 0 165 0 225 300 225 300 180
+Circle -16777216 true false 180 180 90
+Circle -16777216 true false 30 180 90
+Polygon -16777216 true false 162 80 132 78 134 135 209 135 194 105 189 96 180 89
+Circle -7500403 true true 47 195 58
+Circle -7500403 true true 195 195 58
+
+circle
+false
+0
+Circle -7500403 true true 0 0 300
+
+circle 2
+false
+0
+Circle -7500403 true true 0 0 300
+Circle -16777216 true false 30 30 240
+
+cow
+false
+0
+Polygon -7500403 true true 200 193 197 249 179 249 177 196 166 187 140 189 93 191 78 179 72 211 49 209 48 181 37 149 25 120 25 89 45 72 103 84 179 75 198 76 252 64 272 81 293 103 285 121 255 121 242 118 224 167
+Polygon -7500403 true true 73 210 86 251 62 249 48 208
+Polygon -7500403 true true 25 114 16 195 9 204 23 213 25 200 39 123
+
+cylinder
+false
+0
+Circle -7500403 true true 0 0 300
+
+dart
+true
+0
+Polygon -7500403 true true 135 90 150 285 165 90
+Polygon -7500403 true true 135 285 105 255 105 240 120 210 135 180 150 165 165 180 180 210 195 240 195 255 165 285
+Rectangle -1184463 true false 135 45 165 90
+Line -16777216 false 150 285 150 180
+Polygon -16777216 true false 150 45 135 45 146 35 150 0 155 35 165 45
+Line -16777216 false 135 75 165 75
+Line -16777216 false 135 60 165 60
+
+dot
+false
+0
+Circle -7500403 true true 90 90 120
+
+face happy
+false
+0
+Circle -7500403 true true 8 8 285
+Circle -16777216 true false 60 75 60
+Circle -16777216 true false 180 75 60
+Polygon -16777216 true false 150 255 90 239 62 213 47 191 67 179 90 203 109 218 150 225 192 218 210 203 227 181 251 194 236 217 212 240
+
+face neutral
+false
+0
+Circle -7500403 true true 8 7 285
+Circle -16777216 true false 60 75 60
+Circle -16777216 true false 180 75 60
+Rectangle -16777216 true false 60 195 240 225
+
+face sad
+false
+0
+Circle -7500403 true true 8 8 285
+Circle -16777216 true false 60 75 60
+Circle -16777216 true false 180 75 60
+Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 150 198 192 205 210 220 227 242 251 229 236 206 212 183
+
+fish
+false
+0
+Polygon -1 true false 44 131 21 87 15 86 0 120 15 150 0 180 13 214 20 212 45 166
+Polygon -1 true false 135 195 119 235 95 218 76 210 46 204 60 165
+Polygon -1 true false 75 45 83 77 71 103 86 114 166 78 135 60
+Polygon -7500403 true true 30 136 151 77 226 81 280 119 292 146 292 160 287 170 270 195 195 210 151 212 30 166
+Circle -16777216 true false 215 106 30
+
+flag
+false
+0
+Rectangle -7500403 true true 60 15 75 300
+Polygon -7500403 true true 90 150 270 90 90 30
+Line -7500403 true 75 135 90 135
+Line -7500403 true 75 45 90 45
+
+flower
+false
+0
+Polygon -10899396 true false 135 120 165 165 180 210 180 240 150 300 165 300 195 240 195 195 165 135
+Circle -7500403 true true 85 132 38
+Circle -7500403 true true 130 147 38
+Circle -7500403 true true 192 85 38
+Circle -7500403 true true 85 40 38
+Circle -7500403 true true 177 40 38
+Circle -7500403 true true 177 132 38
+Circle -7500403 true true 70 85 38
+Circle -7500403 true true 130 25 38
+Circle -7500403 true true 96 51 108
+Circle -16777216 true false 113 68 74
+Polygon -10899396 true false 189 233 219 188 249 173 279 188 234 218
+Polygon -10899396 true false 180 255 150 210 105 210 75 240 135 240
+
+house
+false
+0
+Rectangle -7500403 true true 45 120 255 285
+Rectangle -16777216 true false 120 210 180 285
+Polygon -7500403 true true 15 120 150 15 285 120
+Line -16777216 false 30 120 270 120
+
+leaf
+false
+0
+Polygon -7500403 true true 150 210 135 195 120 210 60 210 30 195 60 180 60 165 15 135 30 120 15 105 40 104 45 90 60 90 90 105 105 120 120 120 105 60 120 60 135 30 150 15 165 30 180 60 195 60 180 120 195 120 210 105 240 90 255 90 263 104 285 105 270 120 285 135 240 165 240 180 270 195 240 210 180 210 165 195
+Polygon -7500403 true true 135 195 135 240 120 255 105 255 105 285 135 285 165 240 165 195
+
+line
+true
+0
+Line -7500403 true 150 0 150 300
+
+line half
+true
+0
+Line -7500403 true 150 0 150 150
+
+pentagon
+false
+0
+Polygon -7500403 true true 150 15 15 120 60 285 240 285 285 120
+
+person
+false
+0
+Circle -7500403 true true 110 5 80
+Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
+Rectangle -7500403 true true 127 79 172 94
+Polygon -7500403 true true 195 90 240 150 225 180 165 105
+Polygon -7500403 true true 105 90 60 150 75 180 135 105
+
+plant
+false
+0
+Rectangle -7500403 true true 135 90 165 300
+Polygon -7500403 true true 135 255 90 210 45 195 75 255 135 285
+Polygon -7500403 true true 165 255 210 210 255 195 225 255 165 285
+Polygon -7500403 true true 135 180 90 135 45 120 75 180 135 210
+Polygon -7500403 true true 165 180 165 210 225 180 255 120 210 135
+Polygon -7500403 true true 135 105 90 60 45 45 75 105 135 135
+Polygon -7500403 true true 165 105 165 135 225 105 255 45 210 60
+Polygon -7500403 true true 135 90 120 45 150 15 180 45 165 90
+
+sheep
+false
+15
+Circle -1 true true 203 65 88
+Circle -1 true true 70 65 162
+Circle -1 true true 150 105 120
+Polygon -7500403 true false 218 120 240 165 255 165 278 120
+Circle -7500403 true false 214 72 67
+Rectangle -1 true true 164 223 179 298
+Polygon -1 true true 45 285 30 285 30 240 15 195 45 210
+Circle -1 true true 3 83 150
+Rectangle -1 true true 65 221 80 296
+Polygon -1 true true 195 285 210 285 210 240 240 210 195 210
+Polygon -7500403 true false 276 85 285 105 302 99 294 83
+Polygon -7500403 true false 219 85 210 105 193 99 201 83
+
+square
+false
+0
+Rectangle -7500403 true true 30 30 270 270
+
+square 2
+false
+0
+Rectangle -7500403 true true 30 30 270 270
+Rectangle -16777216 true false 60 60 240 240
+
+star
+false
+0
+Polygon -7500403 true true 151 1 185 108 298 108 207 175 242 282 151 216 59 282 94 175 3 108 116 108
+
+target
+false
+0
+Circle -7500403 true true 0 0 300
+Circle -16777216 true false 30 30 240
+Circle -7500403 true true 60 60 180
+Circle -16777216 true false 90 90 120
+Circle -7500403 true true 120 120 60
+
+tree
+false
+0
+Circle -7500403 true true 118 3 94
+Rectangle -6459832 true false 120 195 180 300
+Circle -7500403 true true 65 21 108
+Circle -7500403 true true 116 41 127
+Circle -7500403 true true 45 90 120
+Circle -7500403 true true 104 74 152
+
+triangle
+false
+0
+Polygon -7500403 true true 150 30 15 255 285 255
+
+triangle 2
+false
+0
+Polygon -7500403 true true 150 30 15 255 285 255
+Polygon -16777216 true false 151 99 225 223 75 224
+
+truck
+false
+0
+Rectangle -7500403 true true 4 45 195 187
+Polygon -7500403 true true 296 193 296 150 259 134 244 104 208 104 207 194
+Rectangle -1 true false 195 60 195 105
+Polygon -16777216 true false 238 112 252 141 219 141 218 112
+Circle -16777216 true false 234 174 42
+Rectangle -7500403 true true 181 185 214 194
+Circle -16777216 true false 144 174 42
+Circle -16777216 true false 24 174 42
+Circle -7500403 false true 24 174 42
+Circle -7500403 false true 144 174 42
+Circle -7500403 false true 234 174 42
+
+turtle
+true
+0
+Polygon -10899396 true false 215 204 240 233 246 254 228 266 215 252 193 210
+Polygon -10899396 true false 195 90 225 75 245 75 260 89 269 108 261 124 240 105 225 105 210 105
+Polygon -10899396 true false 105 90 75 75 55 75 40 89 31 108 39 124 60 105 75 105 90 105
+Polygon -10899396 true false 132 85 134 64 107 51 108 17 150 2 192 18 192 52 169 65 172 87
+Polygon -10899396 true false 85 204 60 233 54 254 72 266 85 252 107 210
+Polygon -7500403 true true 119 75 179 75 209 101 224 135 220 225 175 261 128 261 81 224 74 135 88 99
+
+wheel
+false
+0
+Circle -7500403 true true 3 3 294
+Circle -16777216 true false 30 30 240
+Line -7500403 true 150 285 150 15
+Line -7500403 true 15 150 285 150
+Circle -7500403 true true 120 120 60
+Line -7500403 true 216 40 79 269
+Line -7500403 true 40 84 269 221
+Line -7500403 true 40 216 269 79
+Line -7500403 true 84 40 221 269
+
+wolf
+false
+0
+Polygon -16777216 true false 253 133 245 131 245 133
+Polygon -7500403 true true 2 194 13 197 30 191 38 193 38 205 20 226 20 257 27 265 38 266 40 260 31 253 31 230 60 206 68 198 75 209 66 228 65 243 82 261 84 268 100 267 103 261 77 239 79 231 100 207 98 196 119 201 143 202 160 195 166 210 172 213 173 238 167 251 160 248 154 265 169 264 178 247 186 240 198 260 200 271 217 271 219 262 207 258 195 230 192 198 210 184 227 164 242 144 259 145 284 151 277 141 293 140 299 134 297 127 273 119 270 105
+Polygon -7500403 true true -1 195 14 180 36 166 40 153 53 140 82 131 134 133 159 126 188 115 227 108 236 102 238 98 268 86 269 92 281 87 269 103 269 113
+
+x
+false
+0
+Polygon -7500403 true true 270 75 225 30 30 225 75 270
+Polygon -7500403 true true 30 75 75 30 270 225 225 270
+
+@#$#@#$#@
+NetLogo 5.3.1
+@#$#@#$#@
+@#$#@#$#@
+@#$#@#$#@
+&lt;experiments&gt;
+  &lt;experiment name=&quot;experiment&quot; repetitions=&quot;10&quot; runMetricsEveryStep=&quot;true&quot;&gt;
+    &lt;setup&gt;setup&lt;/setup&gt;
+    &lt;go&gt;Demo-Run&lt;/go&gt;
+    &lt;metric&gt;if any? sows [count sows]&lt;/metric&gt;
+    &lt;metric&gt;if any? boars [count boars]&lt;/metric&gt;
+    &lt;metric&gt;if any? killed [count killed]&lt;/metric&gt;
+    &lt;metric&gt;min [wealthi] of households&lt;/metric&gt;
+    &lt;metric&gt;max [wealthi] of households&lt;/metric&gt;
+    &lt;metric&gt;mean [wealthi] of households&lt;/metric&gt;
+    &lt;metric&gt;median [wealthi] of households&lt;/metric&gt;
+    &lt;steppedValueSet variable=&quot;P_CRP&quot; first=&quot;0&quot; step=&quot;25&quot; last=&quot;50&quot;/&gt;
+    &lt;steppedValueSet variable=&quot;sexRatio&quot; first=&quot;0.1&quot; step=&quot;0.2&quot; last=&quot;0.9&quot;/&gt;
+    &lt;steppedValueSet variable=&quot;varCost_soy&quot; first=&quot;0&quot; step=&quot;500&quot; last=&quot;2000&quot;/&gt;
+    &lt;enumeratedValueSet variable=&quot;srange&quot;&gt;
+      &lt;value value=&quot;5&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;init_pigs&quot;&gt;
+      &lt;value value=&quot;2&quot;/&gt;
+      &lt;value value=&quot;100&quot;/&gt;
+      &lt;value value=&quot;503&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;total_patches&quot;&gt;
+      &lt;value value=&quot;2401&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;allowableOverCap&quot;&gt;
+      &lt;value value=&quot;10&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;SounderterritoryDecay&quot;&gt;
+      &lt;value value=&quot;1&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;boarTerritorydecay&quot;&gt;
+      &lt;value value=&quot;1&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;wealth&quot;&gt;
+      &lt;value value=&quot;0&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;splitAccelerator&quot;&gt;
+      &lt;value value=&quot;0.25&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;brange&quot;&gt;
+      &lt;value value=&quot;5&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;competingWildlife&quot;&gt;
+      &lt;value value=&quot;&amp;quot;FALSE&amp;quot;&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;Yield_corn&quot;&gt;
+      &lt;value value=&quot;1350&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;generic_removal_price&quot;&gt;
+      &lt;value value=&quot;35&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;dam_soy&quot;&gt;
+      &lt;value value=&quot;0.0171&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;P_corn&quot;&gt;
+      &lt;value value=&quot;3.71&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;max_pigs&quot;&gt;
+      &lt;value value=&quot;1440&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;maxSounderN&quot;&gt;
+      &lt;value value=&quot;50&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;minSounderN&quot;&gt;
+      &lt;value value=&quot;15&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;P_soy&quot;&gt;
+      &lt;value value=&quot;9.15&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;dam_Corn&quot;&gt;
+      &lt;value value=&quot;0.0237&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;Yield_soy&quot;&gt;
+      &lt;value value=&quot;450&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;Govt_ON&quot;&gt;
+      &lt;value value=&quot;&amp;quot;FALSE&amp;quot;&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;steppedValueSet variable=&quot;varCost_corn&quot; first=&quot;0&quot; step=&quot;500&quot; last=&quot;2000&quot;/&gt;
+    &lt;enumeratedValueSet variable=&quot;init_sounder&quot;&gt;
+      &lt;value value=&quot;5&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;Y-road-density&quot;&gt;
+      &lt;value value=&quot;8&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;defaultLitter&quot;&gt;
+      &lt;value value=&quot;0.8&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;X-road-density&quot;&gt;
+      &lt;value value=&quot;8&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;pig_range&quot;&gt;
+      &lt;value value=&quot;10&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;init_hh&quot;&gt;
+      &lt;value value=&quot;45&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+    &lt;enumeratedValueSet variable=&quot;mergeAccelerator&quot;&gt;
+      &lt;value value=&quot;0.25&quot;/&gt;
+    &lt;/enumeratedValueSet&gt;
+  &lt;/experiment&gt;
+&lt;/experiments&gt;
+@#$#@#$#@
+@#$#@#$#@
+default
+0.0
+-0.2 0 0.0 1.0
+0.0 1 1.0 0.0
+0.2 0 0.0 1.0
+link direction
+true
+0
+Line -7500403 true 150 150 90 180
+Line -7500403 true 150 150 210 180
+
+@#$#@#$#@
+1
+@#$#@#$#@
+-1</code></pre>
 </div>
 </div>
 <div id="state-of-knowledge-2014" class="section level1">

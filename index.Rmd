@@ -4,8 +4,29 @@ output: html_document
 ---
 The documents needed for the `WildPigABM` Package including the Vignette, Source Files, and additional information is available here. `WildPigABM` is an `R` Package that can be used to simulate agricultural producer - wildlife interactions. 
 
+* Agent-based models are purposeful representations of interactions between organisms of interest (Railsback and Grimm 2011).
+* Feral swine management involves interactions between landowners of varying motivations, government agencies, and the wild pigs themselves. 
+* The major contribution of this paper is to link an economic model, acceptable in its own right, to many other economic models and ecological models and to create a framework of collaborative democratic research. The ecological models are minimally acceptable to model the phenomena at hand.
+* Landowners interact with their environment and feral swine. Landowners encompass any individual who has control and use of a parcel, regardless of fee title. Landowners are gross margin maximizers. 
+* The landscape is set to approximate a Public Land Survey System (PLSS) township. The map is made up of 2401 ten acre patches. Each edge of the map is 49 patches long, each 1/8 mile on each edge. The total length of each edge of the map is approximately 6.125 miles. Land ownership and quality is randomly assigned. Initial placement of feral swine is also random.
+* Time is defined in year intervals. The year can be thought of as a calendar year starting in January and ending in December. Initial conditions are set outside of the time-loop. A January census of all agents is carried out in each iteration. Land-users then update their expectations of the gross margins each patch will produce, conditioned on feral swine populations. The landowners then optimize using a Linear Programming (LP) process. Once the calculations have been made, land-users implement their plan.
+* The model is able to track wealth of landowners, number of removed head, living animals, and their locations among many other potentially interesting variables. 
+* The analysis centers around the differences in outcome between different applications of an expert opinion. We coin a term _Opportunity Cost of Postponement of Management (OCPM)_ to describe the cost imposed by a single feral swine and any potential progeny, optimally managed, remaining on the landscape at the end of a time period. There is substantial development surrounding this idea in the paper and will serve as the expert opinion that is implemented in differing ways or ignored.
+* Results show differences exist simply from changing the implementation strategies of landowners. 
+
+
 Steps for use:
-1. [Download `NetLogo` Version 5.3.1](https://ccl.northwestern.edu/netlogo/download.shtml)
+
+1.0 Read and Accept the License! Copyright 2016 Jason Holderieath
+
+2.0 [Download `NetLogo` Version 5.3.1](https://ccl.northwestern.edu/netlogo/download.shtml)
 `WildPigABM` has not been tested with Version 6.0.1
-2. [Download Source Files](https://github.com/jholderieath/website/raw/master/WildPigABM_0.2.9.tar.gz)
-3. Install the R package if no modifications are desired.  If modifications are desired unzip the `tar.gz` file and modify. If you would like to collaborate please contact me through the site.
+
+3.0 [Download Source Files](https://github.com/jholderieath/website/raw/master/WildPigABM_0.2.9.tar.gz)
+
+4.0 If your installation is exactly like mine, you can simply install the r package. The `NetLogo` model will be automatically placed in your `R` package library (i.e. `~\R\win-library\3.3\WildPigABM\data`). The `doOne` will know where to find the `NetLogo` model. 
+```r
+ install.packages("~/WildPigABM_0.2.9.tar.gz", repos = NULL, type = "source")
+```
+
+4.1  It is quite likely you will need to modify the `doOne` function to update your generic output directory (`dirc`) and `NetLogo` application path (`nl.path`) must be updated. You may also wish to change other parts of the model. If that is the case, unzip the `tar.gz` file and modify. If you would like to collaborate please contact me through the site.
