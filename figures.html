@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Jason Holderieath" />
+
+
+<title>Manuscript Figures</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Jason Holderieath</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="figures.html">Manuscript Figures</a>
+</li>
+<li>
+  <a href="CopyOfmy-vignette.html">WildPigABM Vignette</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Manuscript Figures</h1>
+<h4 class="author"><em>Jason Holderieath</em></h4>
+<h4 class="date"><em>June 8, 2017</em></h4>
+
+</div>
+
+
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-2-1.png" alt="**Figure 1:** Optimal number of feral swine removed in each period by initial number of swine." width="672" />
+<p class="caption">
+<strong>Figure 1:</strong> Optimal number of feral swine removed in each period by initial number of swine.
+</p>
+</div>
+<div class="figure">
+<img src="C:/Users/zejas/Documents/GitHub/Version%202/WildPigABM/vignettes/Rplot.png" alt="**Figure 2:** Agent-based model major operations flow chart." width="483" />
+<p class="caption">
+<strong>Figure 2:</strong> Agent-based model major operations flow chart.
+</p>
+</div>
+<div class="figure">
+<img src="C:/Users/zejas/Documents/GitHub/Version%202/WildPigABM/vignettes/t0map.png" alt="**Figure 3:** Illustrated Setting for Agent-Based Model Prior to Time Starting. Dark green indicates section lines are present on those patches. Boars are indicated with a dot. Sows are indicated with darts and are connected to their sounder (arrow). Households are indicated by red boxes." width="220" />
+<p class="caption">
+<strong>Figure 3:</strong> Illustrated Setting for Agent-Based Model Prior to Time Starting. Dark green indicates section lines are present on those patches. Boars are indicated with a dot. Sows are indicated with darts and are connected to their sounder (arrow). Households are indicated by red boxes.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-5-1.png" alt="**Figure 4:** Wealth outcomes by individual and simulation for five-year-simulations with special prices. Plots show each household's wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line." width="672" />
+<p class="caption">
+<strong>Figure 4:</strong> Wealth outcomes by individual and simulation for five-year-simulations with special prices. Plots show each household’s wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-6-1.png" alt="**Figure 5:** Wealth outcomes by individual and simulation for five-year-simulations with documented prices. Plots show each household's wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line." width="672" />
+<p class="caption">
+<strong>Figure 5:</strong> Wealth outcomes by individual and simulation for five-year-simulations with documented prices. Plots show each household’s wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-7-1.png" alt="**Figure 6:** Boxplots of wealth outcomes by simulation and period for five-year-simulations with special prices. Simulations are noted by color and position. The key features to notice are how tightly distributed the OCPM groups are across price method and the differences and similarities between clusters of OCPM methods. OCPM method 'minus' has inferior wealth outcomes for all individuals." width="672" />
+<p class="caption">
+<strong>Figure 6:</strong> Boxplots of wealth outcomes by simulation and period for five-year-simulations with special prices. Simulations are noted by color and position. The key features to notice are how tightly distributed the OCPM groups are across price method and the differences and similarities between clusters of OCPM methods. OCPM method ‘minus’ has inferior wealth outcomes for all individuals.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-8-1.png" alt="**Figure 7:** Boxplots of wealth outcomes by simulation and period for five-year-simulations with documented prices. Simulations are noted by color and position. The key features to notice are how tightly distributed the OCPM groups are across price method and the differences and similarities between clusters of OCPM methods. OCPM method minus has inferior wealth outcomes for all individuals." width="672" />
+<p class="caption">
+<strong>Figure 7:</strong> Boxplots of wealth outcomes by simulation and period for five-year-simulations with documented prices. Simulations are noted by color and position. The key features to notice are how tightly distributed the OCPM groups are across price method and the differences and similarities between clusters of OCPM methods. OCPM method minus has inferior wealth outcomes for all individuals.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-9-1.png" alt="**Figure 8:** Empirical cumulative density plot of household wealth outcomes by simulation for all periods for five-year-simulations with special prices. Plots show the cumulative distribution of household wealth. The key features to notice are the relative slopes and points of intersection. The minus OCPM method has a steeper initial slope and approaches the 100th percentile before any of the other simulations, indicating that all of the households have lower wealth outcomes in the minus simulations than all other simulations." width="672" />
+<p class="caption">
+<strong>Figure 8:</strong> Empirical cumulative density plot of household wealth outcomes by simulation for all periods for five-year-simulations with special prices. Plots show the cumulative distribution of household wealth. The key features to notice are the relative slopes and points of intersection. The minus OCPM method has a steeper initial slope and approaches the 100th percentile before any of the other simulations, indicating that all of the households have lower wealth outcomes in the minus simulations than all other simulations.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-10-1.png" alt="**Figure 9:** Empirical cumulative density plot of household wealth outcomes by simulation for all periods for five-year-simulations with documented prices. Plots show the cumulative distribution of household wealth. The key features to notice are the relative slopes and points of intersection. The minus OCPM method has a steeper initial slope and approaches the 100th percentile before any of the other simulations, indicating that all of the households have lower wealth outcomes in the minus simulations than all other simulations." width="672" />
+<p class="caption">
+<strong>Figure 9:</strong> Empirical cumulative density plot of household wealth outcomes by simulation for all periods for five-year-simulations with documented prices. Plots show the cumulative distribution of household wealth. The key features to notice are the relative slopes and points of intersection. The minus OCPM method has a steeper initial slope and approaches the 100th percentile before any of the other simulations, indicating that all of the households have lower wealth outcomes in the minus simulations than all other simulations.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-11-1.png" alt="**Figure 10:** Wealth outcomes by individual and simulation for twenty-year-simulations with documented prices. Plots show each household's wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line." width="672" />
+<p class="caption">
+<strong>Figure 10:</strong> Wealth outcomes by individual and simulation for twenty-year-simulations with documented prices. Plots show each household’s wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-12-1.png" alt="**Figure 11:** Boxplots of wealth outcomes by simulation and period for twenty-year-simulations with documented prices. Simulations are noted by color and position. The only included price method is 'random.' The key features to notice are the differences and similarities between OCPM methods. OCPM method minus has inferior wealth outcomes for all individuals." width="672" />
+<p class="caption">
+<strong>Figure 11:</strong> Boxplots of wealth outcomes by simulation and period for twenty-year-simulations with documented prices. Simulations are noted by color and position. The only included price method is ‘random.’ The key features to notice are the differences and similarities between OCPM methods. OCPM method minus has inferior wealth outcomes for all individuals.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-13-1.png" alt="**Figure 12:** Empirical cumulative density plot of household wealth outcomes by simulation for all periods for twenty-year-simulations with documented prices. Plots show the cumulative distribution of household wealth. The key features to notice are the relative slopes and points of intersection. The minus OCPM method has a steeper initial slope and approaches the 100th percentile before any of the other simulations, indicating that all of the households have lower wealth outcomes in the minus simulations than all other simulations." width="672" />
+<p class="caption">
+<strong>Figure 12:</strong> Empirical cumulative density plot of household wealth outcomes by simulation for all periods for twenty-year-simulations with documented prices. Plots show the cumulative distribution of household wealth. The key features to notice are the relative slopes and points of intersection. The minus OCPM method has a steeper initial slope and approaches the 100th percentile before any of the other simulations, indicating that all of the households have lower wealth outcomes in the minus simulations than all other simulations.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-14-1.png" alt="**Figure 13:** Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using special pricing." width="672" />
+<p class="caption">
+<strong>Figure 13:</strong> Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using special pricing.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-15-1.png" alt="**Figure 14:** Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using documented pricing." width="672" />
+<p class="caption">
+<strong>Figure 14:</strong> Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using documented pricing.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-16-1.png" alt="**Figure 15:** Plots of counts of sows present (yellow), five-year moving average of sow population, boars present (blue), and cumulative number removed (green) each time period by twenty-year-simulation using documented pricing." width="672" />
+<p class="caption">
+<strong>Figure 15:</strong> Plots of counts of sows present (yellow), five-year moving average of sow population, boars present (blue), and cumulative number removed (green) each time period by twenty-year-simulation using documented pricing.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-17-1.png" alt="**Figure 16:** Wealth outcomes by individual and simulation for five-year-simulations with documented prices. Data subset to only include OCPM=myopic and bounty = 75. The grid of subplots organized with decay columns and sex ratio rows (e.g. the simulation in the top left panel was decay=2 and sex ratio = 0.25). Plots show each household's wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line." width="672" />
+<p class="caption">
+<strong>Figure 16:</strong> Wealth outcomes by individual and simulation for five-year-simulations with documented prices. Data subset to only include OCPM=myopic and bounty = 75. The grid of subplots organized with decay columns and sex ratio rows (e.g. the simulation in the top left panel was decay=2 and sex ratio = 0.25). Plots show each household’s wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-18-1.png" alt="**Figure 17:** Wealth outcomes by individual and simulation for five-year-simulations with documented prices. Data subset to only include OCPM=minus and bounty = 75. The grid of subplots organized with decay columns and sex ratio rows (e.g. the simulation in the top left panel was decay=2 and sex ratio = 0.25). Plots show each household's wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line." width="672" />
+<p class="caption">
+<strong>Figure 17:</strong> Wealth outcomes by individual and simulation for five-year-simulations with documented prices. Data subset to only include OCPM=minus and bounty = 75. The grid of subplots organized with decay columns and sex ratio rows (e.g. the simulation in the top left panel was decay=2 and sex ratio = 0.25). Plots show each household’s wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-19-1.png" alt="**Figure 18:** Wealth outcomes by individual and simulation for five-year-simulations with documented prices. Data subset to only include OCPM=minus and bounty = 75. The grid of subplots organized with decay columns and sex ratio rows (e.g. the simulation in the top left panel was decay=2 and sex ratio = 0.25). Plots show each household's wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line." width="672" />
+<p class="caption">
+<strong>Figure 18:</strong> Wealth outcomes by individual and simulation for five-year-simulations with documented prices. Data subset to only include OCPM=minus and bounty = 75. The grid of subplots organized with decay columns and sex ratio rows (e.g. the simulation in the top left panel was decay=2 and sex ratio = 0.25). Plots show each household’s wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-20-1.png" alt="**Figure 19:** Wealth outcomes by individual and simulation for five-year-simulations with documented prices. Data subset to only include OCPM=myopic and bounty = 0. The grid of subplots organized with decay columns and sex ratio rows (e.g. the simulation in the top left panel was decay=2 and sex ratio = 0.25). Plots show each household's wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line." width="672" />
+<p class="caption">
+<strong>Figure 19:</strong> Wealth outcomes by individual and simulation for five-year-simulations with documented prices. Data subset to only include OCPM=myopic and bounty = 0. The grid of subplots organized with decay columns and sex ratio rows (e.g. the simulation in the top left panel was decay=2 and sex ratio = 0.25). Plots show each household’s wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-21-1.png" alt="**Figure 20:** Empirical cumulative density plot of household wealth outcomes by simulation for all periods for five-year-simulations with documented prices. Plots show the cumulative distribution of household wealth. The key features to notice are the relative slopes and points of intersection. The minus OCPM method has a steeper initial slope and approaches the 100th percentile before any of the other simulations, indicating that all of the households have lower wealth outcomes in the minus simulations than all other simulations." width="672" />
+<p class="caption">
+<strong>Figure 20:</strong> Empirical cumulative density plot of household wealth outcomes by simulation for all periods for five-year-simulations with documented prices. Plots show the cumulative distribution of household wealth. The key features to notice are the relative slopes and points of intersection. The minus OCPM method has a steeper initial slope and approaches the 100th percentile before any of the other simulations, indicating that all of the households have lower wealth outcomes in the minus simulations than all other simulations.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-22-1.png" alt="**Figure 21:** Empirical cumulative density plot of household wealth outcomes by simulation for all periods for five-year-simulations with documented prices. Plots show the cumulative distribution of household wealth. The key features to notice are the relative slopes and points of intersection. The minus OCPM method has a steeper initial slope and approaches the 100th percentile before any of the other simulations, indicating that all of the households have lower wealth outcomes in the minus simulations than all other simulations." width="672" />
+<p class="caption">
+<strong>Figure 21:</strong> Empirical cumulative density plot of household wealth outcomes by simulation for all periods for five-year-simulations with documented prices. Plots show the cumulative distribution of household wealth. The key features to notice are the relative slopes and points of intersection. The minus OCPM method has a steeper initial slope and approaches the 100th percentile before any of the other simulations, indicating that all of the households have lower wealth outcomes in the minus simulations than all other simulations.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-23-1.png" alt="**Figure 22:** Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using documented pricing." width="672" />
+<p class="caption">
+<strong>Figure 22:</strong> Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using documented pricing.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-24-1.png" alt="**Figure 23:** Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using documented pricing." width="672" />
+<p class="caption">
+<strong>Figure 23:</strong> Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using documented pricing.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-25-1.png" alt="**Figure 24:** Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using documented pricing." width="672" />
+<p class="caption">
+<strong>Figure 24:</strong> Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using documented pricing.
+</p>
+</div>
+<div class="figure">
+<img src="figures_files/figure-html/unnamed-chunk-26-1.png" alt="**Figure 25:** Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using documented pricing." width="672" />
+<p class="caption">
+<strong>Figure 25:</strong> Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using documented pricing.
+</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

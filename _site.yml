@@ -4,6 +4,8 @@ navbar:
   left:
     - text: "Home"
       href: index.html
+    - text: "Manuscript Figures"
+      href: figures.html
     - text: "WildPigABM Vignette"
       href: CopyOfmy-vignette.html
 output_dir: "."

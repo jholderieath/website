@@ -1,0 +1,715 @@
+---
+title: "Manuscript Figures"
+author: "Jason Holderieath"
+date: "June 8, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+figRef <- local({
+    tag <- numeric()
+    created <- logical()
+    used <- logical()
+    function(label, caption, prefix = options("figcap.prefix"), 
+        sep = options("figcap.sep"), prefix.highlight = options("figcap.prefix.highlight")) {
+        i <- which(names(tag) == label)
+        if (length(i) == 0) {
+            i <- length(tag) + 1
+            tag <<- c(tag, i)
+            names(tag)[length(tag)] <<- label
+            used <<- c(used, FALSE)
+            names(used)[length(used)] <<- label
+            created <<- c(created, FALSE)
+            names(created)[length(created)] <<- label
+        }
+        if (!missing(caption)) {
+            created[label] <<- TRUE
+            paste0(prefix.highlight, prefix, " ", i, sep, prefix.highlight, 
+                " ", caption)
+        } else {
+            used[label] <<- TRUE
+            paste(prefix, tag[label])
+        }
+    }
+})
+options(figcap.prefix = "Figure", figcap.sep = ":", figcap.prefix.highlight = "**")
+tabRef <- local({
+    tag <- numeric()
+    created <- logical()
+    used <- logical()
+    function(label, caption, prefix = options("tabcap.prefix"), 
+        sep = options("tabcap.sep"), prefix.highlight = options("tabcap.prefix.highlight")) {
+        i <- which(names(tag) == label)
+        if (length(i) == 0) {
+            i <- length(tag) + 1
+            tag <<- c(tag, i)
+            names(tag)[length(tag)] <<- label
+            used <<- c(used, FALSE)
+            names(used)[length(used)] <<- label
+            created <<- c(created, FALSE)
+            names(created)[length(created)] <<- label
+        }
+        if (!missing(caption)) {
+            created[label] <<- TRUE
+            paste0(prefix.highlight, prefix, " ", i, sep, prefix.highlight, 
+                " ", caption)
+        } else {
+            used[label] <<- TRUE
+            paste(prefix, tag[label])
+        }
+    }
+})
+
+options(tabcap.prefix = "Table", tabcap.sep = ":", tabcap.prefix.highlight = "**")
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+
+
+
+library(knitr)
+library(plyr)
+library(reshape)
+library(reldist)
+library(plm)
+library(ggplot2)
+library(scales)
+#mac
+#load("~/OneDrive - Colostate/DissertationTopics/ABM/Intermediate_output/2017May15/20170515_155355_LOTRUE.rdata")
+#load("~/OneDrive - Colostate/DissertationTopics/ABM/Intermediate_output/fxRes.Rdata")
+#load("~/Documents/Dissertation ABM/Version-2-master/WildPigABM/vignettes/res517.rdata")
+#load("~/Documents/Dissertation ABM/Version-2-master/WildPigABM/vignettes/510.rdata")
+#load("~/OneDrive - Colostate/DissertationTopics/ABM/Intermediate_output/2017May15/20170515_155355_LOTRUE.rdata")
+#load("~/Documents/Dissertation ABM/Version-2-master/WildPigABM/vignettes/RL522.rdata")
+#load("~/Documents/Dissertation ABM/Version-2-master/WildPigABM/vignettes/RM522.rdata")
+#load("~/Documents/Dissertation ABM/Version-2-master/WildPigABM/vignettes/RR523.rdata")
+#load("~/Documents/Dissertation ABM/Version-2-master/WildPigABM/vignettes/RM523.rdata")
+#load("~/Documents/Dissertation ABM/Version-2-master/WildPigABM/vignettes/res524.rdata")
+#pc
+load("~/GitHub/Version 2/WildPigABM/vignettes/res517.rdata")
+load("~/GitHub/Version 2/WildPigABM/vignettes/510.rdata")
+load("C:/Users/zejas/OneDrive - Colostate/DissertationTopics/ABM/Intermediate_output/2017May15/20170515_155355_LOTRUE.rdata")
+load("~/GitHub/Version 2/WildPigABM/vignettes/RL522.rdata")
+load("~/GitHub/Version 2/WildPigABM/vignettes/RM522.rdata")
+load("~/GitHub/Version 2/WildPigABM/vignettes/RR523.rdata")
+load("~/GitHub/Version 2/WildPigABM/vignettes/RM523.rdata")
+load("~/GitHub/Version 2/WildPigABM/vignettes/res524.rdata")
+load("~/GitHub/Version 2/WildPigABM/vignettes/res531.rdata")
+
+res517$res517_LO_Random_Random$wealthi$sim <- "OCPM=Ran.,Pr=Ran."
+res517$res517_LO_linear_Random$wealthi$sim <- "OCPM=Ran.,Pr=Lin."
+res517$res517_LO_marginal_Random$wealthi$sim <- "OCPM=Ran.,Pr=Mar."
+res517$res517_LO_minus_Random$wealthi$sim <- "OCPM=Ran.,Pr=Min."
+res517$res517_LO_Random_myopic$wealthi$sim <- "OCPM=Myo.,Pr.=Ran."
+res517$res517_LO_marginal_myopic$wealthi$sim <- "OCPM=Myo.,Pr.=Mar."
+res517$res517_LO_linear_myopic$wealthi$sim <- "OCPM=Myo.,Pr.=Lin."
+res517$res517_LO_minus_myopic$wealthi$sim <- "OCPM=Myo.,Pr.=Min."
+res517$res517_LO_Random_minus$wealthi$sim <- "OCPM=Min.,Pr.=Ran."
+res517$res517_LO_linear_minus$wealthi$sim <- "OCPM=Min.,Pr.=Lin."
+res517$res517_LO_marginal_minus$wealthi$sim <- "OCPM=Min.,Pr.=Mar."
+res517$res517_LO_minus_minus$wealthi$sim <- "OCPM=Min.,Pr.=Min."
+res517$res517_LO_Random_linear$wealthi$sim <- "OCPM=Lin.,Pr.=Ran."
+res517$res517_LO_linear_linear$wealthi$sim <- "OCPM=Lin.,Pr.=Lin."
+res517$res517_LO_marginal_linear$wealthi$sim <- "OCPM=Lin.,Pr.=Mar."
+res517$res517_LO_minus_linear$wealthi$sim <- "OCPM=Lin.,Pr.=Min."
+
+res524$res524_LO_Random_Random$wealthi$sim <- "OCPM=Ran.,Pr=Ran."
+res524$res524_LO_linear_Random$wealthi$sim <- "OCPM=Ran.,Pr=Lin."
+res524$res524_LO_marginal_Random$wealthi$sim <- "OCPM=Ran.,Pr=Mar."
+res524$res524_LO_minus_Random$wealthi$sim <- "OCPM=Ran.,Pr=Min."
+res524$res524_LO_Random_myopic$wealthi$sim <- "OCPM=Myo.,Pr.=Ran."
+res524$res524_LO_marginal_myopic$wealthi$sim <- "OCPM=Myo.,Pr.=Mar."
+res524$res524_LO_linear_myopic$wealthi$sim <- "OCPM=Myo.,Pr.=Lin."
+res524$res524_LO_minus_myopic$wealthi$sim <- "OCPM=Myo.,Pr.=Min."
+res524$res524_LO_Random_minus$wealthi$sim <- "OCPM=Min.,Pr.=Ran."
+res524$res524_LO_linear_minus$wealthi$sim <- "OCPM=Min.,Pr.=Lin."
+res524$res524_LO_marginal_minus$wealthi$sim <- "OCPM=Min.,Pr.=Mar."
+res524$res524_LO_minus_minus$wealthi$sim <- "OCPM=Min.,Pr.=Min."
+res524$res524_LO_Random_linear$wealthi$sim <- "OCPM=Lin.,Pr.=Ran."
+res524$res524_LO_linear_linear$wealthi$sim <- "OCPM=Lin.,Pr.=Lin."
+res524$res524_LO_marginal_linear$wealthi$sim <- "OCPM=Lin.,Pr.=Mar."
+res524$res524_LO_minus_linear$wealthi$sim <- "OCPM=Lin.,Pr.=Min."
+
+
+res522_LO_Random_linear$wealthi$sim <- "OCPM=Lin.,Pr.=Ran.(20yr)"
+res522_LO_Random_myopic$wealthi$sim <- "OCPM=Myo.,Pr.=Ran.(20yr)"
+res523_LO_Random_minus$wealthi$sim <- "OCPM=Min.,Pr.=Ran.(20yr)"
+res523_LO_Random_random$wealthi$sim <- "OCPM=Ran.,Pr=Ran.(20yr)"
+
+wealth517 <- rbind(
+  res517$res517_LO_Random_Random$wealthi,
+res517$res517_LO_linear_Random$wealthi,
+res517$res517_LO_marginal_Random$wealthi,
+res517$res517_LO_minus_Random$wealthi,
+res517$res517_LO_Random_myopic$wealthi,
+res517$res517_LO_marginal_myopic$wealthi,
+res517$res517_LO_linear_myopic$wealthi,
+res517$res517_LO_minus_myopic$wealthi,
+res517$res517_LO_Random_minus$wealthi,
+res517$res517_LO_linear_minus$wealthi,
+res517$res517_LO_marginal_minus$wealthi,
+res517$res517_LO_minus_minus$wealthi,
+res517$res517_LO_Random_linear$wealthi,
+res517$res517_LO_linear_linear$wealthi,
+res517$res517_LO_marginal_linear$wealthi,
+res517$res517_LO_minus_linear$wealthi
+)
+w <- wealth517
+
+w524 <- rbind(
+  res524$res524_LO_Random_Random$wealthi,
+res524$res524_LO_linear_Random$wealthi,
+res524$res524_LO_marginal_Random$wealthi,
+res524$res524_LO_minus_Random$wealthi,
+res524$res524_LO_Random_myopic$wealthi,
+res524$res524_LO_marginal_myopic$wealthi,
+res524$res524_LO_linear_myopic$wealthi,
+res524$res524_LO_minus_myopic$wealthi,
+res524$res524_LO_Random_minus$wealthi,
+res524$res524_LO_linear_minus$wealthi,
+res524$res524_LO_marginal_minus$wealthi,
+res524$res524_LO_minus_minus$wealthi,
+res524$res524_LO_Random_linear$wealthi,
+res524$res524_LO_linear_linear$wealthi,
+res524$res524_LO_marginal_linear$wealthi,
+res524$res524_LO_minus_linear$wealthi
+)
+
+w531 <- data.frame(id=numeric(),variable=character(),value=numeric(),sim=factor(),bounty=factor(),cdecay=factor(),sr=factor(),t=factor(),panelid=factor())
+for(i in 1:length(res526)){
+  www <- res526[[i]]$wealthi
+  www$bounty<- as.factor(paste0("bounty = ",res526[[i]]$bounty))
+  www$cdecay<-as.factor(paste0("decay = ",res526[[i]]$globalsDf$cdecay))
+  www$sr <- as.factor(paste0("sex Ratio = ",res526[[i]]$globalsDf$sexRatio))
+  www$rpm <- as.factor(paste0("RPM",res526[[i]]$counts$RemovalPriceMethod[[1]]))
+  www$OCPM <- as.factor(paste0("OCPM",res526[[i]]$counts$UserCostMethod[[1]]))
+  www$t <- plyr::mapvalues(www$variable,from = c("t0","t1","t2","t3","t4","t5"), to=c(0,1,2,3,4,5))
+  www$panelid <- paste(www$id,www$bounty,www$cdecay,www$sr,www$rpm,www$OCPM,i,sep = "_")
+  www$simgen2 <- paste(www$bounty,www$cdecay,www$sr,www$OCPM)
+  www$simgen3 <- paste(www$cdecay,www$sr)
+  w531 <- rbind(w531,www)
+}
+
+w20 <- rbind(
+  res522_LO_Random_linear$wealthi,
+  res522_LO_Random_myopic$wealthi,
+  res523_LO_Random_minus$wealthi,
+  res523_LO_Random_random$wealthi
+)
+w20$t <- plyr::mapvalues(w20$variable,from = c("t0","t1","t2","t3","t4","t5","t6","t7","t8","t9","t10","t11","t12","t13","t14","t15","t16","t17","t18","t19","t20"), to=c(0:20))
+
+
+wrapd <- ggplot(data=w,aes(x=variable,group=id))+
+  geom_line(aes(y=value/1000000))+
+  facet_wrap( ~ sim, ncol=3)+
+  scale_y_continuous(labels = scales::dollar)+
+  labs(title="Wealth By Individual", y="Wealth in Millions of Dollars", x = "Period")
+
+boxd <- ggplot(aes(y = value/1000000, x = variable, fill = sim), data = w[ which(w$variable != "t0"),]) + 
+  geom_boxplot(position=position_dodge(0.9))+
+   scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7",
+                              "chartreuse","grey88","purple","steelblue","grey60","goldenrod","brown","plum")) +
+  theme(legend.title=element_blank())+
+  theme(legend.position="top")+
+  scale_y_continuous(labels = scales::dollar)+
+  labs(title="Boxplot of Wealth By Simulation", y="Wealth in Millions of Dollars", x = "Period")
+
+cdf <- ggplot(data = w, aes(value/1000000,colour=sim)) + 
+  stat_ecdf(size = 1.5)+
+  scale_colour_manual(values=c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7",
+                              "chartreuse","grey88","purple","steelblue","grey60","goldenrod","brown","plum"))+
+  theme(legend.position="top")+
+  theme(legend.title=element_blank())+
+  facet_wrap( ~ sim, ncol=3)+
+  scale_x_continuous(labels = scales::dollar)+
+  labs(title="Empirical Cumulative Density Function of Wealth By Simulation", y="Cumulative Density", x = "Wealth in Millions of Dollars")
+#========================
+wrapd524 <- ggplot(data=w524,aes(x=variable,group=id))+
+  geom_line(aes(y=value/1000000))+
+  facet_wrap( ~ sim, ncol=3)+
+  scale_y_continuous(labels = scales::dollar)+
+  labs(title="Wealth By Individual", y="Wealth in Millions of Dollars", x = "Period")
+
+boxd524 <- ggplot(aes(y = value/1000000, x = variable, fill = sim), data = w524[ which(w$variable != "t0"),]) + 
+  geom_boxplot(position=position_dodge(0.9))+
+  scale_y_continuous(labels = scales::dollar)+
+  theme(legend.title=element_blank())+
+   scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7",
+                              "chartreuse","grey88","purple","steelblue","grey60","goldenrod","brown","plum")) +
+  theme(legend.position="top")+
+  labs(title="Boxplot of Wealth By Simulation", y="Wealth in Millions of Dollars", x = "Period")
+
+cdf524 <- ggplot(data = w524, aes(value/1000000,colour=sim)) + 
+  stat_ecdf(size = 1.5)+
+  scale_colour_manual(values=c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7",
+                              "chartreuse","grey88","purple","steelblue","grey60","goldenrod","brown","plum"))+
+  theme(legend.position="top")+
+  theme(legend.title=element_blank())+
+  facet_wrap( ~ sim, ncol=3)+
+  scale_x_continuous(labels = scales::dollar)+
+  labs(title="Empirical Cumulative Density Function of Wealth By Simulation", y="Cumulative Density", x = "Wealth in Millions of Dollars")
+#========================
+
+wrapd531_myopic_b75 <- ggplot(data=w531[ which(w531$OCPM =='OCPMmyopic' & w531$bounty == 'bounty = 75' & w531$variable != "t0"), ],aes(x=variable,group=panelid))+
+  geom_line(aes(y=value/1000000))+
+  facet_grid(sr~cdecay)+
+  #scale_colour_manual(values=c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"))+
+  scale_y_continuous(labels = scales::dollar)+
+  labs(title="Wealth By Individual", y="Wealth in Millions of Dollars", x = "Period")
+
+
+wrapd531_minus_b75 <- ggplot(data=w531[ which(w531$OCPM =='OCPMminus' & w531$bounty == 'bounty = 75' & w531$variable != "t0"), ],aes(x=variable,group=panelid))+
+  geom_line(aes(y=value/1000000))+
+  facet_grid(sr~cdecay)+
+  #scale_colour_manual(values=c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"))+
+  scale_y_continuous(labels = scales::dollar)+
+  labs(title="Wealth By Individual", y="Wealth in Millions of Dollars", x = "Period")
+
+boxd531_b75 <- ggplot(aes(y = value/1000000, x = variable, fill = simgen3, dodge=0), data = w531[ which(w531$bounty == 'bounty = 75'  & w531$variable != "t0"),]) + 
+  geom_boxplot()+
+  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7","#000000"))  +
+  theme(legend.position="top")+
+  scale_y_continuous(labels = scales::dollar)+
+  facet_wrap(~ OCPM)+
+  labs(title="Boxplot of Wealth By Simulation \nBounty = 75", y="Wealth in Millions of Dollars", x = "Period")
+
+boxd531_b0 <- ggplot(aes(y = value/1000000, x = variable, fill = simgen3, dodge=0), data = w531[ which( w531$bounty == 'bounty = 0' & w531$variable != "t0"),]) + 
+  geom_boxplot()+
+  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7","#000000")) +
+  theme(legend.position="top")+
+  scale_y_continuous(labels = scales::dollar)+
+  facet_grid(~OCPM)+
+  labs(title="Boxplot of Wealth By Simulation \nBounty = 0", y="Wealth in Millions of Dollars", x = "Period")
+
+cdf531_b0<- ggplot(data = w531[ which( w531$bounty == 'bounty = 0' & w531$variable != "t0"),], aes(value/1000000,colour=simgen3)) + 
+  stat_ecdf(size = 1.5)+
+  scale_colour_manual(values=c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7","#000000"))+
+  theme(legend.title=element_blank())+
+  theme(legend.position="right")+
+  theme(legend.text = element_text(colour="black", size = 9))+
+  facet_grid(sr ~ OCPM)+
+  scale_x_continuous(labels = scales::dollar)+
+  labs(title="Empirical Cumulative Density Function \nof Wealth By Simulation \nBounty = 0", y="Cumulative Density", x = "Wealth in Millions of Dollars")
+
+cdf531_b75<- ggplot(data = w531[ which( w531$bounty == 'bounty = 75' & w531$variable != "t0"),], aes(value/1000000,colour=simgen3)) + 
+  stat_ecdf(size = 1.5)+
+  theme(legend.text = element_text(colour="black", size = 9))+
+  theme(legend.title=element_blank())+
+  scale_colour_manual(values=c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7","#000000"))+
+  theme(legend.position="right")+
+  facet_grid(sr ~ OCPM)+
+  scale_x_continuous(labels = scales::dollar)+
+  labs(title="Empirical Cumulative Density Function \nof Wealth By Simulation \nBounty = 75", y="Cumulative Density", x = "Wealth in Millions of Dollars")
+
+
+#=========================
+wrapd20 <- ggplot(data=w20,aes(x=t,group=id))+
+  geom_line(aes(y=value/1000000))+
+  facet_wrap( ~ sim, ncol=2)+
+  scale_y_continuous(labels = scales::dollar)+
+  labs(title="Wealth By Individual", y="Wealth in Millions of Dollars", x = "Period")
+
+boxd20 <- ggplot(aes(y = value/1000000, x = t, fill = sim, dodge=0), data = w20[ which(w20$variable != "t0"),]) + 
+  geom_boxplot()+
+  scale_fill_manual(values=c("#009E73", "#CC79A7", "steelblue", "plum")) +
+  theme(legend.position="top")+
+  scale_y_continuous(labels = scales::dollar)+
+  facet_wrap( ~ sim, ncol=2)+
+  labs(title="Boxplot of Wealth By Simulation", y="Wealth in Millions of Dollars", x = "Period")
+
+cdf20 <- ggplot(data = w20, aes(value/1000000,colour=sim)) + 
+  stat_ecdf(size = 1.5)+
+  scale_colour_manual(values=c("#009E73", "#CC79A7", "steelblue", "plum"))+
+  theme(legend.position="top")+
+  facet_wrap( ~ sim, ncol=2)+
+  scale_x_continuous(labels = scales::dollar)+
+  labs(title="Empirical Cumulative Density Function of Wealth By Simulation", y="Cumulative Density", x = "Wealth in Millions of Dollars")
+
+library(ggplot2)
+library(scales)
+library(TTR)
+
+# c1 <- op[[1]]$counts[1:5,]
+# c1$t <- 1:5
+# c1$sim <- paste(op[[1]]$typeDecision,op[[1]]$generic_removal_price,op[[1]]$realistic,sep = "_")
+# 
+# c2 <- op[[2]]$counts[1:5,]
+# c2$t <- 1:5
+# c2$sim <- paste(op[[2]]$typeDecision,op[[2]]$generic_removal_price,op[[2]]$realistic,sep = "_")
+
+
+res517$res517_LO_Random_Random$counts$sim <- "OCPM=Ran.,Pr=Ran."
+res517$res517_LO_linear_Random$counts$sim <- "OCPM=Ran.,Pr=Lin."
+res517$res517_LO_marginal_Random$counts$sim <- "OCPM=Ran.,Pr=Mar."
+res517$res517_LO_minus_Random$counts$sim <- "OCPM=Ran.,Pr=Min."
+res517$res517_LO_Random_myopic$counts$sim <- "OCPM=Myo.,Pr.=Ran."
+res517$res517_LO_marginal_myopic$counts$sim <- "OCPM=Myo.,Pr.=Mar."
+res517$res517_LO_linear_myopic$counts$sim <- "OCPM=Myo.,Pr.=Lin."
+res517$res517_LO_minus_myopic$counts$sim <- "OCPM=Myo.,Pr.=Min."
+res517$res517_LO_Random_minus$counts$sim <- "OCPM=Min.,Pr.=Ran."
+res517$res517_LO_linear_minus$counts$sim <- "OCPM=Min.,Pr.=Lin."
+res517$res517_LO_marginal_minus$counts$sim <- "OCPM=Min.,Pr.=Mar."
+res517$res517_LO_minus_minus$counts$sim <- "OCPM=Min.,Pr.=Min."
+res517$res517_LO_Random_linear$counts$sim <- "OCPM=Ran.,Pr=Lin."
+res517$res517_LO_linear_linear$counts$sim <- "OCPM=Lin.,Pr.=Lin."
+res517$res517_LO_marginal_linear$counts$sim <- "OCPM=Lin.,Pr.=Mar."
+res517$res517_LO_minus_linear$counts$sim <- "OCPM=Lin.,Pr.=Min."
+
+res517$res517_LO_Random_Random$counts$t <- 1:5
+res517$res517_LO_linear_Random$counts$t <- 1:5
+res517$res517_LO_marginal_Random$counts$t <- 1:5
+res517$res517_LO_minus_Random$counts$t <- 1:5
+res517$res517_LO_Random_myopic$counts$t <- 1:5
+res517$res517_LO_marginal_myopic$counts$t <- 1:5
+res517$res517_LO_linear_myopic$counts$t <- 1:5
+res517$res517_LO_minus_myopic$counts$t <- 1:5
+res517$res517_LO_Random_minus$counts$t <- 1:5
+res517$res517_LO_linear_minus$counts$t <- 1:5
+res517$res517_LO_marginal_minus$counts$t <- 1:5
+res517$res517_LO_minus_minus$counts$t <- 1:5
+res517$res517_LO_Random_linear$counts$t <- 1:5
+res517$res517_LO_linear_linear$counts$t <- 1:5
+res517$res517_LO_marginal_linear$counts$t <- 1:5
+res517$res517_LO_minus_linear$counts$t <- 1:5
+
+c <- rbind(
+  res517$res517_LO_Random_Random$counts,
+res517$res517_LO_linear_Random$counts,
+res517$res517_LO_marginal_Random$counts,
+res517$res517_LO_minus_Random$counts,
+res517$res517_LO_Random_myopic$counts,
+res517$res517_LO_marginal_myopic$counts,
+res517$res517_LO_linear_myopic$counts,
+res517$res517_LO_minus_myopic$counts,
+res517$res517_LO_Random_minus$counts,
+res517$res517_LO_linear_minus$counts,
+res517$res517_LO_marginal_minus$counts,
+res517$res517_LO_minus_minus$counts,
+res517$res517_LO_Random_linear$counts,
+res517$res517_LO_linear_linear$counts,
+res517$res517_LO_marginal_linear$counts,
+res517$res517_LO_minus_linear$counts
+)
+#=================
+res524$res524_LO_Random_Random$counts$sim <- "OCPM=Ran.,Pr=Ran."
+res524$res524_LO_linear_Random$counts$sim <- "OCPM=Ran.,Pr=Lin."
+res524$res524_LO_marginal_Random$counts$sim <- "OCPM=Ran.,Pr=Mar."
+res524$res524_LO_minus_Random$counts$sim <- "OCPM=Ran.,Pr=Min."
+res524$res524_LO_Random_myopic$counts$sim <- "OCPM=Myo.,Pr.=Ran."
+res524$res524_LO_marginal_myopic$counts$sim <- "OCPM=Myo.,Pr.=Mar."
+res524$res524_LO_linear_myopic$counts$sim <- "OCPM=Myo.,Pr.=Lin."
+res524$res524_LO_minus_myopic$counts$sim <- "OCPM=Myo.,Pr.=Min."
+res524$res524_LO_Random_minus$counts$sim <- "OCPM=Min.,Pr.=Ran."
+res524$res524_LO_linear_minus$counts$sim <- "OCPM=Min.,Pr.=Lin."
+res524$res524_LO_marginal_minus$counts$sim <- "OCPM=Min.,Pr.=Mar."
+res524$res524_LO_minus_minus$counts$sim <- "OCPM=Min.,Pr.=Min."
+res524$res524_LO_Random_linear$counts$sim <- "OCPM=Ran.,Pr=Lin."
+res524$res524_LO_linear_linear$counts$sim <- "OCPM=Lin.,Pr.=Lin."
+res524$res524_LO_marginal_linear$counts$sim <- "OCPM=Lin.,Pr.=Mar."
+res524$res524_LO_minus_linear$counts$sim <- "OCPM=Lin.,Pr.=Min."
+
+res524$res524_LO_Random_Random$counts$t <- 1:5
+res524$res524_LO_linear_Random$counts$t <- 1:5
+res524$res524_LO_marginal_Random$counts$t <- 1:5
+res524$res524_LO_minus_Random$counts$t <- 1:5
+res524$res524_LO_Random_myopic$counts$t <- 1:5
+res524$res524_LO_marginal_myopic$counts$t <- 1:5
+res524$res524_LO_linear_myopic$counts$t <- 1:5
+res524$res524_LO_minus_myopic$counts$t <- 1:5
+res524$res524_LO_Random_minus$counts$t <- 1:5
+res524$res524_LO_linear_minus$counts$t <- 1:5
+res524$res524_LO_marginal_minus$counts$t <- 1:5
+res524$res524_LO_minus_minus$counts$t <- 1:5
+res524$res524_LO_Random_linear$counts$t <- 1:5
+res524$res524_LO_linear_linear$counts$t <- 1:5
+res524$res524_LO_marginal_linear$counts$t <- 1:5
+res524$res524_LO_minus_linear$counts$t <- 1:5
+
+c524 <- rbind(
+  res524$res524_LO_Random_Random$counts,
+res524$res524_LO_linear_Random$counts,
+res524$res524_LO_marginal_Random$counts,
+res524$res524_LO_minus_Random$counts,
+res524$res524_LO_Random_myopic$counts,
+res524$res524_LO_marginal_myopic$counts,
+res524$res524_LO_linear_myopic$counts,
+res524$res524_LO_minus_myopic$counts,
+res524$res524_LO_Random_minus$counts,
+res524$res524_LO_linear_minus$counts,
+res524$res524_LO_marginal_minus$counts,
+res524$res524_LO_minus_minus$counts,
+res524$res524_LO_Random_linear$counts,
+res524$res524_LO_linear_linear$counts,
+res524$res524_LO_marginal_linear$counts,
+res524$res524_LO_minus_linear$counts
+)
+
+c531 <- data.frame(endoftickPigCount=numeric(),
+                   sowCountSum=numeric(),
+                   boarCountSum=numeric(),
+                   killedCountT=numeric(),
+                   RemovalPriceMethod=factor(),
+                   UserCostMethod=factor(),
+                   bounty=factor(),
+                   cdecay=factor(),
+                   t=numeric(),
+                   simgen2=factor(),
+                   simgen3=factor()
+                   )
+for(i in 1:length(res526)){
+  www <- res526[[i]]$counts
+  www$sr <- as.factor(paste0("sex Ratio = ",res526[[i]]$globalsDf$sexRatio))
+  www$simgen2 <- paste(www$bounty,www$cdecay,www$sr,www$UserCostMethod)
+  www$simgen3 <- paste(www$cdecay,www$sr)
+
+
+  c531 <- rbind(c531,www)
+}
+
+#=================
+res522_LO_Random_linear$counts$t <- 1:20
+res522_LO_Random_myopic$counts$t <- 1:20
+res522_LO_Random_linear$counts$sim <- "OCPM=Lin.,Pr.=Ran.(20yr)"
+res522_LO_Random_myopic$counts$sim <- "OCPM=Myo.,Pr.=Ran.(20yr)"
+res522_LO_Random_linear$counts$m.av<-SMA(res522_LO_Random_linear$counts$sowCountSum, 5)
+res522_LO_Random_myopic$counts$m.av<-SMA(res522_LO_Random_myopic$counts$sowCountSum, 5)
+
+res523_LO_Random_minus$counts$t <- 1:20
+res523_LO_Random_random$counts$t <- 1:20
+res523_LO_Random_minus$counts$sim <- "OCPM=Min.,Pr.=Ran.(20yr)"
+res523_LO_Random_random$counts$sim <- "OCPM=Ran.,Pr.=Ran.(20yr)"
+res523_LO_Random_minus$counts$m.av<-SMA(res523_LO_Random_minus$counts$sowCountSum, 5)
+res523_LO_Random_random$counts$m.av<-SMA(res523_LO_Random_random$counts$sowCountSum, 5)
+
+c20 <- rbind(
+  res522_LO_Random_linear$counts,
+  res522_LO_Random_myopic$counts,
+  res523_LO_Random_minus$counts,
+  res523_LO_Random_random$counts
+)
+
+
+pkc <- ggplot(data=c,aes(x=t))+
+  facet_wrap( ~ sim, ncol=2)+
+  #geom_line(aes(y=endoftickPigCount), colour="#000000")+"FS Total Count", "#000000", 
+  geom_line(aes(y=sowCountSum),colour = "#E69F00",linetype="solid",size = 1.5)+
+  geom_line(aes(y=boarCountSum),colour = "#56B4E9",linetype="dashed",size = 1.5)+
+  geom_line(aes(y=killedCountT),colour = "#009E73",linetype="dotted",size = 1.5)+
+  scale_color_manual(values=c("Count of Sows"="#E69F00", 
+                                "Count of Boars"="#56B4E9", 
+                                "Cumulative Count of Removed"="#009E73"))+
+  theme(legend.position="top")+
+  labs(title="Number of Animals Present and Removed By Time Period", y="Count", x = "Time Period")
+sc <- data.frame(c[ which(c$t==5),])
+kkt <- knitr::kable(sc)
+#============================
+pkc524 <- ggplot(data=c524,aes(x=t))+
+  facet_wrap( ~ sim, ncol=2)+
+  #geom_line(aes(y=endoftickPigCount), colour="#000000")+"FS Total Count", "#000000", 
+  geom_line(aes(y=sowCountSum),colour = "#E69F00",linetype="solid",size = 1.5)+
+  geom_line(aes(y=boarCountSum),colour = "#56B4E9",linetype="dashed",size = 1.5)+
+  geom_line(aes(y=killedCountT),colour = "#009E73",linetype="dotted",size = 1.5)+
+  scale_color_manual(values=c("Count of Sows"="#E69F00", 
+                                "Count of Boars"="#56B4E9", 
+                                "Cumulative Count of Removed"="#009E73"))+
+  theme(legend.position="top")+
+  labs(title="Number of Animals Present and Removed By Time Period", y="Count", x = "Time Period")
+
+#============================
+pkc531b <- ggplot(data=c531[ which( c531$bounty == '75' & c531$UserCostMethod == "myopic"),],aes(x=t))+
+  facet_grid(sr ~ cdecay)+
+  #geom_line(aes(y=endoftickPigCount), colour="#000000")+"FS Total Count", "#000000", 
+  geom_line(aes(y=sowCountSum),colour = "#E69F00",linetype="solid",size = 1.5)+
+  geom_line(aes(y=boarCountSum),colour = "#56B4E9",linetype="dashed",size = 1.5)+
+  geom_line(aes(y=killedCountT),colour = "#009E73",linetype="dotted",size = 1.5)+
+  scale_color_manual(values=c("Count of Sows"="#E69F00", 
+                                "Count of Boars"="#56B4E9", 
+                                "Cumulative Count of Removed"="#009E73"))+
+  theme(legend.position="top")+
+  labs(title="Number of Animals Present and Removed By Time Period \nBounty = 75 \nOCPM = myopic" , y="Count", x = "Time Period")
+
+pkc531 <- ggplot(data=c531[ which( c531$bounty == '0' & c531$UserCostMethod == "myopic"),],aes(x=t))+
+  facet_grid(sr ~ cdecay)+
+  #geom_line(aes(y=endoftickPigCount), colour="#000000")+"FS Total Count", "#000000", 
+  geom_line(aes(y=sowCountSum),colour = "#E69F00",linetype="solid",size = 1.5)+
+  geom_line(aes(y=boarCountSum),colour = "#56B4E9",linetype="dashed",size = 1.5)+
+  geom_line(aes(y=killedCountT),colour = "#009E73",linetype="dotted",size = 1.5)+
+  scale_color_manual(values=c("Count of Sows"="#E69F00", 
+                                "Count of Boars"="#56B4E9", 
+                                "Cumulative Count of Removed"="#009E73"))+
+  theme(legend.position="top")+
+  labs(title="Number of Animals Present and Removed By Time Period \nBounty = 0 \nOCPM = myopic", y="Count", x = "Time Period")
+
+pkc531bmin <- ggplot(data=c531[ which( c531$bounty == '75' & c531$UserCostMethod == "minus"),],aes(x=t))+
+  facet_grid(sr ~ cdecay)+
+  #geom_line(aes(y=endoftickPigCount), colour="#000000")+"FS Total Count", "#000000", 
+  geom_line(aes(y=sowCountSum),colour = "#E69F00",linetype="solid",size = 1.5)+
+  geom_line(aes(y=boarCountSum),colour = "#56B4E9",linetype="dashed",size = 1.5)+
+  geom_line(aes(y=killedCountT),colour = "#009E73",linetype="dotted",size = 1.5)+
+  scale_color_manual(values=c("Count of Sows"="#E69F00", 
+                                "Count of Boars"="#56B4E9", 
+                                "Cumulative Count of Removed"="#009E73"))+
+  theme(legend.position="top")+
+  labs(title="Number of Animals Present and Removed By Time Period \nBounty = 75 \nOCPM = minus", y="Count", x = "Time Period")
+pkc531min <- ggplot(data=c531[ which( c531$bounty == '0' & c531$UserCostMethod == "minus"),],aes(x=t))+
+  facet_grid(sr ~ cdecay)+
+  #geom_line(aes(y=endoftickPigCount), colour="#000000")+"FS Total Count", "#000000", 
+  geom_line(aes(y=sowCountSum),colour = "#E69F00",linetype="solid",size = 1.5)+
+  geom_line(aes(y=boarCountSum),colour = "#56B4E9",linetype="dashed",size = 1.5)+
+  geom_line(aes(y=killedCountT),colour = "#009E73",linetype="dotted",size = 1.5)+
+  scale_color_manual(values=c("Count of Sows"="#E69F00", 
+                                "Count of Boars"="#56B4E9", 
+                                "Cumulative Count of Removed"="#009E73"))+
+  theme(legend.position="top")+
+  labs(title="Number of Animals Present and Removed By Time Period \nBounty = 0 \nOCPM = minus", y="Count", x = "Time Period")
+#============================
+pkc20 <- ggplot(data=c20,aes(x=t))+
+  #geom_line(aes(y=endoftickPigCount), colour="#000000")+"FS Total Count", "#000000", 
+  facet_wrap( ~ sim, ncol=2)+
+  geom_line(aes(y=sowCountSum),colour = "#E69F00",linetype="solid",size = 1.5)+
+  geom_line(aes(y=boarCountSum),colour = "#56B4E9",linetype="dashed",size = 1.5)+
+  geom_line(aes(y=killedCountT),colour = "#009E73",linetype="dotted",size = 1.5)+
+  geom_line(aes(y=m.av),colour = "#000000",linetype="dotdash",size = 1.5)+
+  theme(legend.position="top")+
+  scale_y_continuous(breaks = round(seq(min(0), max(c20$killedCountT), by = 200),1))+
+  scale_color_manual(values=c("Count of Sows"="#E69F00", 
+                                "Count of Boars"="#56B4E9", 
+                                "Cumulative Count of Removed"="#009E73"))+
+  labs(title="Number of Animals Present and Removed By Time Period", y="Count", x = "Time Period")
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE,fig.cap = figRef("q.L","Optimal number of feral swine removed in each period by initial number of swine.")}
+library(ggplot2)
+library(scales)
+library(plotly)
+#load("~/Documents/Dissertation ABM/Version-2-master/WildPigABM/vignettes/mc2.rdata")
+#windows
+load("~/GitHub/Version 2/WildPigABM/vignettes/mc2.rdata")
+
+f <- ggplot(data = mc2,aes(x = t))+
+  geom_line(aes(y=q.L.init50))+
+  geom_line(aes(y=q.L.init40))+
+  geom_line(aes(y=q.L.init30))+
+  geom_line(aes(y=q.L.init20))+
+  geom_line(aes(y=q.L.init10))+
+  geom_line(aes(y=q.L.init6))+
+  geom_line(aes(y=q.L.init2))+
+  labs(title = "Removal Effort", y= "quantity removed",x="time period")
+#f
+f
+```
+
+```{r, echo=FALSE, fig.cap=figRef("abmOrder","Agent-based model major operations flow chart."), , message=FALSE, warning=FALSE}
+# included for modification, will generate an exportable file that can be included as an image for easy export.
+# library("DiagrammeR")
+# library(DiagrammeRsvg)
+# library(rsvg)
+# 
+#  svg <- export_svg(grViz("digraph rmarkdown{
+#                     node [shape = box, fontname = Helvetica]
+# 
+#                       'Initial Conditions' -> 'January (Inventory)' -> 'February (Planning)' -> 'Households update and \nplan in sequence' ->
+#                       'February (Planning)' -> 'March - August  (Execution)' -> 'September - December (Realization)' ->  'January (Inventory)'
+# }",height = 400) )
+
+
+#WINDOWS
+knitr::include_graphics("C:/Users/zejas/Documents/GitHub/Version 2/WildPigABM/vignettes/Rplot.png")
+#MAC
+#knitr::include_graphics("~/WildPigABM/vignettes/Rplot.png")
+```
+
+```{r, echo=FALSE, fig.cap=figRef("mapt0","Illustrated Setting for Agent-Based Model Prior to Time Starting. Dark green indicates section lines are present on those patches. Boars are indicated with a dot. Sows are indicated with darts and are connected to their sounder (arrow). Households are indicated by red boxes."),, message=FALSE, warning=FALSE}
+knitr::include_graphics("C:/Users/zejas/Documents/GitHub/Version 2/WildPigABM/vignettes/t0map.png")
+```
+
+```{r,echo=FALSE,fig.cap=figRef("wrapd","Wealth outcomes by individual and simulation for five-year-simulations with special prices. Plots show each household's wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line."), message=FALSE, warning=FALSE}
+wrapd
+```
+
+```{r,echo=FALSE,fig.cap=figRef("wrapd524","Wealth outcomes by individual and simulation for five-year-simulations with documented prices. Plots show each household's wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line."), message=FALSE, warning=FALSE}
+wrapd524
+```
+
+```{r,echo=FALSE,fig.cap=figRef("boxd","Boxplots of wealth outcomes by simulation and period for five-year-simulations with special prices. Simulations are noted by color and position. The key features to notice are how tightly distributed the OCPM groups are across price method and the differences and similarities between clusters of OCPM methods. OCPM method 'minus' has inferior wealth outcomes for all individuals."), message=FALSE, warning=FALSE}
+boxd
+```
+
+```{r,echo=FALSE,fig.cap=figRef("boxd524","Boxplots of wealth outcomes by simulation and period for five-year-simulations with documented prices. Simulations are noted by color and position. The key features to notice are how tightly distributed the OCPM groups are across price method and the differences and similarities between clusters of OCPM methods. OCPM method minus has inferior wealth outcomes for all individuals."), message=FALSE, warning=FALSE}
+boxd524
+```
+
+```{r,echo=FALSE,fig.cap=figRef("cdf","Empirical cumulative density plot of household wealth outcomes by simulation for all periods for five-year-simulations with special prices. Plots show the cumulative distribution of household wealth. The key features to notice are the relative slopes and points of intersection. The minus OCPM method has a steeper initial slope and approaches the 100th percentile before any of the other simulations, indicating that all of the households have lower wealth outcomes in the minus simulations than all other simulations."), message=FALSE, warning=FALSE}
+cdf
+```
+
+```{r,echo=FALSE,fig.cap=figRef("cdf524","Empirical cumulative density plot of household wealth outcomes by simulation for all periods for five-year-simulations with documented prices. Plots show the cumulative distribution of household wealth. The key features to notice are the relative slopes and points of intersection. The minus OCPM method has a steeper initial slope and approaches the 100th percentile before any of the other simulations, indicating that all of the households have lower wealth outcomes in the minus simulations than all other simulations."), message=FALSE, warning=FALSE}
+cdf524
+```
+
+```{r,echo=FALSE,fig.cap=figRef("wrapd20","Wealth outcomes by individual and simulation for twenty-year-simulations with documented prices. Plots show each household's wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line."), message=FALSE, warning=FALSE}
+wrapd20
+```
+
+```{r,echo=FALSE,  fig.cap=figRef("boxd20","Boxplots of wealth outcomes by simulation and period for twenty-year-simulations with documented prices. Simulations are noted by color and position. The only included price method is 'random.' The key features to notice are the differences and similarities between OCPM methods. OCPM method minus has inferior wealth outcomes for all individuals."), message=FALSE, warning=FALSE}
+boxd20
+```
+
+```{r,echo=FALSE,fig.cap=figRef("cdf20","Empirical cumulative density plot of household wealth outcomes by simulation for all periods for twenty-year-simulations with documented prices. Plots show the cumulative distribution of household wealth. The key features to notice are the relative slopes and points of intersection. The minus OCPM method has a steeper initial slope and approaches the 100th percentile before any of the other simulations, indicating that all of the households have lower wealth outcomes in the minus simulations than all other simulations."), message=FALSE, warning=FALSE}
+cdf20
+```
+
+```{r,echo=FALSE,fig.cap=figRef("presRem1","Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using special pricing."), message=FALSE, warning=FALSE}
+pkc
+```
+
+```{r, echo=FALSE, fig.cap=figRef("presRem2","Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using documented pricing."), message=FALSE, warning=FALSE, message=FALSE, warning=FALSE}
+pkc524
+```
+
+```{r,echo=FALSE,fig.cap=figRef("presRem20","Plots of counts of sows present (yellow), five-year moving average of sow population, boars present (blue), and cumulative number removed (green) each time period by twenty-year-simulation using documented pricing."), message=FALSE, warning=FALSE}
+pkc20
+```
+
+```{r,echo=FALSE,fig.cap=figRef("wrapd531_myopic_b75","Wealth outcomes by individual and simulation for five-year-simulations with documented prices. Data subset to only include OCPM=myopic and bounty = 75. The grid of subplots organized with decay columns and sex ratio rows (e.g. the simulation in the top left panel was decay=2 and sex ratio = 0.25). Plots show each household's wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line."), message=FALSE, warning=FALSE}
+wrapd531_myopic_b75
+```
+
+```{r,echo=FALSE,fig.cap=figRef("wrapd531_minus_b75","Wealth outcomes by individual and simulation for five-year-simulations with documented prices. Data subset to only include OCPM=minus and bounty = 75. The grid of subplots organized with decay columns and sex ratio rows (e.g. the simulation in the top left panel was decay=2 and sex ratio = 0.25). Plots show each household's wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line."), message=FALSE, warning=FALSE}
+wrapd531_minus_b75
+```
+
+```{r,echo=FALSE,fig.cap=figRef("boxd531_b75","Wealth outcomes by individual and simulation for five-year-simulations with documented prices. Data subset to only include OCPM=minus and bounty = 75. The grid of subplots organized with decay columns and sex ratio rows (e.g. the simulation in the top left panel was decay=2 and sex ratio = 0.25). Plots show each household's wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line."), message=FALSE, warning=FALSE}
+boxd531_b75
+
+```
+
+```{r,echo=FALSE,fig.cap=figRef("boxd531_b0","Wealth outcomes by individual and simulation for five-year-simulations with documented prices. Data subset to only include OCPM=myopic and bounty = 0. The grid of subplots organized with decay columns and sex ratio rows (e.g. the simulation in the top left panel was decay=2 and sex ratio = 0.25). Plots show each household's wealth outcome over the simulation period. The key features to notice is the spread between the top individual and the massed group. Also, notice the position of the massed group in relation to the zero wealth line."), message=FALSE, warning=FALSE}
+boxd531_b0
+```
+
+```{r,echo=FALSE,fig.cap=figRef("cdf531_b0","Empirical cumulative density plot of household wealth outcomes by simulation for all periods for five-year-simulations with documented prices. Plots show the cumulative distribution of household wealth. The key features to notice are the relative slopes and points of intersection. The minus OCPM method has a steeper initial slope and approaches the 100th percentile before any of the other simulations, indicating that all of the households have lower wealth outcomes in the minus simulations than all other simulations."), message=FALSE, warning=FALSE}
+cdf531_b0
+```
+
+```{r,echo=FALSE,fig.cap=figRef("cdf531_b75","Empirical cumulative density plot of household wealth outcomes by simulation for all periods for five-year-simulations with documented prices. Plots show the cumulative distribution of household wealth. The key features to notice are the relative slopes and points of intersection. The minus OCPM method has a steeper initial slope and approaches the 100th percentile before any of the other simulations, indicating that all of the households have lower wealth outcomes in the minus simulations than all other simulations."), message=FALSE, warning=FALSE}
+cdf531_b75
+```
+
+```{r,echo=FALSE,fig.cap=figRef("pkc531","Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using documented pricing."), message=FALSE, warning=FALSE}
+pkc531
+```
+
+```{r,echo=FALSE,fig.cap=figRef("pkc531b","Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using documented pricing."), message=FALSE, warning=FALSE}
+pkc531b
+```
+ 
+```{r,echo=FALSE,fig.cap=figRef("pkc531bmin","Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using documented pricing."), message=FALSE, warning=FALSE}
+pkc531bmin
+```
+
+```{r,echo=FALSE,fig.cap=figRef("pkc531min","Plots of counts of sows present (yellow), boars present (blue), and cumulative number removed (green) each time period by five-year-simulation using documented pricing."), message=FALSE, warning=FALSE}
+pkc531min
+```
