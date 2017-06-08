@@ -11,7 +11,7 @@
 
 <meta name="author" content="Jason Holderieath" />
 
-<meta name="date" content="2017-05-31" />
+<meta name="date" content="2017-06-08" />
 
 <title>WildPigABM Documentation and Motivation</title>
 
@@ -251,7 +251,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">WildPigABM Documentation and Motivation</h1>
 <h4 class="author"><em>Jason Holderieath</em></h4>
-<h4 class="date"><em>2017-05-31</em></h4>
+<h4 class="date"><em>2017-06-08</em></h4>
 
 </div>
 
@@ -2370,8 +2370,8 @@ end</code></pre>
 end</code></pre>
 <p><code>pigTerritoryStrength</code>, <code>boarTerritoryStrength</code>, <code>sounderTerritoryStrength</code>, <code>boarCountSum</code>, and <code>sowCountSum</code> will be used for the major functions of the model.</p>
 </div>
-<div id="miscellaneaus-and-processing-functions" class="section level2">
-<h2><span class="header-section-number">2.13</span> Miscellaneaus and Processing Functions</h2>
+<div id="miscellaneous-and-processing-functions" class="section level2">
+<h2><span class="header-section-number">2.13</span> Miscellaneous and Processing Functions</h2>
 <p>The following functions are functions that help process data or pass data. ### clearNL() Clear NL</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#' @rdname WildPigABM</span>
 <span class="co">#' @export</span>
@@ -3345,11 +3345,11 @@ to smallSounderOps
   if any? sounders [
     ask sounders
     [
-      set scount count sows with [sounder_id = [sounder_id] of myself]
+      set scount count sows with [sounder_id = [sounder_id] of self]
       ]
     if any? sounders with [scount &lt; minSounderN]
     [
-      ask sows with [sounder_id = [sounder_id] of myself]
+      ask sows with [sounder_id = [sounder_id] of self]
       [
         set sounder_id [sounder_id] of min-one-of (other turtles) [ distance myself]
         ]
@@ -4410,7 +4410,6 @@ Uri Wilensky (Author)
 Patch Clusters Example
 
 
-
 @#$#@#$#@
 default
 true
@@ -4855,578 +4854,14 @@ Line -7500403 true 150 150 210 180
 -1</code></pre>
 </div>
 </div>
-<div id="state-of-knowledge-2014" class="section level1">
-<h1><span class="header-section-number">3</span> State of Knowledge 2014</h1>
-<p>Content last udpated June 2014.</p>
-<p>Agriculture is an important component of the United States economy, generating $395 billion in market value of agricultural products sold in 2012 (<a href="#_ENREF_80">USDA 2014</a>). While some of the goods cultivated by the US agricultural sector are indigenous plant and animal species, there are also substantial numbers of introduced species in the United States; a minimum of 4,542 species currently existing in the US have origins from outside its borders (<a href="#_ENREF_60">OTA 1993</a>). Introduced species, such as corn, wheat, and rice, as well as cattle, poultry, and other livestock are all important commodities produced by the US agricultural sector. Introduced species also have potential conservation values, such as food and shelter for native species, catalysts for restoration, substitutes for extinct species, and augmenting ecosystem services (<a href="#_ENREF_69">Schlaepfer, et al. 2011</a>).</p>
-<p>However, non-native species also have the potential to cause broad agricultural and environmental damages, including destruction of crops, property, or the environment; depredation of livestock, native species, companion animals or humans; and transmission of both zoonotic and non-zoonotic diseases (<a href="#_ENREF_12">Bevins, et al. 2014</a>, <a href="#_ENREF_24">Daszak, et al. 2000</a>, <a href="#_ENREF_26">Depenbusch, et al. 2011</a>, <a href="#_ENREF_27">Doody, et al. 2014</a>, <a href="#_ENREF_39">Hartin, et al. 2007</a>, <a href="#_ENREF_46">Jones, et al. 2008</a>, <a href="#_ENREF_50">Loss, et al. 2013</a>, <a href="#_ENREF_72">Shwiff, et al. 2010</a>, <a href="#_ENREF_93">Yang, et al. 2014</a>). These varied damages impose a number of costs on the agricultural sector and the effective mitigation of those costs requires that invasive species populations be subjected to some form of management and control efforts. Conservative estimates of damage and control costs of all alien-invasive species totaled over $141 billion per year (<a href="#_ENREF_62">Pimentel, et al. 2005</a>), but reported costs by species vary widely in scope and detail.</p>
-<p>One species of particular recent interest are feral swine (<em>Sus scrofa)</em>, which have experienced a dramatic expansion of their global range over the past 30 years (<a href="#_ENREF_1">Acevedo, et al. 2006</a>, <a href="#_ENREF_12">Bevins, et al. 2014</a>, <a href="#_ENREF_66">Saito, et al. 2012</a>, <a href="#_ENREF_74">Spencer, et al. 2005</a>). Feral swine are spreading at their current rate because they enjoy the agency of subset of the population that wants to be able to hunt them closer to home (<a href="#_ENREF_12">Bevins, et al. 2014</a>). Feral swine have existed in the pockets of the southeastern US, California, and Hawaii for nearly five-hundred years. Humans are spreading feral swine into more agriculturally productive states and the potential for contact with domestic swine herds is increasing as feral swine move into states that produce the majority of US pork. Feral swine enjoy a high degree of human agency while simultaneously posing a serious threat to US agriculture in all three categories of damage, much of the damage in real dollar costs to agricultural producers, in addition to the opportunity costs and uncorrected environmental costs borne by society and the potential for greater costs to be incurred as feral swine spread.</p>
-<p>Given the aggressive rates of expansion observed, there has been growing interest in assessing the costs and benefits associated with the presence of feral swine in different localities (<a href="#_ENREF_12">e.g. Bevins, et al. 2014</a>, <a href="#_ENREF_15">Campbell, et al. 2013</a>, <a href="#_ENREF_16">Campbell and Long 2009</a>, <a href="#_ENREF_28">Engeman, et al. 2012</a>, <a href="#_ENREF_40">Higginbotham 2013</a>, <a href="#_ENREF_41">Higginbotham, et al. 2008</a>, <a href="#_ENREF_56">Mengak 2012</a>, <a href="#_ENREF_59">Ober, et al. 2011</a>, <a href="#_ENREF_73">Siemann, et al. 2009</a>). In addition, there has been considerable research conducted on the increasing potential for management conflicts stemming from feral swine expansion (<a href="#_ENREF_42">e.g. Honda and Kawauchi 2011</a>, <a href="#_ENREF_47">Koichi, et al. 2013</a>, <a href="#_ENREF_87">Warner and Kinslow 2013</a>, <a href="#_ENREF_88">Weeks and Packard 2009</a>). In light of these developing strands of literature regarding the dangers posed by feral swine, it is worthwhile to examine the available data, to attempt to better define the scope, scale, and magnitude of the feral swine issues faced by various stakeholders in the US agricultural sector.</p>
-<p>The purpose of the current project is to assess the existing state of knowledge regarding damages caused by feral swine. Our objective is to categorize and discuss the different kinds of damage feral swine inflict relative to other invasive species. In addition we attempt to distinguish the costs of managing feral swine populations from the estimate of explicit damages caused. It should be recognized that the impetus for this research is not simply the fact that feral swine are an invasive species that generate substantial damage costs; rather, we are focused on the damaging potential of feral swine, whether in terms of destroyed crops and degraded environmental quality, or loss of life from either predatory behaviors or disease transmission. Our goals are to use the existing research to establish that an uncontrolled expansion of the feral swine population represents a tremendous danger for US agricultural production, and to explore options for management and control in order to better prevent such a potential disaster from occurring.</p>
-<div id="damage-from-invasive-species" class="section level2">
-<h2><span class="header-section-number">3.1</span> Damage from Invasive Species</h2>
-<p>At this point, it is worthwhile to define a number of core concepts. As defined by Executive Order 13112, an “‘invasive species’ means an alien species [ i.e. “with respect to a particular ecosystem, any species . . . that is not native to that ecosystem”] whose introduction,[ i.e. “the intentional or unintentional escape, release, dissemination, or placement of a species into an ecosystem as a result of human activity”] does or is likely to cause economic or environmental harm or harm to human health” (<a href="#_ENREF_77">The White House 1999</a>). Key to the policy definition of invasive species is the potential for harm, whether measured economically, environmentally, or as a human health hazard.</p>
-<p>It is clear based on Executive Order 13112 that the policy focus for invasive species is on damage, generally measured in monetary terms. Damage caused by invasive species falls into three broad categories, which we will refer to hereafter as destruction, depredation, and disease. For our purposes, ‘destruction’ describes loss of property of value or environmental damage, including disruption of the food chain for native species. ‘Depredation’, on the other hand, involves the loss of either human or animal life due to predatory behaviors. Lastly, ‘disease’ refers specifically to the possibility of disease transmission between populations. Each damaging activity by an invasive species directly imposes costs on the agricultural sector, leading to further expenditures on the mitigation of costs inflicted by damaging populations. We report control and management costs separately from estimates of explicit damages; given that damage inflicted by feral swine is out of a farmer’s control, but paying damage mitigation costs is within the farmer’s choice set, it makes it intuitive and theoretical sense to address each set of costs separately.</p>
-<p><a href="#_ENREF_45">Jeschke and Strayer (2005)</a> compared invasion success of vertebrates in North America and Europe to address four problematic themes present in the invasion ecology literature. Table 1 shows the eight mammalian species reported by <a href="#_ENREF_45">Jeschke and Strayer (2005)</a> as invasive in the United States. The species in table 1 have been reported in descending order of associated damages published by <a href="#_ENREF_62">Pimentel, et al. (2005)</a>. Please note that for the remainder of the paper all figures have been updated to 2012 USD using the calculator provided by the United States Department of Labor Bureau of Labor Statistics (<a href="#_ENREF_13">BLS 2014</a>). Damage is included as an indicator of relative costs imposed on society. Rank within the <em>100 of the World’s Worst Invasive Alien Species</em> published by Global Invasive Species Database (<a href="#_ENREF_33">GISD 2014</a>) has been included as an indicator of relative severity on a global scale across all types of species. Taken together, table 1 combines much of the argument for action against these species. However, it is important to remember that human agency was involved in the spread of each of these animals in table 1.</p>
-<p><strong>Table 1. Mammals native to Europe and invasive in North America (1)</strong></p>
-<table style="width:83%;">
-<colgroup>
-<col width="22%"></col>
-<col width="26%"></col>
-<col width="19%"></col>
-<col width="15%"></col>
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Common Name</p></td>
-<td><p>Scientific Name</p></td>
-<td><p>Damages (2)</p></td>
-<td><p>Rank (3)</p></td>
-</tr>
-<tr class="even">
-<td><p>Black Rat</p></td>
-<td><p>Rattus Rattus</p></td>
-<td><p>$23,093m</p></td>
-<td><p>80</p></td>
-</tr>
-<tr class="odd">
-<td><p>Domestic Cat</p></td>
-<td><p>Felis Catus</p></td>
-<td><p>$20,662m</p></td>
-<td><p>38</p></td>
-</tr>
-<tr class="even">
-<td><p>Feral Swine</p></td>
-<td><p>Sus Scrofa</p></td>
-<td><p>$972m</p></td>
-<td><p>91</p></td>
-</tr>
-<tr class="odd">
-<td><p>Dog</p></td>
-<td><p>Canis Familiaris</p></td>
-<td><p>$754m</p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p>Horse</p></td>
-<td><p>Equus Caballus</p></td>
-<td><p>$6m</p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><p>Domestic Goat</p></td>
-<td><p>Capra Hircus</p></td>
-<td></td>
-<td><p>17</p></td>
-</tr>
-<tr class="even">
-<td><p>Brown Hare</p></td>
-<td><p>Lepus Capensis</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><p>House Mouse</p></td>
-<td><p>Mus Musculus</p></td>
-<td></td>
-<td><p>58</p></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><em>Sources: 1.</em> <a href="#_ENREF_45">Jeschke and Strayer (2005)</a> <em>2.</em> <a href="#_ENREF_62">Pimentel, et al. (2005)</a> <em>inflation adjusted to 2012 with</em> <a href="#_ENREF_13">BLS (2014)</a> <em>3.</em> <a href="#_ENREF_33">GISD (2014)</a></p>
-<p>Table 2 contains selected species (high ranking vertebrates) from the <em>100 of the World’s Worst Invasive Alien Species</em> published by <a href="#_ENREF_33">GISD (2014)</a> with the classifications of the damage they inflict in the right three columns. These species are ranked as dangerous threats in large part due to the threat they pose to native species. Often damage by a single invasive species can occur across two of the categories; it should be noted that only feral swine are active across all three categories of damage.</p>
-<p><strong>Table 2. Qualitative descriptions and classification examples of invasive species.</strong></p>
-<table>
-<colgroup>
-<col width="25%"></col>
-<col width="27%"></col>
-<col width="7%"></col>
-<col width="14%"></col>
-<col width="14%"></col>
-<col width="10%"></col>
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Common Names</p></td>
-<td><p>Scientific Name</p></td>
-<td><p>Rank</p></td>
-<td><p>Destruction</p></td>
-<td><p>Depredation</p></td>
-<td><p>Disease</p></td>
-</tr>
-<tr class="even">
-<td><p>Common Myna</p></td>
-<td><p>Acridotheres Tristis</p></td>
-<td><p>3</p></td>
-<td><p>X</p></td>
-<td><p>X</p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><p>Brown Tree Snake</p></td>
-<td><p>Boiga Irregularis</p></td>
-<td><p>15</p></td>
-<td><p>X</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p>Cane Toad</p></td>
-<td><p>Rhinella Marina</p></td>
-<td><p>16</p></td>
-<td><p>X</p></td>
-<td><p>X</p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><p>Goat</p></td>
-<td><p>Capra Hircus</p></td>
-<td><p>17</p></td>
-<td><p>X</p></td>
-<td></td>
-<td><p>X</p></td>
-</tr>
-<tr class="even">
-<td><p>Red Deer</p></td>
-<td><p>Cervus Elaphus</p></td>
-<td><p>22</p></td>
-<td><p>X</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><p>House Cat</p></td>
-<td><p>Felis Catus</p></td>
-<td><p>38</p></td>
-<td></td>
-<td><p>X</p></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p>Small Indian Mongoose</p></td>
-<td><p>Herpestes Auropunctatus</p></td>
-<td><p>41</p></td>
-<td></td>
-<td><p>X</p></td>
-<td><p>X</p></td>
-</tr>
-<tr class="odd">
-<td><p>Feral Swine</p></td>
-<td><p>Sus Scrofa</p></td>
-<td><p>91</p></td>
-<td><p>X</p></td>
-<td><p>X</p></td>
-<td><p>X</p></td>
-</tr>
-</tbody>
-</table>
-<p><em>Source:</em> <a href="#_ENREF_33">GISD (2014)</a></p>
-<p>All of these species enjoy the advocacy of some groups and suffer the ire of others (e.g. ASPCA 2014 ). An example of a species with both strong support and strong calls for control is the common house cat. The house cat has attracted attention as a destructive killer of endangered species, with calls to control them (<a href="#_ENREF_14">Bove 2003</a>, <a href="#_ENREF_50">Loss, et al. 2013</a>). However, in the US, aside from individual municipalities targeting feral cats as part of local animal control efforts, there are no large scale public investments in the widespread eradication of feral cats. As further evidence of the support house cats enjoy, National Geographic reported the public outrage that followed a writer’s call to euthanize feral domestic cats (<a href="#_ENREF_25">Dell’Amore 2013</a>). With the circumstances as they are, house cats are unlikely to find themselves the recipients of harsh control measures.</p>
-<p>In light of the value of these species, calls for action against these species should concentrate on the current and potential damage, including disease potential, and the role of humans in furthering the spread of the species. Feral cats are an example of a complex situation in invasive species management with similarities to feral swine. However, as will be demonstrated in subsequent sections, feral swine are likely a more dangerous invasive species than feral cats in spite of their relative positions when ranked by either <em>100 of the World’s Worst Invasive Alien Species</em> published by <a href="#_ENREF_33">GISD (2014)</a> or <a href="#_ENREF_62">Pimentel, et al. (2005)</a>.</p>
-</div>
-<div id="destruction-costs" class="section level2">
-<h2><span class="header-section-number">3.2</span> Destruction Costs</h2>
-<p><a href="#_ENREF_62">Pimentel, et al. (2005)</a> is one of the most commonly cited publications on feral swine damage, estimating $800 million of crop and environmental damages per year. This estimate was a major step forward in discussing feral swine damages in concrete quantifiable terms. However, as interest in feral swine grows, the methods used to estimate damages are improving. More recent estimates have suggested that this $ 941million figure may in fact be an understatement.</p>
-<p>For example, researchers found that 9.7 million acres in Georgia suffered $57 million in crop destruction in 2011 (<a href="#_ENREF_56">Mengak 2012</a>). According to <a href="#_ENREF_84">USDA NASS (2014)</a>, this area is responsible for approximately one-percent of US total crop sales. It should also be noted that Mengak (2012) did not include environmental destruction in his figure. It seems plausible that by incorporating environmental destruction, and extending his analysis across 39 states with an estimated land area of more than 800 million acres in counties with reported feral swine presence, actual destruction losses would be substantially in excess of the $941 million/year figured reported by (<a href="#_ENREF_62">Pimentel, et al. 2005</a>).</p>
-<p>Table 3 summarizes significant figures found in the literature, adjusted for inflation to 2012 using <a href="#_ENREF_13">BLS (2014)</a>. The base year of 2012 was chosen to put these figures on par with the most recent USDA Census of Agriculture. When possible, the data was converted into annualized costs. Given the great variety in the existing research, the comparison of costs across differing localities, crops, and time scales is problematic. For example, <a href="#_ENREF_41">Higginbotham, et al. (2008)</a> found feral swine cause $58 million/year in damage to the whole of Texas agriculture, an area of 59 million acres . However, <a href="#_ENREF_56">Mengak (2012)</a> reported a similar $58 million/year for crop damages to a 9.7 million in Georgia, only part of which was agricultural land. It is difficult to reconcile that such different sized areas experienced similar levels of reported damage. These inconsistent estimates testify to the inherent difficulty in estimating agricultural damages from feral swine.</p>
-<p>As an invasive species, feral swine have inflicted considerable environmental costs (<a href="#_ENREF_29">Engeman, et al. 2004</a>, <a href="#_ENREF_30">Engeman, et al. 2004</a>, <a href="#_ENREF_70">Seward, et al. 2004</a>). <a href="#_ENREF_70">Seward, et al. (2004)</a> attribute the decline of twenty-two species of plants and four species of amphibians to feral swine. In addition, damage to marshes and parks by feral swine has been noted (<a href="#_ENREF_29">Engeman, et al. 2004</a>, <a href="#_ENREF_30">Engeman, et al. 2004</a>, <a href="#_ENREF_31">Engeman, et al. 2003</a>, <a href="#_ENREF_62">Pimentel, et al. 2005</a>). Feral swine also damage an unknown amount of priceless archaeological sites (<a href="#_ENREF_28">Engeman, et al. 2012</a>) and were found to “dominate the disturbance regime” of the Northern California Coast Range Preserve (NCCRP)(<a href="#_ENREF_48">Kotanen 1995</a>). Table 3 also contains estimates of environmental damage inflicted by feral swine.</p>
-<table style="width:14%;">
-<colgroup>
-<col width="5%"></col>
-<col width="4%"></col>
-<col width="4%"></col>
-</colgroup>
-<thead>
-<tr class="header">
-<th>Table 3. Damage Estimates</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>A. Crops - Single Incidents</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Geographical Area</td>
-<td>Crops</td>
-<td>Estimates</td>
-</tr>
-<tr class="odd">
-<td>Texas(7)</td>
-<td>Peanuts</td>
-<td>$64,803</td>
-</tr>
-<tr class="even">
-<td>New York(4)</td>
-<td>Corn</td>
-<td>$15,157</td>
-</tr>
-<tr class="odd">
-<td>New York(5)</td>
-<td>Corn, Apples, Strawberries</td>
-<td>$25,000</td>
-</tr>
-<tr class="even">
-<td>B. Crops - Annual Aggregates</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Texas(1)</td>
-<td>Peanuts</td>
-<td>$225,518/yr</td>
-</tr>
-<tr class="even">
-<td>Texas (1)</td>
-<td>N/A</td>
-<td>$15,492- $464,765/yr.</td>
-</tr>
-<tr class="odd">
-<td>Georgia (6)</td>
-<td>Reported Crops – Mengak (2012, p. 13) SW Extension District</td>
-<td>$58,180,000/yr.</td>
-</tr>
-<tr class="even">
-<td>North Florida(3)</td>
-<td>Corn, Cotton, Peanuts, and Soybeans</td>
-<td>$1,921,224/yr.</td>
-</tr>
-<tr class="odd">
-<td>C. Property</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Geographical Area</td>
-<td>Property</td>
-<td>Estimates</td>
-</tr>
-<tr class="odd">
-<td>New York(12)</td>
-<td>Two lawns</td>
-<td>$421 each</td>
-</tr>
-<tr class="even">
-<td>Georgia (6)</td>
-<td>Property Damage in SW extension district</td>
-<td>$24,500,000/yr.</td>
-</tr>
-<tr class="odd">
-<td>California(8)</td>
-<td>31 Residential Properties and 1 Golf Course</td>
-<td>$93,652/yr.</td>
-</tr>
-<tr class="even">
-<td>Nationwide(13)</td>
-<td>Avg. Property Damage from feral swine – vehicle collisions</td>
-<td>$1,197/per car</td>
-</tr>
-<tr class="odd">
-<td>D.Total Uncategorized</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Geographical Area</td>
-<td>Description</td>
-<td>Estimates</td>
-</tr>
-<tr class="odd">
-<td>TX (9)</td>
-<td>“Economic Loss Since Feral Swine Appeared on the Respondent’s Property” (Adams, et al. 2005, p. 1316)</td>
-<td>$3,225,796</td>
-</tr>
-<tr class="even">
-<td>Texas(10)</td>
-<td>Cost to Texas Agriculture</td>
-<td>$57,580,650/yr.</td>
-</tr>
-<tr class="odd">
-<td>Texas (10)</td>
-<td>Repairing Damage And Control</td>
-<td>$7,751,242/yr.</td>
-</tr>
-<tr class="even">
-<td>California (8)</td>
-<td>Total Reported Damage To Hay, Forage, Ponds, Lawns, Drainage, Orchards, Vineyards, Irrigation, Livestock, Crops, Trees, Fruits, And Nuts</td>
-<td>$2,634,343/yr.</td>
-</tr>
-<tr class="odd">
-<td>E. Environmental</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Geographical Area</td>
-<td>Description</td>
-<td>Estimates</td>
-</tr>
-<tr class="odd">
-<td>Florida(14)</td>
-<td>Value of damaged area of Savannas Preserve State Park</td>
-<td>$1,545,717- $5,036,456</td>
-</tr>
-<tr class="even">
-<td>Florida(15)</td>
-<td>Damage to three FL state parks at the end of the study period</td>
-<td>$6,652-28,384/ha</td>
-</tr>
-<tr class="odd">
-<td>California(16)</td>
-<td>Damage and Control</td>
-<td>$400,169/yr</td>
-</tr>
-</tbody>
-</table>
-<p>Sources: 1. Tolleson, et al. (1995), 3. Ober, et al. (2011), 4. Westenbroek (2011) , 5. Hall (2012), 6. Mengak (2012) , 7. Beach (2013), 8. Frederick (1998), 9. Adams, et al. (2005), 10. Higginbotham, et al. (2008), 12. USDA APHIS VS (2010), 13. Mayer and Johns (2011), 14. Engeman, et al. (2004), 15. Engeman, et al. (2003), 16. Sweitzer and McCann (2007)|Note: All figures have been adjusted to 2012 USD using BLS (2014).|</p>
-<p>Large amounts of real losses are incurred through feral swine destruction of property, crops, and the environment. The data currently available is an excellent starting point for further research. We have shown that there are substantial gaps within the literature as it stands today. In following sections we will continue detailing damage and control costs known today and potential improvement strategies.</p>
-</div>
-<div id="depredation-costs" class="section level2">
-<h2><span class="header-section-number">3.3</span> Depredation Costs</h2>
-<p>There is very little quantitative data published about the predatory behavior of feral swine. However, what is lacking in quantitative data is offset by what is known in qualitative terms. This section will review what information is available about depredation by feral swine.</p>
-<p>Surveys, qualitative reports describing feral swine attacks, and anecdotal evidence are available from several sources. Survey respondents are concerned about or have experienced danger to humans from attack, livestock depredation, and damage or injury to pets (<a href="#_ENREF_7">Barrett and Pine 1981</a>, <a href="#_ENREF_56">Mengak 2012</a>, <a href="#_ENREF_65">Rollins 1993</a>, <a href="#_ENREF_75">Sweitzer and McCann 2007</a>) and popular press articles describe several attacks on humans (<a href="#_ENREF_58">Moore Jr. 2008</a>, <a href="#_ENREF_64">Roberts 2011</a>, <a href="#_ENREF_67">Sanchez 2011</a>).</p>
-<p>Anecdotally, a particular rancher in Texas has experienced a fifteen to twenty percent reduction in goat kid production on property where feral swine reside (<a href="#_ENREF_10">Beck 1999</a>). <a href="#_ENREF_8">Barrios-Garcia and Ballari (2012)</a> reported that around thirty percent of feral swine diet consists of animal matter depending, on ecosystem and season. At a value of about $110,669 in 2012 USD 1,243 head of sheep and goats were documented as lost by Texas authorities in 1990 (<a href="#_ENREF_65">Rollins 1993</a>). In 1991, 1,473 sheep, goats, and exotic game animals were reported killed by feral swine in Texas and California (<a href="#_ENREF_6">Barrett and Birmingham 1994</a>). <a href="#_ENREF_70">Seward, et al. (2004)</a> reports that feral swine cause greater than $1.2 million in goat losses annually.</p>
-<p>Attacks on humans and endangered species are detailed in court cases and peer reviewed literature. <a href="#_ENREF_51">Love (2013)</a> details the case of an inmate on a work crew who was attacked by a feral swine. <a href="#_ENREF_52">Mayer (2013)</a> found that up to fifteen percent of reported attacks on humans are fatal. Feral swine are also known to feed on endangered species (<a href="#_ENREF_11">Bengsen, et al. 2013</a>, <a href="#_ENREF_12">Bevins, et al. 2014</a>).</p>
-<p>Of particular importance to agriculture is the fact that feral swine are known to prey on livestock. Primarily, feral swine prey on sheep (<em>Ovis aries</em>) and goats (<em>Capra hircus</em>), but have been known to feed on larger animals such as cows (<em>Bos taurus</em>) and other exotic game species leading to substantial economic loss (<a href="#_ENREF_32">Frederick 1998</a>, <a href="#_ENREF_70">Seward, et al. 2004</a>). <a href="#_ENREF_19">Christie, et al. (2014)</a><a href="#_ENREF_18" class="uri">#_ENREF_18</a> report communications claiming feral swine are preying on calves in Kern County, California.</p>
-<p>Feral swine density found to be a good predictor of ewes losing lambs (<a href="#_ENREF_18">Choquenot, et al. 1997</a>). <a href="#_ENREF_18">Choquenot, et al. (1997)</a> claim that the derived relationship can be used to select target feral swine densities to achieve tolerable levels of lost lambs. Feral swine presence is putting extra pressure on the sheep herd leading to increased loss of lambs.</p>
-<p><a href="#_ENREF_70">Seward, et al. (2004)</a> report the characteristics of feral swine predation. Feral swine kills may be mistakenly reported as coyote kills leading to possible under-reporting of feral swine depredation.</p>
-<p>Without a larger body of quantitative work, it is difficult to know the threat feral swine pose to livestock. The available qualitative research reveals that feral swine depredation is a real problem to a number of different agricultural producers. Further research and more robust data collection will be necessary in order to effectively quantify feral swine depredation costs.</p>
-</div>
-<div id="disease-costs" class="section level2">
-<h2><span class="header-section-number">3.4</span> Disease Costs</h2>
-<p>Feral swine are a potential reservoir of both zoonotic and non-zoonotic diseases that could impact the US economy through a number of channels. Of the forty-two serious pathogens with a wildlife component reported by <a href="#_ENREF_57">Miller, et al. (2013)</a>, feral swine are explicitly involved in seven. Feral swine do pose a threat as a potential vector for new forms of influenza as they have the required receptors for both avian and human strains of the virus and this provides an opportunity for the viruses to combine (<a href="#_ENREF_35">Hall, et al. 2008</a>). Survey respondents indicated concern or experience with feral swine spreading disease to livestock or acting as a potential disease reservoir (<a href="#_ENREF_7">Barrett and Pine 1981</a>, <a href="#_ENREF_65">Rollins 1993</a>). They have also been known to carry diseases dangerous to humans (<a href="#_ENREF_11">Bengsen, et al. 2013</a>).</p>
-<p>While the disease threat posed by feral swine is clearly recognized within the literature, it has thus far been difficult to accurately model the spread of a disease outbreak vectored by feral swine. The current iteration of disease transmission models are largely focused on the spread of a single disease between a limited number of species (e.g. Ward, et al. 2009, 2007). However, the complexity of the feral swine problem requires a model flexible enough to extend into the transmission of multiple pathogens across multiple species (R. Miller, PC).</p>
-<p>Research on pathogen transmission between wildlife, specifically feral swine, and livestock has been making progress. <a href="#_ENREF_63">Pineda-Krch, et al. (2010)</a> developed a disease transmission model to simulate the spread and control of FMD among beef and dairy herds and feral swine in California. The model incorporated elements of space and randomness. Results show that introduction of FMD from feral swine to livestock could result in a large and rapidly moving outbreak. Tested containment strategies showed potential to reduce the size and duration of the outbreaks.</p>
-<p>Ward et al. (2009, 2007) built a disease spread model that explicitly modelled the potential for FMD spread between domestic cattle, feral swine, and white tailed deer in Texas. The model considered geographic relationships between the species and found that contact between the species, distribution of affected species, and densities of the species were important in determining the extent of the outbreak (<a href="#_ENREF_85">Ward, et al. 2009</a>, <a href="#_ENREF_86">2007</a>).</p>
-<p>The challenge beyond modeling an outbreak is valuing the potential damage to the agricultural sector and the economy as a whole. The potential for damage through commercial livestock production is related to the number of exposed head of livestock. US livestock sales totaled $90 billion in 2012 (<a href="#_ENREF_84">USDA NASS 2014</a>), with $5 billion in beef exports (<a href="#_ENREF_83">USDA ERS 2013</a>), and $6.3 billion in pork exports (<a href="#_ENREF_55">MEF 2014</a>). Almost thirteen percent of total beef production, and twenty seven percent of pork production is exported (<a href="#_ENREF_54">MEF 2013</a>). Even limited outbreaks can be exceptionally costly, due to the potential for international banning of US imports with price effects for the entire US herd of the affected species. <a href="#_ENREF_20">Coffey, et al. (2005)</a> estimate that the single reported case of BSE in December 2003 cost the US beef industry between $3.9 billion and $5.7 billion from lost exports in 2004.</p>
-<p>Some of the only studies to date that have explicitly focused on feral swine in an economic context are <a href="#_ENREF_22">Cozzens (2010)</a> and <a href="#_ENREF_23">Cozzens, et al. (2010)</a>, which modeled the economic impact of a feral swine introduced FMD infection to domestic livestock. <a href="#_ENREF_22">Cozzens (2010)</a> found that potential producer losses in Kansas due to feral swine transmission of FMD to domestic livestock could be as much as $6.1 billion . Total economic impact for the occurrence of FMD in livestock as a result of exposure to infected feral swine in Missouri was estimated at $12.6 million (<a href="#_ENREF_23">Cozzens, et al. 2010</a>).</p>
-<p>There are also concerns regarding contamination of the human food supply by feral swine. Disease events can generate economy-wide impacts across both consumers and producers, as illustrated through the deadly September 2006 <em>E. coli</em> O157:H7 outbreak which has been traced to feral swine-contaminated spinach (<a href="#_ENREF_49">Kreith 2007</a>). Consumer expenditures on leafy greens declined by $69 million and spinach producers lost an estimated $234.4 million as lettuce and similar produce were substituted for spinach (<a href="#_ENREF_3">Arnade, et al. 2009</a>).</p>
-<p>In addition to these direct concerns regarding the food supply, there is also the general threat of feral swine acting as a vector of disease. Swine are a known vector of influenza, and initially the 2009 outbreak of H1N1 influenza outbreak was called “swine flu” by authorities. This mislabeling led to substantial negative consumer response, even though <a href="#_ENREF_5">Attavanich, et al. (2011)</a> determined that pork remained safe to consume throughout the entire event. They further estimated that agricultural sector losses of $159 million were associated with media coverage on what was initially called “swine flu” (<a href="#_ENREF_5">Attavanich, et al. 2011</a>).</p>
-<p>The ability to directly study and measure the impacts of a multi-species, multi-pathogen feral swine induced epidemic is still beyond the scope of currently available models. However, evaluation of the costs associated with FMD and BSE outbreaks between feral swine and species such as cows or deer show the damaging potential of even small scale disease transmission events. In addition, there are substantial costs stemming from both real and perceived food safety threats. While the full magnitude of the disease impacts are not currently known, it is clear from the available evidence that the disease potential posed by feral swine is a legitimate threat to the US agricultural sector.</p>
-</div>
-<div id="management-and-control-costs" class="section level2">
-<h2><span class="header-section-number">3.5</span> Management and Control Costs</h2>
-<p>Given our discussion of the kinds of damage feral swine cause it is no surprise that considerable effort and resources have been devoted to the control and management of feral swine populations. There is substantial interest in an accurate measure of feral swine management costs especially as a point of comparison with the damages incurred, which can be considered the implicit cost of failing to control existing feral swine populations. The need to control this population implies a need for better information regarding the population. The feral swine herd in Texas has been estimated at 2 million (<a href="#_ENREF_41">Higginbotham, et al. 2008</a>). Current nationwide population estimates range between 4 and 5 million feral swine (<a href="#_ENREF_41">Higginbotham, et al. 2008</a>, <a href="#_ENREF_61">Pimentel 2007</a>, <a href="#_ENREF_81">USDA APHIS 2013</a>).However, census is extremely difficult and few studies have generated a reliable national population estimate for the feral swine herd.</p>
-<p>It is known that feral swine are incredibly prolific; <a href="#_ENREF_38">Hanson, et al. (2009)</a> found that feral swine are capable of speeding up their reproductive cycles under pressure, and <a href="#_ENREF_11">Bengsen, et al. (2013)</a> found that feral swine reproduction rates can increase as their population decreases below the local carrying capacity. All of these factors combined to create unique and costly challenges in the management and control of feral swine. This is borne out by the research of <a href="#_ENREF_68">Saunders and Bryant (1988)</a> which found an asymptotic relationship between control efforts and control success. This confirms the near impossibility of eradicating established populations. In fact, studies have shown that lethal control efforts must result in mortality rates ranging between sixty and eighty percent in order to impact the ability of feral swine to maintain their population (<a href="#_ENREF_7">Barrett and Pine 1981</a>, <a href="#_ENREF_11">Bengsen, et al. 2013</a>, <a href="#_ENREF_43">Hone and Pedersen 1980</a>, <a href="#_ENREF_49">Kreith 2007</a>)<a href="#_ENREF_45" class="uri">#_ENREF_45</a>.</p>
-<p>However, in line with our earlier discussion of human agency, we do not see consistent treatment of feral swine across all localities and jurisdictions. The cost estimates for feral swine and management are presented in table 4.</p>
-<p><strong>Table 4. Control Costs</strong></p>
-<table>
-<colgroup>
-<col width="25%"></col>
-<col width="55%"></col>
-<col width="19%"></col>
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>Geographical Area</p></td>
-<td><p>Description</p></td>
-<td><p>Estimates</p></td>
-</tr>
-<tr class="even">
-<td><p>California (16)</p></td>
-<td><p>Feral Swine Related Management Costs Incurred by Natural Areas in California</p></td>
-<td><p>$4.29m/yr.</p></td>
-</tr>
-<tr class="odd">
-<td><p>California (16)</p></td>
-<td><p>Feral Swine Eradication Efforts During Study Period (3yrs)</p></td>
-<td><p>$3.89m/yr.</p></td>
-</tr>
-<tr class="even">
-<td><p>California (16)</p></td>
-<td><p>Construction and Maintenance of Exclusion Fence at Pinnacles National Monument (~20 yrs.)</p></td>
-<td><p>$58,403/km</p></td>
-</tr>
-<tr class="odd">
-<td><p>California (18)</p></td>
-<td><p>Construction of Exclusion Fence at Pinnacles National Monument</p></td>
-<td><p>$1,871,690</p></td>
-</tr>
-<tr class="even">
-<td><p>California (18)</p></td>
-<td><p>Eradication Efforts at Pinnacles National Monument</p></td>
-<td><p>$1,053,138</p></td>
-</tr>
-<tr class="odd">
-<td><p>California (18)</p></td>
-<td><p>Maintenance of Exclusion Fence at Pinnacles National Monument</p></td>
-<td><p>$68,629/yr.</p></td>
-</tr>
-<tr class="even">
-<td><p>Florida (14)</p></td>
-<td><p>Average Removal Cost</p></td>
-<td><p>$41.18/head</p></td>
-</tr>
-<tr class="odd">
-<td><p>Texas (11)</p></td>
-<td><p>Average Removal Cost</p></td>
-<td><p>$69.61/head</p></td>
-</tr>
-<tr class="even">
-<td><p>Australia (24)</p></td>
-<td><p>Average Removal Cost</p></td>
-<td><p>$91.60 /head</p></td>
-</tr>
-<tr class="odd">
-<td><p>Australia (25)</p></td>
-<td><p>Average Removal Cost</p></td>
-<td><p>$16.52/head</p></td>
-</tr>
-</tbody>
-</table>
-<p><em>Sources</em> : <em>11.</em> <a href="#_ENREF_41">Higginbotham, et al. (2008)</a><em>, 14.</em> <a href="#_ENREF_29">Engeman, et al. (2004)</a><em>, 16.</em> <a href="#_ENREF_75">Sweitzer and McCann (2007)</a><em>, 18.</em> <a href="#_ENREF_49">Kreith (2007)</a> <em>, 24.</em> <a href="#_ENREF_43">Hone and Pedersen (1980)</a><em>, 25.</em> <a href="#_ENREF_68">Saunders and Bryant (1988)</a></p>
-<p><em>Note: All figures have been adjusted to 2012 USD using</em> <a href="#_ENREF_13">BLS (2014)</a><em>.</em></p>
-<p>Methods of feral swine control deemed acceptable differ by stakeholder groups. <a href="#_ENREF_47">Koichi, et al. (2013)</a> found that acceptability of management practices was influenced by stakeholder group identification (e.g. residents vs. tourists), awareness of a feral swine problem, and social factors influenced the views of each of the stakeholders. For example, <a href="#_ENREF_88">Weeks and Packard (2009)</a> found that feral swine are so well established in the local culture around a National Park in Texas that residents do not consider them non-native. Control efforts are met with considerable resistance, especially when professional hunters are hired. Further, <a href="#_ENREF_87">Warner and Kinslow (2013)</a> found Feral swine control efforts conducted by “outsiders” in Hawaii (e.g. US Federal Agencies) without public consent have been met with considerable public opposition. These conflicting views of different stakeholders are one of the primary hurdles to engaging in effective feral swine management.</p>
-</div>
-<div id="discussion" class="section level2">
-<h2><span class="header-section-number">3.6</span> Discussion</h2>
-<p>In reviewing the existing research, a number of gaps in knowledge remain to be investigated. These gaps are opportunities to address the lack of knowledge needed for meaningful feral swine management. Currently, the literature does not contain adequate estimates of range, expansion, population, the current levels of damage on any of the three axes of destruction, depredation, and disease, or on measures of distinct control costs. For example, feral swine are known to damage timber production (<a href="#_ENREF_44">Jackson 1990</a>, <a href="#_ENREF_56">Mengak 2012</a>, <a href="#_ENREF_90">Whitehouse 1999</a>). However no actual measure of the financial impact of this destruction exists.</p>
-<p>As the precise size of the nationwide herd and its rate of expansion are not known with certainty, we have employed alternative means to identify areas of heavy feral swine prevalence. Data collected by the USDA reporting feral swine presence at the county level (M. Lutman, pc) was used to calculate the percentage of counties within a state that have feral swine. As shown earlier, feral swine are not only dangerous to US agriculture for what they currently do, they are dangerous because of their potential. Feral swine are spreading into the some of the most productive land in the United States. In 2012, the market value of agricultural products sold totaled $394.6 billion for the United States (<a href="#_ENREF_79">USDA 2014</a>). States with no feral swine produced $75 billion in market value of agricultural products sold (<a href="#_ENREF_79">USDA 2014</a>). States with feral swine presence in less than forty percent of their counties are responsible for approximately half of the value of US agricultural production (<a href="#_ENREF_79">USDA 2014</a>). As a thought experiment, consider the “border” states of Nevada, Utah, Colorado, Kansas, Missouri, Illinois, Kentucky, West Virginia, and Virginia. If feral swine moved into those states without control, $41.5 billion worth of agricultural production would be at risk (<a href="#_ENREF_79">USDA 2014</a>). Table XX summarizes how the production numbers compare.</p>
-<p><strong>Table 5. Market value of agricultural products sold</strong></p>
-<table>
-<colgroup>
-<col width="27%"></col>
-<col width="12%"></col>
-<col width="31%"></col>
-<col width="28%"></col>
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><p>% Counties w/ FS Presence</p></td>
-<td><p>State Count</p></td>
-<td><p>Aggregate Production Market Value</p></td>
-<td><p>Percent of US Total Production</p></td>
-</tr>
-<tr class="even">
-<td><p>0</p></td>
-<td><p>13</p></td>
-<td><p>$75,029,296,000</p></td>
-<td><p>19.00%</p></td>
-</tr>
-<tr class="odd">
-<td><p>0Acevedo, P., M. Escudero, R.</p></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="references" class="section level2">
-<h2><span class="header-section-number">3.7</span> References</h2>
-<p>Muńoz, and C. Gortázar. 2006. “Factors affecting wild boar abundance across an environmental gradient in Spain.” <em>Acta Theriologica</em> 51:327-336.</p>
-<p>Adams, C.E., B.J. Higginbotham, D. Rollins, R.B. Taylor, R. Skiles, M. Mapston, and S. Turman. 2005. “Regional perspectives and opportunities for feral hog management in Texas.” <em>Wildlife Society Bulletin</em> 33:1312-1320.</p>
-<p>Arnade, C., L. Calvin, and F. Kuchler. 2009. “Consumer Response to a Food Safety Shock: The 2006 Food-Borne Illness Outbreak of E. coli O157: H7 Linked to Spinach.” <em>Applied Economic Perspectives and Policy</em> 31:734-750.</p>
-<p>ASPCA (2014) “Small Pet Care.” In <em>Pet Care.</em></p>
-<p>Attavanich, W., B.A. McCarl, and D. Bessler. 2011. “The Effect of H1N1 (Swine Flu) Media Coverage on Agricultural Commodity Markets.” <em>Applied Economic Perspectives and Policy</em> 33:241-259.</p>
-<p>Barrett, R.H., and G.H. Birmingham (1994) “WILD PIGS.” In S.E. Hygnstrom,R.M. Timm, and G.E. Larson eds. <em>The Handbook: Prevention and Control of Wildlife Damage.</em></p>
-<p>Barrett, R.H., and D. Pine. 1981. “History and status of wild pigs (Sus scrofa) in San Benito County, California.” <em>California Fish and Game</em> 67:105-117.</p>
-<p>Barrios-Garcia, M.N., and S. Ballari. 2012. “Impact of wild boar (Sus scrofa) in its introduced and native range: a review.” <em>Biological Invasions</em> 14:2283-2300.</p>
-<p>Beach, R. (2013) “Depredation Problems Involving Feral Hogs.” In <em>Texas Natural Wildlife.</em> San Angelo, TX, District 7 AgriLife Research and Extension Center.</p>
-<p>Beck, R. (1999) “Eden —Texas.” In <em>First National FERAL SWINE CONFERENCE.</em> Ft. Worth, Texas.</p>
-<p>Bengsen, A.J., M.N. Gentle, J.L. Mitchell, H.E. Pearson, and G.R. Saunders. 2013. “Impacts and management of wild pigs Sus scrofa in Australia.” <em>Mammal Review</em>:n/a-n/a.</p>
-<p>Bevins, S.N., K. Pedersen, M. Lutman, T. Gidlewski, and T.J. Deliberto. 2014. “Consequences Associated with the Recent Range Expansion of Nonnative Feral Swine.” <em>BioScience</em> 64:291.</p>
-<p>BLS (2014) “CPI Inflation Calculator.” In T.C.b.S. Databases ed. Washington, DC, U.S. Bureau of Labor Statistics.</p>
-<p>Bove, J. “Pets on the Prowl.” <em>Missouri Conservationist</em>.</p>
-<p>Campbell, T.A., J.A. Foster, M.J. Bodenchuk, J.D. Eisemann, L. Staples, and S.J. Lapidge. 2013. “Effectiveness and target-specificity of a novel design of food dispenser to deliver a toxin to feral swine in the United States.” <em>International Journal of Pest Management</em>:1-8.</p>
-<p>Campbell, T.A., and D.B. Long. 2009. “Feral swine damage and damage management in forested ecosystems.” <em>Forest Ecology and Management</em> 257:2319-2326.</p>
-<p>CDC (2014) “Epstein-Barr Virus and Infectious Mononucleosis.” In<em>.</em> Atlanta, GA, Centers for Disease Control and Prevention.</p>
-<p>Choquenot, D., B. Lukins, and G. Curran. 1997. “Assessing Lamb Predation by Feral Pigs in Australia’s Semi-Arid Rangelands.” <em>Journal of Applied Ecology</em> 34:1445-1454.</p>
-<p>Christie, J., E. DeMarco, E. Hiroyasu, A. Kreger, and M. Ludington. 2014. “Wild Pig Management at Tejon Ranch.” University of California, Santa Barbara.</p>
-<p>Coffey, B., J. Mintert, S. Fox, T. Schroeder, and L. Valentin. “The Economic Impact of BSE on the U.S. Beef Industry: Product Value Losses, Regulatory Costs, and Consumer Reactions.” Kansas State University Agricultural Experiment Station and Cooperative Extension Service.</p>
-<p>Copeland, C.W. 2011. <em>Cost-benefit and other analysis requirements in the rulemaking process.</em> Washington, D.C., Rep. 7-5700.</p>
-<p>Cozzens, T. 2010. “ECONOMIC IMPACT OF FERAL SWINE TRANSMITTING FOOT-AND-MOUTH DISEASE TO LIVESTOCK IN KANSAS ”, Colorado State University.</p>
-<p>Cozzens, T., K. Gebhardt, S. Shwiff, M. Lutman, K. Pedersen, and S. Swafford (2010) “Modeling the Economic Impact of Feral Swine-Transmitted Foot-and- Mouth Disease: A Case Study from Missouri.” In R.M. Timm, and K.A. Fagerstone eds. <em>Proc. 24th Vertebr. Pest Conf.</em>, Published at Univ. of Calif., Davis., pp. 308-311.</p>
-<p>Daszak, P., A.A. Cunningham, and A.D. Hyatt. 2000. “Emerging Infectious Diseases of Wildlife– Threats to Biodiversity and Human Health.” <em>Science</em> 287:443-449.</p>
-<p>Dell’Amore, C. (2013) “Writer’s Call to Kill Feral Cats Sparks Outcry: Newspaper op-ed suggests euthanizing free-roaming cats.” In<em>.</em>, National Geographic News.</p>
-<p>Depenbusch, B.E., J.S. Drouillard, and C.D. Lee. 2011. “Feed depredation by European starlings in a Kansas feedlot.” <em>Human-Wildlife Interactions</em> 5:58-65.</p>
-<p>Doody, J.S., P. Mayes, S. Clulow, D. Rhind, B. Green, C.M. Castellano, D. D’Amore, and C. Mchenry. 2014. “Impacts of the invasive cane toad on aquatic reptiles in a highly modified ecosystem: the importance of replicating impact studies.” <em>Biological Invasions</em>.</p>
-<p>Engeman, R.M., K.J. Couturier, R.K. Felix Jr, and M.L. Avery. 2012. “Feral swine disturbance at important archaeological sites.” <em>Environmental Science and Pollution Research</em>:1-6.</p>
-<p>Engeman, R.M., H.T. Smith, R. Severson, M. Ann Severson, S.A. Shwiff, B. Constantin, and D. Griffin. 2004. “The amount and economic cost of feral swine damage to the last remnant of a basin marsh system in Florida.” <em>Journal for Nature Conservation</em> 12:143-147.</p>
-<p>Engeman, R.M., H.T. Smith, R. Severson, M.A. Severson, J. Woolard, S.A. Shwiff, B. Constantin, and D. Griffin. 2004. “Damage reduction estimates and benefit-cost ratios for feral swine control from the last remnant of a basin marsh system in Florida.” <em>Environmental conservation</em> 31:207-211.</p>
-<p>Engeman, R.M., H.T. Smith, S.A. Shwiff, B. Constantin, J. Woolard, M. Nelson, and D. Griffin. 2003. “Prevalence and economic value of feral swine damage to native habitat in three Florida state parks.” <em>Environmental conservation</em> 30:319-324.</p>
-<p>Frederick, J.M. (1998) “Overview of wild pig damage in California.” In R.O. Baker, and A.C. Crabb eds. <em>18th Vertebrate Pest Conference.</em> University of California, Davis.</p>
-<p>GISD (2014) “100 of the World’s Worst Invasive Alien Species.” In <em>Global invasive species database.</em></p>
-<p>Hahn, R.W., and C.R. Sunstein. 2002. “A NEW EXECUTIVE ORDER FOR IMPROVING FEDERAL REGULATION? DEEPER AND WIDER COST-BENEFIT ANALYSIS.” <em>University of Pennsylvania Law Review</em> 150:1489.</p>
-<p>Hall, J.S., R.B. Minnis, T.A. Campbell, S. Barras, R.W. DeYoung, K. Pabilonia, M.L. Avery, H. Sullivan, L. Clark, and R.G. McLean. 2008. “Influenza Exposure In United States Feral Swine Populations.” <em>Journal of Wildlife Diseases</em> 44:362-368.</p>
-<p>Hall, W. (2012) “Wayne’s World: Many folds despise them but feral hogs are smart.” In <em>The Times Herald Record.</em> Middletown, NY.</p>
-<p>Hamrick, B.W. RE: Wild Pig Damge Survey.</p>
-<p>Hanson, L.B., M.S. Mitchell, J.B. Grand, B. Jolley, B.D. Sparklin, and S.S. Ditchkoff. 2009. “Effect of experimental manipulation on survival and recruitment of feral pigs.” <em>Wildlife Research</em> 36:185-191.</p>
-<p>Hartin, R.E., M.R. Ryan, and T.A. Campbell. 2007. “Distribution and disease prevalence of feral hogs in Missouri.” <em>Human-Wildlife Conflicts</em> 1:186-191.</p>
-<p>Higginbotham, B. “Wild Pig Damage Abatement. Education and Applied Research Activities.” Texas A&amp;M AgriLife Research and Extension Center-Overton.</p>
-<p>Higginbotham, B., G. Clary, L. Hysmith, and M. Bodenchuk. 2008. <em>Statewide feral hog abatement pilot project.</em></p>
-<p>Honda, T., and N. Kawauchi. 2011. “Methods for constructing a wild boar relative-density map to resolve human-wild boar conflicts.” <em>Mammal Study</em> 36:79-85.</p>
-<p>Hone, J., and H. Pedersen (1980) “Changes in a feral pig population after poisoning.” In <em>Proceedings of the 9th Vertebrate Pest Conference (1980).</em> pp. 15.</p>
-<p>Jackson, J.J. (1990) “Controlling vertebrate animal damage in southern pines.” In L.R. Davis, and R.E. Marsh eds. <em>14th Vertebrate Pest Conference.</em> University of California, Davis.</p>
-<p>Jeschke, J.M., and D.L. Strayer. 2005. “Invasion success of vertebrates in Europe and North America.” <em>Proceedings of the National Academy of Sciences of the United States of America</em> 102:7198-7202.</p>
-<p>Jones, K.E., N.G. Patel, M.A. Levy, A. Storeygard, D. Balk, J.L. Gittleman, and P. Daszak. 2008. “Global trends in emerging infectious diseases.” <em>Nature</em> 451:990-993.</p>
-<p>Koichi, K., A. Cottrell, K.K. Sangha, and I.J. Gordon. 2013. “What determines the acceptability of wildlife control methods? A case of feral pig management in the Wet Tropics World Heritage Area, Australia.” <em>Human dimensions of wildlife</em> 18:97-108.</p>
-<p>Kotanen, P.M. 1995. “Responses of vegetation to a changing regime of disturbance: effects of feral pigs in a Californian coastal prarie.” <em>Ecography</em> 18:190-199.</p>
-<p>Kreith, M. 2007. “Wild pigs in California: the issues.” <em>University of California Agricultural Issues Center, Davis, California. AIC Issues Brief</em>.</p>
-<p>Loss, S.R., T. Will, and P.P. Marra. 2013. “The impact of free-ranging domestic cats on wildlife of the United States.” <em>Nature Communications</em> 4:1396.</p>
-<p>Love, J.D. (2013) “Robert Anthony Burrough, #1443625 vs. Brad Livingston, et al.” In T.D. United States District Court for the Eastern District of Texas ed. <em>Civil Action No. 6:12cv339.</em> 2013 U.S. Dist. LEXIS 122748.</p>
-<p>Mayer, J.J. (2013) “Wild pig attacks on humans.” In J.B. Armstrong, and G.R. Gallagher eds. <em>15th Wildlife Damage Management Conference.</em></p>
-<p>Mayer, J.J., and P.E. Johns. 2011. Title.“Unpublished, Institution|.</p>
-<p>MEF, U. (2013) “Beef, Pork Exports Set New Records in 2012.” In<em>.</em>, U.S. Meat Export Federation.</p>
-<p>-– (2014) “TOTAL U.S. PORK EXPORTS.” In<em>.</em>, U.S. Meat Export Federation.</p>
-<p>Mengak, M.T. “2012 Georgia Wild Pig Survey. Final Report.”. Warnell School of Forestry and Natural Resources, University of Georgia, Athens, GA 30602 USA.</p>
-<p>Miller, R.S., M.L. Farnsworth, and J.L. Malmberg. 2013. “Diseases at the livestock–wildlife interface: Status, challenges, and opportunities in the United States.” <em>Preventive Veterinary Medicine</em> 110:119-132.</p>
-<p>Moore Jr., C. (2008) “Wild hog attacks rare but scary.” In <em>PAnews.com.</em> Port Author, TX, PAnews.com.</p>
-<p>Ober, H.K., G.R. Edmondson, W.M. Giuliano, D.L. Wright, J. Atkins, A. Andreasen, S. Eubanks, L. Johnson, C. Brasher, and G. Hicks. “Farmer Perceptions of Wildlife Damage to Row Crops in North Florida.” Department of Wildlife Ecology and Conservation, Florida Cooperative Extension Service, Institute of Food and Agricultural Sciences, University of Florida.</p>
-<p>OTA. 1993. <em>Harmful Non-Indigenous Species.</em> Washington, DC: U.S. Government Printing Office, Rep. OTA-F-565.</p>
-<p>Pimentel, D. (2007) “Environmental and economic costs of vertibrate species invasions into the United States.” In G.W. Witmer,W.C. Pitt, and K.A. Fagerstone eds. <em>Managing Vertebrate Invasive Species.</em> Fort Collins, CO.</p>
-<p>Pimentel, D., R. Zuniga, and D. Morrison. 2005. “Update on the environmental and economic costs associated with alien-invasive species in the United States.” <em>Ecological Economics</em> 52:273-288.</p>
-<p>Pineda-Krch, M., J.M. O’Brien, C. Thunes, and T.E. Carpenter. 2010. “Potential impact of introduction of foot-and-mouth disease from wild pigs into commercial livestock premises in California.” <em>American Journal of Veterinary Research</em> 71:82-88.</p>
-<p>Roberts, C. (2011) “Wild Pig Suspected in Sonoma Attack.” In<em>.</em> San Francisco, CA, NBC Bay Area.</p>
-<p>Rollins, D. (1993) “Statewide Attitude Survey on Feral Hogs in Texas.” In <em>Texas Natural Wildlife.</em> San Angelo, TX, Texas Agricultural Extension Service, Texas A&amp;M University.</p>
-<p>Saito, M., F. Koike, H. Momose, T. Mihira, S. Uematsu, T. Ohtani, and K. Sekiyama. 2012. “Forecasting the range expansion of a recolonising wild boar Sus scrofa population.” <em>Wildlife Biology</em> 18:383-392.</p>
-<p>Sanchez, R. (2011) “Wild boars invade farms, attack pets.” In <em>Reuters.</em> Reuters.</p>
-<p>Saunders, G., and H. Bryant. 1988. “The Evaluation of a Feral Pig Eradication Program During a Simulated Exotic Disease Outbreak.” <em>Wildlife Research</em> 15:73-81.</p>
-<p>Schlaepfer, M.A., D.F. Sax, and J.D. Olden. 2011. “The Potential Conservation Value of Non-Native Species</p>
-<p>El Valor de Conservación Potencial de Especies No Nativas.&quot; <em>Conservation Biology</em> 25:428-437.</p>
-<p>Seward, N.W., K.C. VerCauteren, G.W. Witmer, and R.M. Engeman. 2004. “Feral swine impacts on agriculture and the environment.” <em>Sheep &amp; Goat Research Journal</em>:12.</p>
-<p>Shrader-Frechette, K. 2001. “Non-Indigenous Species and Ecological Explanation.” <em>Biology and Philosophy</em> 16:507-519.</p>
-<p>Shwiff, S.A., K. Gebhardt, K.N. Kirkpatrick, and S.S. Shwiff. 2010. “Potential Economic Damage from Introduction of Brown Tree Snakes, Boiga irregularis (Reptilia: Colubridae), to the Islands of Hawai’i1.” <em>Pacific Science</em> 64:1-10.</p>
-<p>Siemann, E., J.A. Carrillo, C.A. Gabler, R. Zipp, and W.E. Rogers. 2009. “Experimental test of the impacts of feral hogs on forest dynamics and processes in the southeastern US.” <em>Forest Ecology and Management</em> 258:546-553.</p>
-<p>Spencer, P.B.S., J.O. Hampton, and Hall. 2005. “ILLEGAL TRANSLOCATION AND GENETIC STRUCTURE OF FERAL PIGS IN WESTERN AUSTRALIA.” <em>Journal of Wildlife Management</em> 69:377-384.</p>
-<p>Sweitzer, R.A., and B.E. McCann. “NATURAL AREAS ECOLOGICAL DAMAGE AND ECONOMIC COSTS SURVEY REPORT.” Department of Biology, University of North Dakota.</p>
-<p>Taubenberger, J., and D. Morens. 2006. “1918 influenza: the mother of all pandemics. .” <em>Emerging infectious diseases</em> 12.</p>
-<p>The White House. 1999. <em>Executive Order 13112 of February 3, 1999. Invasive Species.</em> Washington, DC: United States Government Printing Office.</p>
-<p>Tolleson, D.R., W.E. Pinchak, D. Rollins, and L.J. Hunt (1995) “Feral hogs in the rolling plains of Texas: perspectives, problems, and potential.” In <em>Great Plains Wildlife Damage Control Workshop Proceedings.</em> pp. 454.</p>
-<p>USDA. 2014. <em>2012 Census of Agriculture United States Summary and State Data.</em> Washington D.C., Rep. AC-12-A-51.</p>
-<p>-–. “2012 Census of Agriculture: Preliminary Report U.S. and State Data.” United States Department of Agriculture.</p>
-<p>USDA APHIS (2013) “Feral swine: Damage and disease threats.” In USDA APHIS ed. Riverdale, MD, Publications Distribution.</p>
-<p>USDA APHIS VS. 2010. <em>National Brucellosis Surveillance Strategy.</em> Riverdale, Maryland 20737.</p>
-<p>USDA ERS (2013) “Home / Topics / Animal Products / Cattle &amp; Beef / Statistics &amp; Information.” In<em>.</em>, USDA ERS.</p>
-<p>USDA NASS (2014) “USDA/NASS QuickStats Ad-hoc Query Tool.” In<em>.</em>, United States Department of Agriculture. <a href="http://quickstats.nass.usda.gov%5D">Online [http://quickstats.nass.usda.gov]</a>.</p>
-<p>Ward, M.P., S.W. Laffan, and L.D. Highfield. 2009. “Modelling spread of foot-and-mouth disease in wild white-tailed deer and feral pig populations using a geographic-automata model and animal distributions.” <em>Preventive Veterinary Medicine</em> 91:55-63.</p>
-<p>-–. 2007. “The potential role of wild and feral animals as reservoirs of foot-and-mouth disease.” <em>Preventive Veterinary Medicine</em> 80:9-23.</p>
-<p>Warner, K.D., and F. Kinslow. 2013. “Manipulating risk communication: Value predispositions shape public understandings of invasive species science in Hawaii.” <em>Public Understanding of Science</em> 22:203-218.</p>
-<p>Weeks, P., and J. Packard. 2009. “Feral Hogs: Invasive Species or Nature’s Bounty?” <em>Human Organization</em> 68:280-292.</p>
-<p>Westenbroek, T. Estimate of damage due to feral swine., September 25, 2011.</p>
-<p>Whitehouse, D.B. (1999) “Impacts of Feral Hogs on Corporate Timberlands in the South Eastern U.S.” In <em>First National Feral Swine Conference.</em> Fort Worth, TX.</p>
-<p>WHO (2014) “Ebola virus disease.” In <em>Media centre.</em> World Health Organization.</p>
-<p>-– (2014) “Influenza (Seasonal).” In <em>Media Centre.</em> World Health Organization.</p>
-<p>Yang, X., W. Huang, B. Tian, and J. Ding. 2014. “Differences in growth and herbivory damage of native and invasive kudzu (Peuraria montana var. lobata) populations grown in the native range.” <em>Plant Ecology</em> 215:339-346.</p>
-</div>
-</div>
-<div id="references-1" class="section level1 unnumbered">
+<div id="references" class="section level1 unnumbered">
 <h1>References</h1>
 <div id="refs" class="references">
 <div id="ref-Anderson2016">
 <p>Anderson, A., C. Slootmaker, E. Harper, J. Holderieath, and S.A. Shwiff. 2016. “Economic estimates of feral swine damage and control in 11 US states.” <em>Crop Protection</em> 89. doi:<a href="https://doi.org/10.1016/j.cropro.2016.06.023">10.1016/j.cropro.2016.06.023</a>.</p>
 </div>
 <div id="ref-berck2011economics">
-<p>Berck, P., and G. Helfand. 2011. <em>The Economics of the Environment</em>. Pearson Addison-Wesley. <a href="https://books.google.com/books?id=oxraAAAACAAJ" class="uri">https://books.google.com/books?id=oxraAAAACAAJ</a>.</p>
+<p>Berck, P., and G. Helfand. 2011. <em>The Economics of the Environment</em>. Pearson Addison-Wesley.</p>
 </div>
 <div id="ref-bieber2005">
 <p>Bieber, Claudia, and Thomas Ruf. 2005. “Population Dynamics in Wild Boar Sus Scrofa: Ecology, Elasticity of Growth Rate and Implications for the Management of Pulsed Resource Consumers.” <em>Journal of Applied Ecology</em> 42 (6). Wiley Online Library: 1203–13.</p>
@@ -5438,7 +4873,7 @@ Line -7500403 true 150 150 210 180
 <p>Carson, Rhys. 2013. “‘Boared’ to death: Rooting out the feral hog issue in Texas.” <em>Texas Tech Administrative Law Journal</em> Summer 2013 (c): 1–32.</p>
 </div>
 <div id="ref-field2001natural">
-<p>Field, B.C. 2001. <em>Natural Resource Economics: An Introduction</em>. Waveland Press. <a href="https://books.google.com/books?id=fStZAAAAYAAJ" class="uri">https://books.google.com/books?id=fStZAAAAYAAJ</a>.</p>
+<p>Field, B.C. 2001. <em>Natural Resource Economics: An Introduction</em>. Waveland Press.</p>
 </div>
 <div id="ref-geisser2005">
 <p>Geisser, Hannes, and Heinz-Ulrich Reyer. 2005. “The Influence of Food and Temperature on Population Density of Wild Boar Sus Scrofa in the Thurgau (Switzerland).” <em>Journal of Zoology</em> 267 (1). Wiley Online Library: 89–96.</p>
@@ -5465,7 +4900,7 @@ Line -7500403 true 150 150 210 180
 <p>Schlichting, Peter E., Sarah R. Fritts, John J. Mayer, Philip S. Gipson, and C. Brad Dabbert. 2016. “Determinants of variation in home range of wild pigs.” <em>Wildlife Society Bulletin</em> 40 (3): 487–93. doi:<a href="https://doi.org/10.1002/wsb.662">10.1002/wsb.662</a>.</p>
 </div>
 <div id="ref-Shi2005">
-<p>Shi, Wei, and Scott H Irwin. 2005. “Optimal Hedging with a Subjective View: An Empirical Bayesian Approach.” <em>American Journal of Agricultural Economics</em> 87 (4). Oxford University Press / USA: 918–30.</p>
+<p>Shi, Wei, and Scott H Irwin. 2005. “Optimal Hedging with a Subjective View: An Empirical Bayesian Approach.” <em>American Journal of Agricultural Economics</em> 87 (4). Oxford University Press USA: 918–30.</p>
 </div>
 <div id="ref-Thijssen1996">
 <p>Thijssen, Geert. 1996. “Farmers’ investment behavior: An empirical assessment of two specifications of expectations.” <em>American Journal of Agricultural Economics</em> 78 (1). Oxford University Press: 166–74.</p>
