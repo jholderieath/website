@@ -11,7 +11,7 @@
 
 
 
-<title>ESSAYS ON FERAL SWINE: PRODUCER WELFARE EFFECTS AND SPATIO-TEMPORAL MANAGEMENT OF FERAL SWINE.</title>
+<title>WildPigABM</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -202,13 +202,30 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">ESSAYS ON FERAL SWINE: PRODUCER WELFARE EFFECTS AND SPATIO-TEMPORAL MANAGEMENT OF FERAL SWINE.</h1>
+<h1 class="title toc-ignore">WildPigABM</h1>
 
 </div>
 
 
-<p>Feral swine are known to cause damage to crops among other types of property damage. With a lack of economic welfare estimates of feral swine crop damages, the first essay of this dissertation addresses this gap in the literature by estimating the value of feral swine removal with respect to five crops in nine southern states. An equilibrium displacement model was used to assess the changes in price and quantity that would result eliminating damage to corn, soybeans, wheat, rice, and peanuts in these nine states. Changes in price and quantity are then used to calculate the changes in producer and consumer welfare in both the short and long-run. Respectively, those net surplus gains are $142.24 million and $88.98 million.</p>
-<p>The second essay addresses the need for analysis in complex management questions. This essay constructs an agent-based model for use in examining different imperfect, but reasonable, ways that decision-makers could implement a marginal benefit to the removal of feral swine and a marginal cost of removal. This essay finds that the implementation of the marginal benefit to removal matters substantially. Further, the essay finds that the dynamics of the sounder and movements related to sounders matter and encourages further research into that area.</p>
+<p>The documents needed for the <code>WildPigABM</code> Package including the Vignette, Source Files, and additional information is available here. <code>WildPigABM</code> is an <code>R</code> Package that can be used to simulate agricultural producer - wildlife interactions.</p>
+<ul>
+<li>Agent-based models are purposeful representations of interactions between organisms of interest (Railsback and Grimm 2011).</li>
+<li>Feral swine management involves interactions between landowners of varying motivations, government agencies, and the wild pigs themselves.</li>
+<li>The major contribution of this paper is to link an economic model, acceptable in its own right, to many other economic models and ecological models and to create a framework of collaborative democratic research. The ecological models are minimally acceptable to model the phenomena at hand.</li>
+<li>Landowners interact with their environment and feral swine. Landowners encompass any individual who has control and use of a parcel, regardless of fee title. Landowners are gross margin maximizers.</li>
+<li>The landscape is set to approximate a Public Land Survey System (PLSS) township. The map is made up of 2401 ten acre patches. Each edge of the map is 49 patches long, each 1/8 mile on each edge. The total length of each edge of the map is approximately 6.125 miles. Land ownership and quality is randomly assigned. Initial placement of feral swine is also random.</li>
+<li>Time is defined in year intervals. The year can be thought of as a calendar year starting in January and ending in December. Initial conditions are set outside of the time-loop. A January census of all agents is carried out in each iteration. Land-users then update their expectations of the gross margins each patch will produce, conditioned on feral swine populations. The landowners then optimize using a Linear Programming (LP) process. Once the calculations have been made, land-users implement their plan.</li>
+<li>The model is able to track wealth of landowners, number of removed head, living animals, and their locations among many other potentially interesting variables.</li>
+<li>The analysis centers around the differences in outcome between different applications of an expert opinion. We coin a term <em>Opportunity Cost of Postponement of Management (OCPM)</em> to describe the cost imposed by a single feral swine and any potential progeny, optimally managed, remaining on the landscape at the end of a time period. There is substantial development surrounding this idea in the paper and will serve as the expert opinion that is implemented in differing ways or ignored.</li>
+<li>Results show differences exist simply from changing the implementation strategies of landowners.</li>
+</ul>
+<p>Steps for use:</p>
+<p>1.0 Read and Accept the License! Copyright 2016 Jason Holderieath</p>
+<p>2.0 <a href="https://ccl.northwestern.edu/netlogo/download.shtml">Download <code>NetLogo</code> Version 5.3.1</a> <code>WildPigABM</code> has not been tested with Version 6.0.1</p>
+<p>3.0 <a href="https://github.com/jholderieath/website/raw/master/WildPigABM_0.2.9.tar.gz">Download Source Files</a></p>
+<p>4.0 If your installation is exactly like mine, you can simply install the r package. The <code>NetLogo</code> model will be automatically placed in your <code>R</code> package library (i.e. <code>~\R\win-library\3.3\WildPigABM\data</code>). The <code>doOne</code> will know where to find the <code>NetLogo</code> model.</p>
+<pre class="r"><code> install.packages(&quot;~/WildPigABM_0.2.9.tar.gz&quot;, repos = NULL, type = &quot;source&quot;)</code></pre>
+<p>4.1 It is quite likely you will need to modify the <code>doOne</code> function to update your generic output directory (<code>dirc</code>) and <code>NetLogo</code> application path (<code>nl.path</code>) must be updated. You may also wish to change other parts of the model. If that is the case, unzip the <code>tar.gz</code> file and modify. If you would like to collaborate please contact me through the site.</p>
 
 
 

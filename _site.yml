@@ -4,7 +4,11 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "Manuscript Figures"
+    - text: "EDM Calculations"
+      href: defenseDoc.html
+    - text: "WildPigABM Download and Summary"
+      href: WildPigABM_index.html
+    - text: "WildPigABM Manuscript Figures"
       href: figures.html
     - text: "WildPigABM Vignette"
       href: CopyOfmy-vignette.html
