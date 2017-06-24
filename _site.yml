@@ -4,10 +4,6 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "EDM Calculations"
-      href: defenseDoc.html
-    - text: "Exploration of EDM Sims."
-      href: MC_EDM.html
     - text: "WildPigABM Download and Summary"
       href: WildPigABM_index.html
     - text: "WildPigABM Manuscript Figures"
